@@ -4,8 +4,8 @@ namespace ECOMMERCE.API.Interfaces
 {
     public interface IUserService
     {
-        public GetUserDto GetUser(int userId);
-        
+        public GetUserDTO GetUser(int userId);
+        public List<GetUserDTO> GetUsers(int skip, int take); 
         public int CreateUser(CreateUserDTO user);
     }
 }
