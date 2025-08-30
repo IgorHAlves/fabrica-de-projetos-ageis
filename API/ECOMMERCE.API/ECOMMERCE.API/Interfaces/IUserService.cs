@@ -1,6 +1,11 @@
-﻿namespace ECOMMERCE.API.Interfaces
+﻿using ECOMMERCE.API.DTO.User;
+
+namespace ECOMMERCE.API.Interfaces
 {
-    public class IUserService
+    public interface IUserService
     {
+        public GetUserDto GetUser(int userId);
+        
+        public int CreateUser(CreateUserDTO user);
     }
 }
