@@ -7,5 +7,5 @@ public class CreateProductDTO
     public Decimal Price { get; set; }
     public string ImageUrl { get; set; }
     public int Stock { get; set; }
-    public List<string> IdsVariants { get; set; } = new();
+    public Guid? IdPai { get; set; }
 }

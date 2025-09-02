@@ -4,9 +4,9 @@ namespace ECOMMERCE.API.DTO.User;
 
 public class GetUserDTO
 {
-    public string Id { get; set; }
-    public string Nome { get; set; }
+    public Guid Id { get; set; }
+    public string Name { get; set; }
     public string Email { get; set; }
-    public Address Address { get; set; }
+    public GetAddressDTO Address { get; set; }
     public string Phone { get; set; }
 }
