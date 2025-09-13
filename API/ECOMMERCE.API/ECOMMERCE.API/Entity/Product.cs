@@ -10,8 +10,5 @@ public class Product
     public int Stock { get; set; }
     public Guid? IdPai { get; set; }
 
-    public Product()
-    {
-
-    }
+   
 }
