@@ -26,9 +26,8 @@ public class ProductServices : IProductService
         }
     }
 
-    public List<Product> GetProducts(string name, int skip, int take)
+    public List<Product> GetProducts(string? name, int skip, int take)
     {
-        
         var products = _productRepository.GetProducts();
         if (!string.IsNullOrEmpty(name))
         {
@@ -52,12 +51,10 @@ public class ProductServices : IProductService
             product.Description = dto.Description;
             product.ImageUrl = dto.ImageUrl;
             product.Stock = dto.Stock;
-            product.IdPai = dto.IdPai;
-
-            if (product.IdPai == product.Id)
-            {
-                throw new Exception("Erro, produtos não podem ter o mesmo Id deve ter um filho ou ser null");
-            }
+            
+            if (dto.IdPai != null)
+                product.IdPai = Guid.Parse(dto.IdPai);
+                
             Product newProduct = _productRepository.CreateProduct(product);
             return newProduct;
         }
