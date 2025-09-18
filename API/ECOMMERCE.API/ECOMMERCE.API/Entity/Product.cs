@@ -9,6 +9,6 @@ public class Product
     public string ImageUrl { get; set; }
     public int Stock { get; set; }
     public Guid? IdPai { get; set; }
-
-   
+    
+    
 }

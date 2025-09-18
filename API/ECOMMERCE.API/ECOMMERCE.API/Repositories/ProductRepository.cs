@@ -16,7 +16,7 @@ public class ProductRepository : IProductRepository
     public Product CreateProduct(Product product)
     {
         _context.Products.Add(product);
-        //_context.SaveChanges();
+        _context.SaveChanges();
         return product;
     }
     
