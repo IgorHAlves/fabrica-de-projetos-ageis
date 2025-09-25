@@ -1,6 +1,6 @@
-using ECOMMERCE.API.DTO.Product;
-using ECOMMERCE.API.Entity;
-using ECOMMERCE.API.Interfaces;
+using ECOMMERCE.CORE.DTO.Product;
+using ECOMMERCE.CORE.Entity;
+using ECOMMERCE.CORE.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,7 +15,7 @@ public class ProductController : Controller
         _productService = productService;
     }
     
-    [Authorize]
+    // [Authorize]
     [HttpGet]
     public async Task<IActionResult> GetProducts([FromQuery] string? name, [FromQuery] int skip = 0, [FromQuery] int take = 10)
     {
@@ -32,7 +32,7 @@ public class ProductController : Controller
         return Ok(product);
     }
     
-    [Authorize]
+    // [Authorize]
     [HttpPost]
     public async Task<IActionResult> PostProduct([FromBody] CreateProductDTO dto)
     {

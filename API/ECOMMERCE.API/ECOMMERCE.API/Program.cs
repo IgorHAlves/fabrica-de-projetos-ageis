@@ -1,15 +1,15 @@
 
-using ECOMMERCE.API.Data;
-using ECOMMERCE.API.Interfaces;
-using ECOMMERCE.API.Repositories;
-using ECOMMERCE.API.Services;
+using ECOMMERCE.CORE.Interfaces;
+using ECOMMERCE.CORE.Services;
+using ECOMMERCE.DATA.Data;
+using ECOMMERCE.DATA.Repositories;
 using Keycloak.AuthServices.Authentication;
 using Keycloak.AuthServices.Authorization;
 using Keycloak.AuthServices.Sdk.Admin;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using IAuthorizationService = ECOMMERCE.API.Interfaces.IAuthorizationService;
+using IAuthorizationService = ECOMMERCE.CORE.Interfaces.IAuthorizationService;
 
 namespace ECOMMERCE.API
 {
@@ -32,9 +32,13 @@ namespace ECOMMERCE.API
 
             builder.Services.AddScoped<IProductRepository, ProductRepository>();
             
+            builder.Services.AddScoped<IUserService, UserService>();
+            
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
+            
             string mysqlString = "server=localhost; port=3306; database=ecommerce_api;user=root;password=1234;Persist Security Info=False; Convert Zero DateTime=True";
 
-            builder.Services.AddDbContext<Context>(options =>
+            builder.Services.AddDbContext<EcommerceDbContext>(options =>
                 options.UseMySql(mysqlString, ServerVersion.AutoDetect(mysqlString)));
 
             #region Authorization

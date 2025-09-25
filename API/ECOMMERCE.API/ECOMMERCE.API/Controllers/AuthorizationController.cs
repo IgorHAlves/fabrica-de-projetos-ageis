@@ -1,5 +1,5 @@
-using ECOMMERCE.API.DTO.Authorization;
-using ECOMMERCE.API.Interfaces;
+using ECOMMERCE.CORE.DTO.Authorization;
+using ECOMMERCE.CORE.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ECOMMERCE.API.Controllers;
