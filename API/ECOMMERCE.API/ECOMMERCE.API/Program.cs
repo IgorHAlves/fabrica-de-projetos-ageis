@@ -94,6 +94,21 @@ namespace ECOMMERCE.API
             builder.Services.AddKeycloakAdminHttpClient(adminClientOptions);
 
             #endregion
+
+
+            #region CORS
+
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("PermitirTudo", policy =>
+                {
+                    policy.AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                });
+            });
+
+            #endregion
             
             var app = builder.Build();
 
@@ -106,6 +121,7 @@ namespace ECOMMERCE.API
 
             app.UseHttpsRedirection();
             
+            app.UseCors("PermitirTudo"); //Parte do CORS
             app.UseAuthentication(); //Parte da autorização
             app.UseAuthorization();
 
