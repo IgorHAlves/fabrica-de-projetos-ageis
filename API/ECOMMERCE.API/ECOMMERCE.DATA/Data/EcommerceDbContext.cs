@@ -1,3 +1,4 @@
+using ECOMMERCE.API.Entity;
 using ECOMMERCE.CORE.Entity;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,6 +13,7 @@ public partial class EcommerceDbContext : DbContext
     
     public DbSet<Product> Products { get; set; }
     public DbSet<User> Users { get; set; } 
+    public DbSet<Order> Orders { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -31,7 +33,7 @@ public partial class EcommerceDbContext : DbContext
         modelBuilder.Entity<User>().HasKey(user => user.Id );
 
         modelBuilder.Entity<User>()
-            .HasOne(u => u.Address)
+            .HasOne(user => user.Address)
             .WithMany()
             .HasForeignKey(user => user.AddressId);
 
@@ -39,6 +41,26 @@ public partial class EcommerceDbContext : DbContext
             .HasMany<Sale>()
             .WithOne()
             .HasForeignKey(sale => sale.UserId);
+        
+        //Order
+        
+        modelBuilder.Entity<Order>()
+            .HasKey(order => order.Id );
+
+        modelBuilder.Entity<Order>()
+            .HasOne(order => order.User)
+            .WithMany(user => user.Orders)
+            .HasForeignKey(order => order.UserId);
+        
+        modelBuilder.Entity<Order>()
+            .HasMany(order => order.OrderItems)
+            .WithOne(orderItem => orderItem.Order)
+            .HasForeignKey(orderItem => orderItem.OrderId);
+
+        modelBuilder.Entity<OrderItem>()
+            .HasOne(orderItem => orderItem.Product)
+            .WithMany()
+            .HasForeignKey(orderItem => orderItem.ProductId);
     }
       
 }

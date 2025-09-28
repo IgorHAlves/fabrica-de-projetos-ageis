@@ -1,0 +1,66 @@
+using System.Security.Claims;
+using ECOMMERCE.API.Entity;
+using ECOMMERCE.API.Interfaces;
+using ECOMMERCE.CORE.DTO.Order;
+using ECOMMERCE.CORE.Interfaces;
+using Keycloak.Net.Models.Root;
+using Microsoft.AspNetCore.Mvc;
+
+namespace ECOMMERCE.API.Controllers;
+
+[ApiController]
+[Route("api/[controller]")]
+
+public class OrderController : ControllerBase
+{
+    
+    private readonly IOrderService _orderService;
+
+    public OrderController(IOrderService orderService)
+    {
+        _orderService = orderService;
+        
+    }
+    
+    //[Authorize]
+    [HttpGet]
+    public async Task<IActionResult> GetOrders([FromQuery] int skip = 0, [FromQuery] int take = 10)
+    {
+        try
+        {
+            List<Order> orders = _orderService.GetOrders();
+            
+            return Ok(orders);
+        }
+        catch (Exception e)
+        {
+            throw new Exception(e.Message);
+        }
+    }
+    
+    //[Authorize]
+    [HttpGet("{OrderId:Guid}")]
+    public async Task<IActionResult> GetOrder([FromRoute] Guid OrderId)
+    {
+        Order order = _orderService.GetOrder(OrderId);
+        if (OrderId == null)
+        {
+            return NotFound();
+        }
+        return Ok(order);
+    }
+
+    //[Authorize]
+    [HttpPost]
+    public async Task<IActionResult> CreateOrder([FromBody] CreateOrderDTO orderDto)
+    {
+        string keycloakId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? User.FindFirst("sub")?.Value;
+        
+        orderDto.UserKeycloackId = keycloakId;
+        
+        Order order = _orderService.CreateOrder(orderDto);
+        
+        return Ok(order);
+    }
+    
+}
