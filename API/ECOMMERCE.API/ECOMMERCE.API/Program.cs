@@ -1,4 +1,6 @@
 
+using ECOMMERCE.API.Interfaces;
+using ECOMMERCE.API.Repositories;
 using ECOMMERCE.CORE.Interfaces;
 using ECOMMERCE.CORE.Services;
 using ECOMMERCE.DATA.Data;
@@ -35,11 +37,15 @@ namespace ECOMMERCE.API
             builder.Services.AddScoped<IUserService, UserService>();
             
             builder.Services.AddScoped<IUserRepository, UserRepository>();
-            
-            string mysqlString = "server=localhost; port=3306; database=ecommerce_api;user=root;password=1234;Persist Security Info=False; Convert Zero DateTime=True";
+
+            builder.Services.AddScoped<IOrderService, OrderService>();
+
+            builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+
+            string mySqlConnection = builder.Configuration.GetConnectionString("DefaultConnection");
 
             builder.Services.AddDbContext<EcommerceDbContext>(options =>
-                options.UseMySql(mysqlString, ServerVersion.AutoDetect(mysqlString)));
+                options.UseMySql(mySqlConnection, ServerVersion.AutoDetect(mySqlConnection)));
 
             #region Authorization
             

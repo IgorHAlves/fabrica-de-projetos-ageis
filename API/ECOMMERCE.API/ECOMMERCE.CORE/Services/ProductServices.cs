@@ -35,7 +35,7 @@ public class ProductServices : IProductService
                 .Where(product => product.Name.Contains(name, StringComparison.OrdinalIgnoreCase))
                 .ToList();
         }
-        return products.Skip(skip).Take(take).ToList();;
+        return products.Skip(skip).Take(take).ToList();
     
         
     }
