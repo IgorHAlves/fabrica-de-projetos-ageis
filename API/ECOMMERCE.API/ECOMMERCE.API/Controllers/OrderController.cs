@@ -28,7 +28,7 @@ public class OrderController : ControllerBase
     {
         try
         {
-            List<Order> orders = _orderService.GetOrders();
+            List<GetOrderDTO> orders = _orderService.GetOrders();
             
             return Ok(orders);
         }
@@ -42,7 +42,7 @@ public class OrderController : ControllerBase
     [HttpGet("{OrderId:Guid}")]
     public async Task<IActionResult> GetOrder([FromRoute] Guid OrderId)
     {
-        Order order = _orderService.GetOrder(OrderId);
+        GetOrderDTO order = _orderService.GetOrder(OrderId);
         if (OrderId == null)
         {
             return NotFound();

@@ -76,15 +76,74 @@ public class OrderService : IOrderService
         }
     }
 
-    public List<Order> GetOrders()
+    public List<GetOrderDTO> GetOrders()
     {
-        List<Order> orders = _orderRepository.GetOrders();
-        return orders;
+        try
+        {
+            List<Order> orders = _orderRepository.GetOrders();
+            
+            List<GetOrderDTO> orderListDTO = new List<GetOrderDTO>();
+            foreach (Order order in orders)
+            {
+                List<OrderProductDTO> orderProductListDTO = new List<OrderProductDTO>();
+
+                foreach (OrderItem orderItem in order.OrderItems)
+                {
+                    OrderProductDTO orderProductDTO = new OrderProductDTO()
+                    {
+                        Id = orderItem.ProductId,
+                        ProductName = orderItem.Product.Name,
+                        ProductPrice = orderItem.Product.Price,
+                        ImageUrl = orderItem.Product.ImageUrl,  
+                    };
+                    orderProductListDTO.Add(orderProductDTO);
+                }
+                
+                
+                GetOrderDTO orderDTO = new GetOrderDTO()
+                {
+                    Id = order.Id,
+                    Products = orderProductListDTO,
+                    OrderPrice = order.Price
+                };
+                orderListDTO.Add(orderDTO);
+            }
+            return orderListDTO;
+        }
+        catch (Exception e)
+        {
+            throw new Exception(e.Message);
+        }
     }
 
-    public Order GetOrder(Guid id)
+    public GetOrderDTO GetOrder(Guid orderId)
     {
-        var order = _orderRepository.GetOrder(id);
-        return order;
+        Order order = _orderRepository.GetOrder(orderId);
+        
+        List<OrderProductDTO> orderProductsDTO = new List<OrderProductDTO>();
+        
+        OrderProductDTO orderProductDTO = new OrderProductDTO();
+        
+        GetOrderDTO orderDTO = new GetOrderDTO();
+        foreach (OrderItem orderItem in order.OrderItems)
+        {
+            orderProductDTO = new OrderProductDTO()
+            {
+                Id = orderItem.ProductId,
+                ProductName = orderItem.Product.Name,
+                ProductPrice = orderItem.Product.Price,
+                ImageUrl = orderItem.Product.ImageUrl
+            };
+
+            orderDTO = new GetOrderDTO()
+            {
+                Id = order.Id,
+                Products = orderProductsDTO,
+                OrderPrice = orderItem.Price
+            };
+            
+            orderProductsDTO.Add(orderProductDTO);
+        }
+        return orderDTO;
     }
 }
