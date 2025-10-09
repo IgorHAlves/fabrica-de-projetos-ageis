@@ -16,10 +16,13 @@ public class OrderRepository : IOrderRepository
         _context = context;
     }
 
-    public List<Order> GetOrders()
+    public List<Order> GetOrders(int pageNumber, int pageSize)
     {
         return _context.Orders
             .Select(order => order)
+            .Include(order => order.OrderItems)
+            .Skip((pageNumber - 1) * pageSize)
+            .Take(pageSize)
             .ToList();
     }
 

@@ -76,11 +76,11 @@ public class OrderService : IOrderService
         }
     }
 
-    public List<GetOrderDTO> GetOrders()
+    public List<GetOrderDTO> GetOrders(int pageNumber, int pageSize)
     {
         try
         {
-            List<Order> orders = _orderRepository.GetOrders();
+            List<Order> orders = _orderRepository.GetOrders(pageNumber, pageSize: 10);
             
             List<GetOrderDTO> orderListDTO = new List<GetOrderDTO>();
             foreach (Order order in orders)

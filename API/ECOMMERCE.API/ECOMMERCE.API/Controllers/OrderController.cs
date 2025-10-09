@@ -24,11 +24,11 @@ public class OrderController : ControllerBase
     
     //[Authorize]
     [HttpGet]
-    public async Task<IActionResult> GetOrders([FromQuery] int skip = 0, [FromQuery] int take = 10)
+    public async Task<IActionResult> GetOrders([FromQuery] int pageNumber, [FromQuery] int pageSzie = 10)
     {
         try
         {
-            List<GetOrderDTO> orders = _orderService.GetOrders();
+            List<GetOrderDTO> orders = _orderService.GetOrders(pageNumber, pageSzie);
             
             return Ok(orders);
         }

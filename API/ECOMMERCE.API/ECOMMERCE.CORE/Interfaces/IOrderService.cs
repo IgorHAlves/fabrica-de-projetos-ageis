@@ -7,7 +7,7 @@ namespace ECOMMERCE.API.Interfaces;
 public interface IOrderService
 {
     public Order CreateOrder(CreateOrderDTO orderDto);
-    public List<GetOrderDTO> GetOrders();
+    public List<GetOrderDTO> GetOrders(int pageNumber, int pageSize);
     public GetOrderDTO GetOrder(Guid id);
     
 }
