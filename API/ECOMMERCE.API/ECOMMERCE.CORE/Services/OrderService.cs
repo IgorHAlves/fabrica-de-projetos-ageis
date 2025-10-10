@@ -80,7 +80,7 @@ public class OrderService : IOrderService
     {
         try
         {
-            List<Order> orders = _orderRepository.GetOrders(pageNumber, pageSize: 10);
+            List<Order> orders = _orderRepository.GetOrders(pageNumber, pageSize);
             
             List<GetOrderDTO> orderListDTO = new List<GetOrderDTO>();
             foreach (Order order in orders)
