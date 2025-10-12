@@ -19,17 +19,17 @@ public class OrderService : IOrderService
         _userRepository = userRepository;
     }
 
-    public Order CreateOrder(CreateOrderDTO orderDto)
+    public Guid CreateOrder(CreateOrderDTO orderDto)
     {
         try
         {            
-            var user = _userRepository.GetUserByKeycloakId(orderDto.UserKeycloackId);
-            if (user == null)
-            {
-                throw new Exception("User not found");
-            }
+           var user = _userRepository.GetUserByKeycloakId(orderDto.UserKeycloackId);
+           if (user == null)
+           {
+               throw new Exception("User not found");
+           }
             
-            Product product;
+           Product product;
            List<Product>? products = null;
            foreach (var item in orderDto.OrderItems)
            {
@@ -67,7 +67,7 @@ public class OrderService : IOrderService
 
            Order newOrder = _orderRepository.CreateOrder(order);
            
-           return newOrder;
+           return newOrder.Id;
 
         }
         catch (Exception ex)
