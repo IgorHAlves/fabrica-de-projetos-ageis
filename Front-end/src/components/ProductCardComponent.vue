@@ -1,5 +1,5 @@
 <template>
-  <div class="border rounded-lg p-4 shadow hover:shadow-lg transition">
+  <div class="border rounded-lg p-4 shadow hover:shadow-lg transition bg-white hover:-translate-y-2 hover:scale-105 hover:shadow-2xl">
     <img 
       :src="product.imageUrl || 'https://via.placeholder.com/300x200?text=Sem+Imagem'" 
       :alt="product.name" 

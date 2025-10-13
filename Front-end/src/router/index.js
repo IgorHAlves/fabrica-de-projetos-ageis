@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import ProductDetailView from '../views/ProductDetailView.vue'
 import CarrinhoView from '../views/CarrinhoView.vue'
-import ProductView from '@/views/ProductView.vue'
+import ProductView from '../views/ProductView.vue'
+import SobreView from '../views/SobreView.vue'
 
 
 const router = createRouter({
@@ -14,9 +14,9 @@ const router = createRouter({
       components: HomeView
     },
     {
-      path: '/product',
-      name: 'produtos',
-      component: ProductDetailView
+      path: '/sobre',
+      name: 'sobre',
+      component: SobreView
     },
 
     {
