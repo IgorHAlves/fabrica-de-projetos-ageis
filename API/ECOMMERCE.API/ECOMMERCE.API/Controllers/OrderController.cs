@@ -24,11 +24,11 @@ public class OrderController : ControllerBase
     
     //[Authorize]
     [HttpGet]
-    public async Task<IActionResult> GetOrders([FromQuery] int skip = 0, [FromQuery] int take = 10)
+    public async Task<IActionResult> GetOrders([FromQuery] int pageNumber, [FromQuery] int pageSzie = 10)
     {
         try
         {
-            List<Order> orders = _orderService.GetOrders();
+            List<GetOrderDTO> orders = _orderService.GetOrders(pageNumber, pageSzie);
             
             return Ok(orders);
         }
@@ -42,7 +42,7 @@ public class OrderController : ControllerBase
     [HttpGet("{OrderId:Guid}")]
     public async Task<IActionResult> GetOrder([FromRoute] Guid OrderId)
     {
-        Order order = _orderService.GetOrder(OrderId);
+        GetOrderDTO order = _orderService.GetOrder(OrderId);
         if (OrderId == null)
         {
             return NotFound();
@@ -58,7 +58,7 @@ public class OrderController : ControllerBase
         
         orderDto.UserKeycloackId = keycloakId;
         
-        Order order = _orderService.CreateOrder(orderDto);
+        Guid order = _orderService.CreateOrder(orderDto);
         
         return Ok(order);
     }

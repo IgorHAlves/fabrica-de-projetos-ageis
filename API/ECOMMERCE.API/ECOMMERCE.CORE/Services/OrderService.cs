@@ -2,6 +2,7 @@ using ECOMMERCE.API.Entity;
 using ECOMMERCE.API.Interfaces;
 using ECOMMERCE.CORE.DTO.Order;
 using ECOMMERCE.CORE.Entity;
+using ECOMMERCE.CORE.Helper;
 using ECOMMERCE.CORE.Interfaces;
 
 namespace ECOMMERCE.CORE.Services;
@@ -19,17 +20,17 @@ public class OrderService : IOrderService
         _userRepository = userRepository;
     }
 
-    public Order CreateOrder(CreateOrderDTO orderDto)
+    public Guid CreateOrder(CreateOrderDTO orderDto)
     {
         try
         {            
-            var user = _userRepository.GetUserByKeycloakId(orderDto.UserKeycloackId);
-            if (user == null)
-            {
-                throw new Exception("User not found");
-            }
+           var user = _userRepository.GetUserByKeycloakId(orderDto.UserKeycloackId);
+           if (user == null)
+           {
+               throw new Exception("User not found");
+           }
             
-            Product product;
+           Product product;
            List<Product>? products = null;
            foreach (var item in orderDto.OrderItems)
            {
@@ -67,7 +68,7 @@ public class OrderService : IOrderService
 
            Order newOrder = _orderRepository.CreateOrder(order);
            
-           return newOrder;
+           return newOrder.Id;
 
         }
         catch (Exception ex)
@@ -76,15 +77,75 @@ public class OrderService : IOrderService
         }
     }
 
-    public List<Order> GetOrders()
+    public List<GetOrderDTO> GetOrders(int pageNumber, int pageSize)
     {
-        List<Order> orders = _orderRepository.GetOrders();
-        return orders;
+        try
+        {
+            Paginator<Order> orders = _orderRepository.GetOrders(pageNumber, pageSize);
+            
+            List<GetOrderDTO> orderListDTO = new List<GetOrderDTO>();
+            foreach (Order order in orders.Items)
+            {
+                List<OrderProductDTO> orderProductListDTO = new List<OrderProductDTO>();
+
+                foreach (OrderItem orderItem in order.OrderItems)
+                {
+                    OrderProductDTO orderProductDTO = new OrderProductDTO()
+                    {
+                        Id = orderItem.ProductId,
+                        ProductName = orderItem.Product.Name,
+                        ProductPrice = orderItem.Product.Price,
+                        ImageUrl = orderItem.Product.ImageUrl,  
+                    };
+                    orderProductListDTO.Add(orderProductDTO);
+                }
+                
+                
+                GetOrderDTO orderDTO = new GetOrderDTO()
+                {
+                    PageSize = pageSize,
+                    Id = order.Id,
+                    Products = orderProductListDTO,
+                    OrderPrice = order.Price
+                };
+                orderListDTO.Add(orderDTO);
+            }
+            return orderListDTO;
+        }
+        catch (Exception e)
+        {
+            throw new Exception(e.Message);
+        }
     }
 
-    public Order GetOrder(Guid id)
+    public GetOrderDTO GetOrder(Guid orderId)
     {
-        var order = _orderRepository.GetOrder(id);
-        return order;
+        Order order = _orderRepository.GetOrder(orderId);
+        
+        List<OrderProductDTO> orderProductsDTO = new List<OrderProductDTO>();
+        
+        OrderProductDTO orderProductDTO = new OrderProductDTO();
+        
+        GetOrderDTO orderDTO = new GetOrderDTO();
+        foreach (OrderItem orderItem in order.OrderItems)
+        {
+            orderProductDTO = new OrderProductDTO()
+            {
+                Id = orderItem.ProductId,
+                ProductName = orderItem.Product.Name,
+                ProductPrice = orderItem.Product.Price,
+                ImageUrl = orderItem.Product.ImageUrl
+            };
+
+            orderDTO = new GetOrderDTO()
+            {
+                Id = order.Id,
+                Products = orderProductsDTO,
+                OrderPrice = orderItem.Price
+            };
+            
+            orderProductsDTO.Add(orderProductDTO);
+        }
+        return orderDTO;
     }
 }
