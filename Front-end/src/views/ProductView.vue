@@ -4,7 +4,7 @@ import axios from 'axios'
 import ProductCardComponent from '@/components/ProductCardComponent.vue'
 
 // lista reativa para armazenar produtos
-const products = ref([])
+    const products = ref([])
 
 // busca os produtos ao montar o componente
 onMounted(async () => {
@@ -18,10 +18,15 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="max-w-7xl mx-auto p-4">
-    <h1 class="text-3xl font-bold mb-4">Detalhes do Produto</h1>
+  <div class="max-w-7xl mx-auto p'-4">
+    <h1 class="text-3xl font-bold mb-4">
+      Detalhes do Produto
+    </h1>
 
-    <div v-if="products.length" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+    <div
+      v-if="products.length"
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"
+    >
       <ProductCardComponent
         v-for="product in products"
         :key="product.id"
@@ -30,6 +35,12 @@ onMounted(async () => {
       />
     </div>
 
-    <p v-else class="text-gray-500">Carregando produtos...</p>
+
+    <p
+      v-else
+      class="text-gray-500"
+    >
+      Carregando produtos...
+    </p>
   </div>
 </template>
