@@ -4,6 +4,7 @@ using ECOMMERCE.API.Repositories;
 using ECOMMERCE.CORE.Interfaces;
 using ECOMMERCE.CORE.Services;
 using ECOMMERCE.DATA.Data;
+using ECOMMERCE.DATA.Interfaces;
 using ECOMMERCE.DATA.Repositories;
 using Keycloak.AuthServices.Authentication;
 using Keycloak.AuthServices.Authorization;
@@ -41,6 +42,8 @@ namespace ECOMMERCE.API
             builder.Services.AddScoped<IOrderService, OrderService>();
 
             builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+            builder.Services.AddScoped<ICategoryService, CategoryService>();
+            builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 
             string mySqlConnection = builder.Configuration.GetConnectionString("DefaultConnection");
 

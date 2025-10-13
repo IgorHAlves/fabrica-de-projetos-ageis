@@ -19,25 +19,40 @@ public class ProductController : Controller
     [HttpGet]
     public async Task<IActionResult> GetProducts([FromQuery] string? name, [FromQuery] int skip = 0, [FromQuery] int take = 10)
     {
-        List<Product> products = _productService.GetProducts(name,skip, take);
+        List<GetProductDTO> products = _productService.GetProducts(name,skip, take);
         
         return Ok(products);
     }
     
-    [HttpGet("{idProduto:guid}")]
+    [HttpGet("{idProduct:guid}")]
     public async Task<IActionResult> GetProduct([FromRoute]  Guid idProduct)
     {
-        Product product = _productService.GetProduct(idProduct);
+        GetProductDTO product = _productService.GetProduct(idProduct);
         
         return Ok(product);
     }
     
     // [Authorize]
     [HttpPost]
-    public async Task<IActionResult> PostProduct([FromBody] CreateProductDTO dto)
+    public IActionResult PostProduct([FromBody] CreateProductDTO dto)
     {
-        Product product = _productService.CreateProduct(dto);
-        
+        var product = _productService.CreateProduct(dto);
         return Ok(product);
+    }
+    
+    // [Authorize]
+    [HttpPut]
+    public IActionResult PutProduct([FromBody] UpdateProductDTO dto)
+    {
+        var product = _productService.UpdateProduct(dto);
+        return Ok(product);
+    }
+    
+    // [Authorize]
+    [HttpDelete("{id:guid}")]
+    public IActionResult DeleteProduct([FromRoute] Guid idProduct)
+    {
+        Product deleteProduct = _productService.DeleteProduct(idProduct);
+        return Ok(deleteProduct);
     }
 }
