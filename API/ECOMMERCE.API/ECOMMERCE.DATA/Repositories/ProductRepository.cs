@@ -35,13 +35,13 @@ public class ProductRepository : IProductRepository
     public List<Product> GetProducts(string? name, int skip, int take)
     {
         var products = _ecommerceDbContext.Products.AsQueryable();
-        if (!string.IsNullOrEmpty(name))
-        {
-            products = products
-                .Where(product => product.Name.Contains(name, StringComparison.OrdinalIgnoreCase)) ;
-        }
-        return products.OrderBy(product => product.Name)
+       
+        var lista =  products.OrderBy(product => product.Name)
             .Skip(skip).Take(take).ToList();
+        var total = products.Count();
+        
+       
+
     }
 
     public Product UpdateProduct(UpdateProductDTO productDto)
@@ -49,7 +49,7 @@ public class ProductRepository : IProductRepository
         var product = _ecommerceDbContext.Products.FirstOrDefault(product => product.Id == productDto.Id);
         if (product == null)
         {
-            throw new Exception("Produto não encontardo");
+            throw new Exception("Produto não encontrado");
         }
         product.Name = productDto.Name;
         product.CategoryId = productDto.CategoryId;
