@@ -6,8 +6,7 @@ import { RouterLink, RouterView } from 'vue-router'
   <NavBar />
 
 <div class="min-h-screen flex flex-col justify-between bg-gray-100">
-  <RouterView />
-  <RouterLink to="/"></RouterLink>
+  <RouterView></RouterView>
 </div>
 
   <Footer />
