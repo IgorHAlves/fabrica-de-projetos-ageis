@@ -14,7 +14,7 @@ public partial class EcommerceDbContext : DbContext
     public DbSet<Product> Products { get; set; }
     public DbSet<User> Users { get; set; } 
     public DbSet<Order> Orders { get; set; }
-
+    public DbSet<Category> Categories { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
@@ -29,6 +29,14 @@ public partial class EcommerceDbContext : DbContext
             .HasForeignKey(product => product.IdPai )
             .OnDelete(DeleteBehavior.Restrict);
         
+        //Categories
+        modelBuilder.Entity<Category>()
+            .HasKey(category => category.Id );
+
+        modelBuilder.Entity<Category>()
+            .HasMany(category => category.Products)
+            .WithOne(product => product.Category)
+            .HasForeignKey(product => product.CategoryId );
         //User
         modelBuilder.Entity<User>().HasKey(user => user.Id );
 

@@ -13,12 +13,22 @@ public class ProductServices : IProductService
         _productRepository = productRepository;
     }
 
-    public Product GetProduct(Guid idProduct)
+    public GetProductDTO GetProduct(Guid idProduct)
     {
         try
         {
             Product product = _productRepository.GetProduct(idProduct);
-            return product;
+            return new GetProductDTO()
+            {
+                Id = product.Id,
+                Name = product.Name,
+                Description = product.Description,
+                Price = product.Price,
+                ImageUrl = product.ImageUrl,
+                IdCategory = product.CategoryId,
+                IdPai = product.IdPai,
+                Stock =  product.Stock,
+            };
         }
         catch (Exception ex)
         {
@@ -26,21 +36,24 @@ public class ProductServices : IProductService
         }
     }
 
-    public List<Product> GetProducts(string? name, int skip, int take)
+    public List<GetProductDTO> GetProducts(string? name, int skip, int take)
     {
-        var products = _productRepository.GetProducts();
-        if (!string.IsNullOrEmpty(name))
+        var products = _productRepository.GetProducts(name, skip, take);
+        return products.Select(products => new GetProductDTO
         {
-            products = products
-                .Where(product => product.Name.Contains(name, StringComparison.OrdinalIgnoreCase))
-                .ToList();
-        }
-        return products.Skip(skip).Take(take).ToList();
-    
-        
+            Id = products.Id,
+            Name = products.Name,
+            Description = products.Description,
+            Price = products.Price,
+            ImageUrl = products.ImageUrl,
+            IdCategory = products.CategoryId,
+            IdPai = products.IdPai,
+            Stock = products.Stock
+        }).ToList();
+
     }
 
-    public Product CreateProduct(CreateProductDTO dto)
+    public Guid CreateProduct(CreateProductDTO dto)
     {
         try
         {
@@ -56,11 +69,35 @@ public class ProductServices : IProductService
                 product.IdPai = Guid.Parse(dto.IdPai);
                 
             Product newProduct = _productRepository.CreateProduct(product);
-            return newProduct;
+            return newProduct.Id;
         }
         catch (Exception ex)
         {
             throw new Exception("Erro ao criar produto" + ex.Message);
         }
     }
+
+    public GetProductDTO UpdateProduct(UpdateProductDTO dto)
+    { 
+        var product = _productRepository.UpdateProduct(dto);
+        return new GetProductDTO
+        {
+            Id = product.Id,
+            Name = product.Name,
+            Description = product.Description,
+            Price = product.Price,
+            ImageUrl = product.ImageUrl,
+            IdCategory = product.CategoryId,
+            IdPai = product.IdPai,
+            Stock = product.Stock
+        };
+    }
+
+    public Product DeleteProduct(Guid id)
+    {
+        var deleteProduct = _productRepository.GetProduct(id);
+        _productRepository.DeleteProduct(id);
+        return deleteProduct;
+    }
+
 }

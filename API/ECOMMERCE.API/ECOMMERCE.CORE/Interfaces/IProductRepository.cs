@@ -1,3 +1,4 @@
+using ECOMMERCE.CORE.DTO.Product;
 using ECOMMERCE.CORE.Entity;
 
 namespace ECOMMERCE.CORE.Interfaces;
@@ -5,6 +6,9 @@ namespace ECOMMERCE.CORE.Interfaces;
 public interface IProductRepository 
 {
     public Product GetProduct(Guid id);
-    public List<Product> GetProducts();
+    public List<Product> GetProducts(string? name, int skip, int take);
     public Product CreateProduct(Product product);
+    public bool HasProductByCategoryId(Guid categoryId);
+    public Product UpdateProduct(UpdateProductDTO dto);
+    public void DeleteProduct(Guid id);
 }
