@@ -2,6 +2,7 @@ using ECOMMERCE.API.Entity;
 using ECOMMERCE.API.Interfaces;
 using ECOMMERCE.CORE.DTO.Order;
 using ECOMMERCE.CORE.Entity;
+using ECOMMERCE.CORE.Helper;
 using ECOMMERCE.CORE.Interfaces;
 
 namespace ECOMMERCE.CORE.Services;
@@ -80,10 +81,10 @@ public class OrderService : IOrderService
     {
         try
         {
-            List<Order> orders = _orderRepository.GetOrders(pageNumber, pageSize);
+            Paginator<Order> orders = _orderRepository.GetOrders(pageNumber, pageSize);
             
             List<GetOrderDTO> orderListDTO = new List<GetOrderDTO>();
-            foreach (Order order in orders)
+            foreach (Order order in orders.Items)
             {
                 List<OrderProductDTO> orderProductListDTO = new List<OrderProductDTO>();
 
@@ -102,6 +103,7 @@ public class OrderService : IOrderService
                 
                 GetOrderDTO orderDTO = new GetOrderDTO()
                 {
+                    PageSize = pageSize,
                     Id = order.Id,
                     Products = orderProductListDTO,
                     OrderPrice = order.Price

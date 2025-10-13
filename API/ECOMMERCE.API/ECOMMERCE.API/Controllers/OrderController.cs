@@ -58,7 +58,7 @@ public class OrderController : ControllerBase
         
         orderDto.UserKeycloackId = keycloakId;
         
-        Order order = _orderService.CreateOrder(orderDto);
+        Guid order = _orderService.CreateOrder(orderDto);
         
         return Ok(order);
     }

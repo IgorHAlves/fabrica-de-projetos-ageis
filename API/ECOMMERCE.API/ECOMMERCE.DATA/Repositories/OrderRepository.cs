@@ -1,6 +1,7 @@
 using ECOMMERCE.API.Entity;
 using ECOMMERCE.CORE.DTO.Order;
 using ECOMMERCE.CORE.Entity;
+using ECOMMERCE.CORE.Helper;
 using ECOMMERCE.CORE.Interfaces;
 using ECOMMERCE.DATA.Data;
 using Microsoft.EntityFrameworkCore;
@@ -16,14 +17,23 @@ public class OrderRepository : IOrderRepository
         _context = context;
     }
 
-    public List<Order> GetOrders(int pageNumber, int pageSize)
+    public Paginator<Order> GetOrders(int pageNumber, int pageSize)
     {
-        return _context.Orders
-            .Select(order => order)
-            .Include(order => order.OrderItems)
+        var query =  _context.Orders
+            .Select(order => order);
+            
+        var list = query.Include(order => order.OrderItems)
             .Skip((pageNumber - 1) * pageSize)
             .Take(pageSize)
             .ToList();
+        
+        var total  = query.Count();
+
+        return new Paginator<Order>()
+        {
+            Total = total,
+            Items = list
+        };
     }
 
     public Order GetOrder(Guid id)
