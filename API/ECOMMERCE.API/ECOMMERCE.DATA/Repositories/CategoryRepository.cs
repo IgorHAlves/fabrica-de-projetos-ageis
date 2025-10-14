@@ -7,6 +7,7 @@ using ECOMMERCE.CORE.DTO.Category;
 using ECOMMERCE.CORE.Entity;
 using ECOMMERCE.DATA.Data;
 using ECOMMERCE.DATA.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace ECOMMERCE.DATA.Repositories
 {
@@ -27,7 +28,7 @@ namespace ECOMMERCE.DATA.Repositories
 
         public Category GetCategory(Guid id)
         {
-            var category = _ecommerceDbContext.Categories.FirstOrDefault(category => category.Id.Equals(id));
+            var category = _ecommerceDbContext.Categories.Include(x => x.Products).FirstOrDefault(category => category.Id.Equals(id));
             if (category == null)
             {
                 return null;
@@ -38,12 +39,7 @@ namespace ECOMMERCE.DATA.Repositories
 
         public List<Category> GetCategories()
         {
-            return _ecommerceDbContext.Categories.Select(category => new Category
-            {
-                Id = category.Id,
-                Name = category.Name,
-                Description = category.Description
-            }).ToList();
+            return _ecommerceDbContext.Categories.Include(x => x.Products).ToList();
         }
 
         public GetCategoriesDTO UpdateCategory(UpdateCategoriesDTO updateDto)

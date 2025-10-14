@@ -1,8 +1,11 @@
+using ECOMMERCE.API.Entity;
 using ECOMMERCE.CORE.DTO.Product;
 using ECOMMERCE.CORE.Entity;
 using ECOMMERCE.CORE.Interfaces;
 using ECOMMERCE.CORE.Entity;
+using ECOMMERCE.CORE.Helper;
 using ECOMMERCE.DATA.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace ECOMMERCE.DATA.Repositories;
 
@@ -29,19 +32,28 @@ public class ProductRepository : IProductRepository
 
     public Product GetProduct(Guid id)
     {
-        return _ecommerceDbContext.Products.FirstOrDefault(product => product.Id.Equals(id));
+        return _ecommerceDbContext.Products.Include(x => x.Category).FirstOrDefault(product => product.Id.Equals(id));
     }
 
-    public List<Product> GetProducts(string? name, int skip, int take)
+    public Paginator<Product> GetProducts(string? name, int pageNumber, int pageSize)
     {
-        var products = _ecommerceDbContext.Products.AsQueryable();
+        var products = _ecommerceDbContext.Products.Include(x => x.Category).ToList();
        
-        var lista =  products.OrderBy(product => product.Name)
-            .Skip(skip).Take(take).ToList();
+        var listaProducts =  products.OrderBy(product => product.Name)
+            .Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
         var total = products.Count();
         
-       
-
+        var totalItens  = products.Count();
+        
+        var totalPages = (int)Math.Ceiling((double)totalItens / pageSize);
+        
+        return new Paginator<Product>()
+        {
+            ActualPage =  pageNumber,
+            TotalItens = totalItens,
+            Items = listaProducts,
+            TotalPages = totalPages
+        };
     }
 
     public Product UpdateProduct(UpdateProductDTO productDto)

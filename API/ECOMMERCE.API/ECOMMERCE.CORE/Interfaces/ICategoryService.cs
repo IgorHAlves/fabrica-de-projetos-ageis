@@ -10,7 +10,7 @@ namespace ECOMMERCE.CORE.Interfaces
 {
     public interface ICategoryService 
     { 
-        public Category CreateCategory(CreateCategoryDTO dto);
+        public Guid CreateCategory(CreateCategoryDTO dto);
         public GetCategoriesDTO GetCategory(Guid id);
         public List<GetCategoriesDTO> GetCategories();
         public GetCategoriesDTO UpdateCategory(UpdateCategoriesDTO id);

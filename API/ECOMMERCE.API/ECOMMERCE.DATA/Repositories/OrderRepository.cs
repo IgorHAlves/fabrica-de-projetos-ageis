@@ -27,12 +27,16 @@ public class OrderRepository : IOrderRepository
             .Take(pageSize)
             .ToList();
         
-        var total  = query.Count();
-
+        var totalItens  = query.Count();
+        
+        var totalPages = (int)Math.Ceiling((double)totalItens / pageSize);
+        
         return new Paginator<Order>()
         {
-            Total = total,
-            Items = list
+            ActualPage =  pageNumber,
+            TotalItens = totalItens,
+            Items = list,
+            TotalPages = totalPages
         };
     }
 

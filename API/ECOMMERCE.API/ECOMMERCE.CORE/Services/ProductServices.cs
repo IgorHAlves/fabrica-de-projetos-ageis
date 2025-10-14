@@ -1,16 +1,18 @@
 using ECOMMERCE.CORE.DTO.Product;
 using ECOMMERCE.CORE.Entity;
 using ECOMMERCE.CORE.Interfaces;
+using ECOMMERCE.DATA.Interfaces;
 
 namespace ECOMMERCE.CORE.Services;
 
 public class ProductServices : IProductService
 {
     private readonly IProductRepository _productRepository;
-
-    public ProductServices(IProductRepository productRepository)
+    private readonly ICategoryRepository _categoryRepository;
+    public ProductServices(IProductRepository productRepository, ICategoryRepository categoryRepository)
     {
         _productRepository = productRepository;
+        _categoryRepository = categoryRepository;
     }
 
     public GetProductDTO GetProduct(Guid idProduct)
@@ -39,7 +41,7 @@ public class ProductServices : IProductService
     public List<GetProductDTO> GetProducts(string? name, int skip, int take)
     {
         var products = _productRepository.GetProducts(name, skip, take);
-        return products.Select(products => new GetProductDTO
+        return products.Items.Select(products => new GetProductDTO
         {
             Id = products.Id,
             Name = products.Name,
@@ -57,6 +59,8 @@ public class ProductServices : IProductService
     {
         try
         {
+           Category category = _categoryRepository.GetCategory(dto.IdCategory);
+            
             Product product = new Product();
             product.Id = Guid.NewGuid();
             product.Name = dto.Name;
@@ -64,6 +68,7 @@ public class ProductServices : IProductService
             product.Description = dto.Description;
             product.ImageUrl = dto.ImageUrl;
             product.Stock = dto.Stock;
+            product.Category = category;
             
             if (dto.IdPai != null)
                 product.IdPai = Guid.Parse(dto.IdPai);
