@@ -6,6 +6,5 @@ namespace ECOMMERCE.CORE.DTO.Category
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public List<CreateProductDTO> Products { get; set; }
     }
 }
