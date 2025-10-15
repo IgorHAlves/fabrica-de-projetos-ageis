@@ -10,8 +10,8 @@ public class Product
     public int Stock { get; set; }
     public Guid? IdPai { get; set; }
     
-    public Category Category { get; set; }
+    public Category? Category { get; set; }
     
-    public Guid CategoryId { get; set; }
+    public Guid? CategoryId { get; set; }
     
 }

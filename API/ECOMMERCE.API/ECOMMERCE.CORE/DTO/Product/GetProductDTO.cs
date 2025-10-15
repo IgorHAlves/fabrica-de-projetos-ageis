@@ -9,5 +9,5 @@ public class GetProductDTO
     public string ImageUrl { get; set; }
     public int Stock { get; set; }
     public Guid? IdPai { get; set; }
-    public Guid IdCategory { get; set; }
+    public Guid? IdCategory { get; set; }
 }

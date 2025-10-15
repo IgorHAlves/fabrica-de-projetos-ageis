@@ -71,7 +71,6 @@ public class ProductRepository : IProductRepository
         product.ImageUrl = productDto.ImageURL;
         product.Stock = productDto.Stock;
         
-        _ecommerceDbContext.Products.Update(product);
         _ecommerceDbContext.SaveChanges();
         return product;
     }

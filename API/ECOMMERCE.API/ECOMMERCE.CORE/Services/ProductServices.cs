@@ -1,5 +1,6 @@
 using ECOMMERCE.CORE.DTO.Product;
 using ECOMMERCE.CORE.Entity;
+using ECOMMERCE.CORE.Helper;
 using ECOMMERCE.CORE.Interfaces;
 using ECOMMERCE.DATA.Interfaces;
 
@@ -38,10 +39,13 @@ public class ProductServices : IProductService
         }
     }
 
-    public List<GetProductDTO> GetProducts(string? name, int skip, int take)
+    public Paginator<GetProductDTO> GetProducts(string? name, int skip, int take)
     {
         var products = _productRepository.GetProducts(name, skip, take);
-        return products.Items.Select(products => new GetProductDTO
+        
+        Paginator<GetProductDTO> dtoRetorno = new Paginator<GetProductDTO>();
+        
+        dtoRetorno.Items = products.Items.Select(products => new GetProductDTO
         {
             Id = products.Id,
             Name = products.Name,
@@ -52,6 +56,12 @@ public class ProductServices : IProductService
             IdPai = products.IdPai,
             Stock = products.Stock
         }).ToList();
+        
+        dtoRetorno.ActualPage = products.ActualPage;
+        dtoRetorno.TotalPages = products.TotalPages;
+        dtoRetorno.TotalItens = products.TotalItens;
+
+        return dtoRetorno;
 
     }
 

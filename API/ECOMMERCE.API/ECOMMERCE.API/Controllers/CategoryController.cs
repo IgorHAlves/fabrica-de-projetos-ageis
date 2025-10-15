@@ -15,7 +15,7 @@ public class CategoryController : Controller
         _categoryService = categoryService;
     }
     // [Authorize]
-    [HttpGet("id:guid")]
+    [HttpGet("{idProduct:guid}")]
     public IActionResult GetCategory([FromRoute] Guid id)
     {
         GetCategoriesDTO getCategory = _categoryService.GetCategory(id);
@@ -42,7 +42,7 @@ public class CategoryController : Controller
             var updateCategory = _categoryService.UpdateCategory(dto);
             return Ok(updateCategory);
         }
-    [HttpDelete("id:guid")]
+    [HttpDelete("{idProduct:guid}")]
     public IActionResult DeleteCategory([FromRoute]Guid id)
     {
         var deleteCategory = _categoryService.DeleteCategory(id);

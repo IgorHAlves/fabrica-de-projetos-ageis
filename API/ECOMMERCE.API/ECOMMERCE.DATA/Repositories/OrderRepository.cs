@@ -23,7 +23,7 @@ public class OrderRepository : IOrderRepository
             .Select(order => order);
             
         var list = query.Include(order => order.OrderItems)
-            .Skip((pageNumber - 1) * pageSize)
+            .Skip((pageNumber  - 1) * pageSize)
             .Take(pageSize)
             .ToList();
         

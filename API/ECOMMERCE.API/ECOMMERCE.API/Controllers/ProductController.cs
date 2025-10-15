@@ -1,5 +1,6 @@
 using ECOMMERCE.CORE.DTO.Product;
 using ECOMMERCE.CORE.Entity;
+using ECOMMERCE.CORE.Helper;
 using ECOMMERCE.CORE.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -19,7 +20,7 @@ public class ProductController : Controller
     [HttpGet]
     public async Task<IActionResult> GetProducts([FromQuery] string? name, [FromQuery] int skip = 0, [FromQuery] int take = 10)
     {
-        List<GetProductDTO> products = _productService.GetProducts(name,skip, take);
+        Paginator<GetProductDTO> products = _productService.GetProducts(name,skip, take);
         
         return Ok(products);
     }

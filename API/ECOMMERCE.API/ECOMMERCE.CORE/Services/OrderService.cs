@@ -77,7 +77,7 @@ public class OrderService : IOrderService
         }
     }
 
-    public List<GetOrderDTO> GetOrders(int pageNumber, int pageSize)
+    public Paginator<GetOrderDTO> GetOrders(int pageNumber, int pageSize)
     {
         try
         {
@@ -109,7 +109,14 @@ public class OrderService : IOrderService
                 };
                 orderListDTO.Add(orderDTO);
             }
-            return orderListDTO;
+
+            Paginator<GetOrderDTO> dtoRetorno = new Paginator<GetOrderDTO>();
+            dtoRetorno.Items = orderListDTO;
+            dtoRetorno.ActualPage = orders.ActualPage;
+            dtoRetorno.TotalItens = orders.TotalItens;
+            dtoRetorno.TotalPages = orders.TotalPages;
+            
+            return dtoRetorno;
         }
         catch (Exception e)
         {
