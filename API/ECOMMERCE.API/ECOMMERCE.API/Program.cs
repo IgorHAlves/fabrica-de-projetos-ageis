@@ -42,8 +42,15 @@ namespace ECOMMERCE.API
             builder.Services.AddScoped<IOrderService, OrderService>();
 
             builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+            
             builder.Services.AddScoped<ICategoryService, CategoryService>();
+            
             builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+
+            builder.Services.AddScoped<ICouponRepository, CouponRepository>();
+            
+            builder.Services.AddScoped<ICouponService, CouponService>();
+            
 
             string mySqlConnection = builder.Configuration.GetConnectionString("DefaultConnection");
 

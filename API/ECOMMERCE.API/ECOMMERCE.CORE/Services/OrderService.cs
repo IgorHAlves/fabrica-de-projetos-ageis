@@ -90,14 +90,7 @@ public class OrderService : IOrderService
 
                 foreach (OrderItem orderItem in order.OrderItems)
                 {
-                    OrderProductDTO orderProductDTO = new OrderProductDTO()
-                    {
-                        Id = orderItem.ProductId,
-                        ProductName = orderItem.Product.Name,
-                        ProductPrice = orderItem.Product.Price,
-                        ImageUrl = orderItem.Product.ImageUrl,  
-                    };
-                    orderProductListDTO.Add(orderProductDTO);
+                    orderProductListDTO.Add(OrderProductDTO.from(orderItem));
                 }
                 
                 GetOrderDTO orderDTO = new GetOrderDTO()
@@ -131,18 +124,10 @@ public class OrderService : IOrderService
         
         List<OrderProductDTO> orderProductsDTO = new List<OrderProductDTO>();
         
-        OrderProductDTO orderProductDTO = new OrderProductDTO();
-        
         GetOrderDTO orderDTO = new GetOrderDTO();
         foreach (OrderItem orderItem in order.OrderItems)
         {
-            orderProductDTO = new OrderProductDTO()
-            {
-                Id = orderItem.ProductId,
-                ProductName = orderItem.Product.Name,
-                ProductPrice = orderItem.Product.Price,
-                ImageUrl = orderItem.Product.ImageUrl
-            };
+            OrderProductDTO orderProductDTO = OrderProductDTO.from(orderItem);
 
             orderDTO = new GetOrderDTO()
             {
