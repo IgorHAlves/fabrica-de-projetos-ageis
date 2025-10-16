@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ECOMMERCE.CORE.DTO.Category;
 using ECOMMERCE.CORE.Entity;
+using ECOMMERCE.CORE.Helper;
 using ECOMMERCE.DATA.Data;
 using ECOMMERCE.DATA.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -37,9 +38,24 @@ namespace ECOMMERCE.DATA.Repositories
             return category;
         }
 
-        public List<Category> GetCategories()
+        public Paginator<Category> GetCategories(string? name, int pageNumber, int pageSize)
         {
-            return _ecommerceDbContext.Categories.Include(x => x.Products).ToList();
+            pageNumber = pageNumber < 1 ? 1 : pageNumber;
+            
+            var categories = _ecommerceDbContext.Categories.Include(x => x.Products);
+            
+            List<Category> listCategories = categories.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+            
+            int totalItens = categories.Count();
+            int totalPages = (int)Math.Ceiling((double)totalItens / pageSize);
+             
+            return new Paginator<Category>()
+            {
+                ActualPage =  pageNumber,
+                TotalItens = totalItens,
+                Items = listCategories,
+                TotalPages = totalPages
+            };
         }
 
         public GetCategoriesDTO UpdateCategory(UpdateCategoriesDTO updateDto)

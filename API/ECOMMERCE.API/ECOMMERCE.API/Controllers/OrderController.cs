@@ -2,6 +2,7 @@ using System.Security.Claims;
 using ECOMMERCE.API.Entity;
 using ECOMMERCE.API.Interfaces;
 using ECOMMERCE.CORE.DTO.Order;
+using ECOMMERCE.CORE.Helper;
 using ECOMMERCE.CORE.Interfaces;
 using Keycloak.Net.Models.Root;
 using Microsoft.AspNetCore.Mvc;
@@ -24,11 +25,11 @@ public class OrderController : ControllerBase
     
     //[Authorize]
     [HttpGet]
-    public async Task<IActionResult> GetOrders([FromQuery] int pageNumber, [FromQuery] int pageSzie = 10)
+    public async Task<IActionResult> GetOrders([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 10)
     {
         try
         {
-            List<GetOrderDTO> orders = _orderService.GetOrders(pageNumber, pageSzie);
+            Paginator<GetOrderDTO> orders = _orderService.GetOrders(pageNumber, pageSize);
             
             return Ok(orders);
         }
