@@ -1,6 +1,7 @@
 using ECOMMERCE.CORE.DTO.Category;
 using ECOMMERCE.CORE.DTO.Product;
 using ECOMMERCE.CORE.Entity;
+using ECOMMERCE.CORE.Helper;
 using ECOMMERCE.CORE.Interfaces;
 using ECOMMERCE.DATA.Interfaces;
 
@@ -57,10 +58,13 @@ public class CategoryService : ICategoryService
        
     }
 
-    public List<GetCategoriesDTO> GetCategories()
+    public Paginator<GetCategoriesDTO> GetCategories(string? name, int pageNumber, int pageSize)
     { 
-        var categories = _categoryRepository.GetCategories();
-        return categories.Select(categories => new GetCategoriesDTO
+        var categories = _categoryRepository.GetCategories(name,pageNumber, pageSize);
+
+        Paginator<GetCategoriesDTO> retornoDTO = new Paginator<GetCategoriesDTO>();
+        
+        retornoDTO.Items = categories.Items.Select(categories =>  new GetCategoriesDTO
         {
             Id = categories.Id,
             Name = categories.Name,
@@ -77,6 +81,12 @@ public class CategoryService : ICategoryService
                 Stock = x.Stock
             }).ToList()
         }).ToList();
+
+        retornoDTO.ActualPage = categories.ActualPage;
+        retornoDTO.TotalItens = categories.TotalItens;
+        retornoDTO.TotalPages =  categories.TotalPages;
+
+        return retornoDTO;
     }
     
     public GetCategoriesDTO UpdateCategory(UpdateCategoriesDTO updateDto )

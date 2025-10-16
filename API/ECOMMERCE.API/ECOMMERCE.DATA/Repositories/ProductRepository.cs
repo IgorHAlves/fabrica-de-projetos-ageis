@@ -37,7 +37,9 @@ public class ProductRepository : IProductRepository
 
     public Paginator<Product> GetProducts(string? name, int pageNumber, int pageSize)
     {
-        var products = _ecommerceDbContext.Products.Include(x => x.Category).ToList();
+        pageNumber = pageNumber < 1 ? 1 : pageNumber;
+        
+        var products = _ecommerceDbContext.Products.Include(x => x.Category);
        
         var listaProducts =  products.OrderBy(product => product.Name)
             .Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
@@ -71,7 +73,6 @@ public class ProductRepository : IProductRepository
         product.ImageUrl = productDto.ImageURL;
         product.Stock = productDto.Stock;
         
-        _ecommerceDbContext.Products.Update(product);
         _ecommerceDbContext.SaveChanges();
         return product;
     }

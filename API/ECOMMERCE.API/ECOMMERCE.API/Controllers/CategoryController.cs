@@ -1,4 +1,5 @@
 using ECOMMERCE.CORE.DTO.Category;
+using ECOMMERCE.CORE.Helper;
 using ECOMMERCE.CORE.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,9 +24,9 @@ public class CategoryController : Controller
     }
 
     [HttpGet]
-    public IActionResult GetCategories()
+    public IActionResult GetCategories([FromQuery] string? name, [FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 10)
     {
-        List<GetCategoriesDTO> getCategoriesList = _categoryService.GetCategories();
+        Paginator<GetCategoriesDTO> getCategoriesList = _categoryService.GetCategories(name,pageNumber, pageSize);
         return Ok(getCategoriesList);
     }
 

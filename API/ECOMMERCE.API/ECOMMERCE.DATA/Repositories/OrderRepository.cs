@@ -19,8 +19,9 @@ public class OrderRepository : IOrderRepository
 
     public Paginator<Order> GetOrders(int pageNumber, int pageSize)
     {
-        var query =  _context.Orders
-            .Select(order => order);
+        pageNumber = pageNumber < 1 ? 1 : pageNumber;
+        
+        var query =  _context.Orders;
             
         var list = query.Include(order => order.OrderItems)
             .Skip((pageNumber - 1) * pageSize)
