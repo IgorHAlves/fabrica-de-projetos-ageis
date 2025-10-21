@@ -7,11 +7,11 @@ import { getProducts } from '../Services/ProductsService';
 const products = ref([]);
 const paginaAtual = ref(0);
 const take = 10;
-const skip = paginaAtual.value * take;
 
 
 onMounted(async () => {
   try{
+    const skip = paginaAtual.value * take;
     products.value = await getProducts(skip, take);
     console.log(products.value);
   } catch (error){
@@ -34,7 +34,7 @@ function anterior(){
   }
 }
   function AdicionaraoCarrinho(product){
-    console.log('Produto adicionado ao carrinho:'. product);
+    console.log('Produto adicionado ao carrinho:', product);
   }
 </script>
 
