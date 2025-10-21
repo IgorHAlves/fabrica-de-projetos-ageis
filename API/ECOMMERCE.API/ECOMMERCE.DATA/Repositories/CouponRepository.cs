@@ -49,4 +49,9 @@ public class CouponRepository : ICouponRepository
         return coupon;
     }
 
+    public void DeleteCoupon(Coupon code)
+    {
+        _context.Coupons.Remove(code);
+        _context.SaveChanges();
+    }
 }

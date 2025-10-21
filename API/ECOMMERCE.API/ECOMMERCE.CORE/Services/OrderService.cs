@@ -90,7 +90,7 @@ public class OrderService : IOrderService
 
                 foreach (OrderItem orderItem in order.OrderItems)
                 {
-                    orderProductListDTO.Add(OrderProductDTO.from(orderItem));
+                    orderProductListDTO.Add(OrderProductDTO.AutoMapOrderProductDto(orderItem));
                 }
                 
                 GetOrderDTO orderDTO = new GetOrderDTO()
@@ -127,7 +127,7 @@ public class OrderService : IOrderService
         GetOrderDTO orderDTO = new GetOrderDTO();
         foreach (OrderItem orderItem in order.OrderItems)
         {
-            OrderProductDTO orderProductDTO = OrderProductDTO.from(orderItem);
+            OrderProductDTO orderProductDTO = OrderProductDTO.AutoMapOrderProductDto(orderItem);
 
             orderDTO = new GetOrderDTO()
             {

@@ -5,7 +5,7 @@ namespace ECOMMERCE.CORE.DTO.Order;
 public class OrderProductDTO
 {
 
-    public static OrderProductDTO from(OrderItem orderItem)
+    public static OrderProductDTO AutoMapOrderProductDto(OrderItem orderItem)
     {
         OrderProductDTO orderProductDTO = new OrderProductDTO()
         {
