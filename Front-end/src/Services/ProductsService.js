@@ -10,3 +10,23 @@ export async function getProducts(skip = 0, take = 12) {
     }
 }
 
+export async function createProduct(productData) {
+    try {
+        const response = await api.post('Product', productData);
+        return response.data;
+    } catch (error) {
+        console.error('Erro ao criar produto:', error);
+        throw error;
+    }
+}
+
+export async function deleteProduct(productId) {
+    try {
+        const response = await api.delete(`Product/${productId}`);
+        return response.data;
+    } catch (error) {
+        console.error('Erro ao deletar produto:', error);
+        throw error;
+    }
+}
+
