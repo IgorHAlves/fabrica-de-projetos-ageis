@@ -3,15 +3,16 @@ import HomeView from '../views/HomeView.vue'
 import CarrinhoView from '../views/CarrinhoView.vue'
 import ProductView from '../views/ProductView.vue'
 import SobreView from '../views/SobreView.vue'
+import ProductDetailView from '../views/ProductDetailView.vue'
 
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
-      name: 'home',
-      components: HomeView
+      path: '/home',
+      name: 'Home',
+      component: HomeView
     },
     {
       path: '/sobre',
@@ -28,6 +29,12 @@ const router = createRouter({
       path: '/carrinho',
       name: 'carrinho',
       component: CarrinhoView
+    },
+    {
+      path: '/productDetail/:id',
+      name: 'ProductDetail',
+      component: ProductDetailView,
+      props: true
     }
 
   ],
