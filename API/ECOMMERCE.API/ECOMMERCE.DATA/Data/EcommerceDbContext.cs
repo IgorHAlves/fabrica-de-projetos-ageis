@@ -15,6 +15,7 @@ public partial class EcommerceDbContext : DbContext
     public DbSet<User> Users { get; set; } 
     public DbSet<Order> Orders { get; set; }
     public DbSet<Category> Categories { get; set; }
+    public DbSet<Coupon> Coupons { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
@@ -69,6 +70,10 @@ public partial class EcommerceDbContext : DbContext
             .HasOne(orderItem => orderItem.Product)
             .WithMany()
             .HasForeignKey(orderItem => orderItem.ProductId);
+        
+        //Coupon
+        modelBuilder.Entity<Coupon>()
+            .HasKey(coupon => coupon.Id );
     }
       
 }
