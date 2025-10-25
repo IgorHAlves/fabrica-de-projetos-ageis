@@ -1,0 +1,29 @@
+<template>
+  <div v-if="product"
+    class="border rounded-lg p-4 shadow hover:shadow-lg transition ml-24 mr-24 mt-24 bg-white hover:-translate-y-2 hover:scale-105 hover:shadow-2xl flex flex-col justify-center items-center">
+    <h2 class="text-lg font-semibold">{{ product.name }}</h2>
+    <p class="text-gray-600 mt-2">{{ product.description }}</p>
+    <p class="text-blue-600 font-bold mt-4">R$ {{ product.price }}</p>
+  </div>
+
+  <div v-else class="text-center mt-24">
+    <p>Carregando produto...</p>
+  </div>
+</template>
+
+<script setup>
+import { ref, onMounted } from 'vue'
+import { useRoute } from 'vue-router'
+import { getProductById } from '../Services/ProductsService'
+
+const route = useRoute()
+const product = ref([])
+
+onMounted(async () => {
+  try {
+    product.value = await getProductById(route.params.id)
+  } catch (error) {
+    console.error('Erro ao carregar produto:', error)
+  }
+})
+</script>
