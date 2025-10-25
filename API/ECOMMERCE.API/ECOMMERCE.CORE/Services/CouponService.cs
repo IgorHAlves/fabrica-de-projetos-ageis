@@ -16,22 +16,22 @@ public class CouponService : ICouponService
         _couponRepository = couponRepository;
     }
     
-    public Guid CreateCoupon(Coupon coupon)
+    public Guid CreateCoupon(CreateCouponDTO couponDTO)
     {
         try
         {
             CreateCouponDTO newCoupon = new CreateCouponDTO()
             {
-                Code = coupon.Code,
-                CategoryEnum = coupon.CategoryEnum,
-                Value = coupon.Value,
-                Id = coupon.Id
+                Code = couponDTO.Code,
+                CategoryEnum = couponDTO.CategoryEnum,
+                Value = couponDTO.Value,
+                Id = couponDTO.Id
             };
             return newCoupon.Id;
         }
         catch (Exception e)
         {
-            throw new Exception($"Coupon {coupon.Code} could not be created.", e);
+            throw new Exception($"Coupon {couponDTO.Code} could not be created.", e);
         }
     }
 

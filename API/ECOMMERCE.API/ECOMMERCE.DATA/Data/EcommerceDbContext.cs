@@ -47,7 +47,7 @@ public partial class EcommerceDbContext : DbContext
             .HasForeignKey(user => user.AddressId);
 
         modelBuilder.Entity<User>()
-            .HasMany<Sale>()
+            .HasMany<Order>()
             .WithOne()
             .HasForeignKey(sale => sale.UserId);
         
