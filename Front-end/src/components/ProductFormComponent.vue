@@ -68,24 +68,20 @@
 </template>
 
 <script setup>
-import { reactive, ref } from 'vue'
+import { ref } from 'vue'
 import ProductCategorySelectComponent from './ProductCategorySelectComponent.vue'
 import ProductImageUploadComponent from './ProductImageUploadComponent.vue'
 import { useProductForm } from '../composables/useProductForm'
 
-const emit = defineEmits(['submit'])
-
-const { form, errors, isLoading, validate, resetForm } = useProductForm()
+const { form, errors, isLoading, validate, submitForm } = useProductForm()
 
 const uploadProgress = ref(0)
 
 function onUploadProgress(progress) {
-    uploadProgress.value = progress
+  uploadProgress.value = progress
 }
 
 async function onSubmit() {
-    if (!validate()) return
-
-    emit('submit', form)
+  await submitForm()
 }
 </script>

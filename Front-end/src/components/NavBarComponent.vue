@@ -22,14 +22,70 @@
             </div>
         </form>
 
-        <!-- Carrinho -->
-        <RouterLink to="/carrinho" class="ml-6 flex items-center gap-2 p-2 rounded-full border border-gray-300 bg-black hover:bg-gray-400 shadow">
-            <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 64 64" fill="none">
-                <path d="M16 16h4l6 24h20l4-16H26" stroke="white" stroke-width="2" fill="none" />
-                <circle cx="26" cy="48" r="4" fill="white" />
-                <circle cx="44" cy="48" r="4" fill="white" />
-            </svg>
-        </RouterLink>
+<div class="flex justify-center">
+
+
+
+      <router-link to="/carrinho"
+
+
+        class="inline-flex justify-center items-center gap-2 m-1 py-2 px-2 text-sm bg-black text-white rounded-full cursor-pointer font-semibold text-center shadow-xs transition-all duration-500 hover:bg-gray-700 hover:text">
+
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 64 64" fill="none">
+
+
+          <path d="M16 16h4l6 24h20l4-16H26" stroke="white" stroke-width="2" fill="none" />
+
+
+          <circle cx="26" cy="48" r="4" fill="white" />
+
+
+          <circle cx="44" cy="48" r="4" fill="white" />
+
+
+        </svg>
+
+
+      </router-link>
+
+
+
+
+
+
+
+
+      <button type="button" data-target="dropdown-with-icon"
+
+
+        class="dropdown-toggle inline-flex justify-center items-center gap-2 py-1 m-1 px-4 text-sm bg-black text-white rounded-full cursor-pointer font-semibold text-center shadow-xs transition-all duration-500 hover:bg-gray-700 hover:text">
+
+
+        Login
+
+
+        <!-- <svg class="dropdown-open:rotate-180 w-2.5 h-2.5 text-white" width="16" height="16" viewBox="0 0 16 16"
+
+
+          fill="none" xmlns="http://www.w3.org/2000/svg">
+
+
+          <path d="M2 5L8.16086 10.6869C8.35239 10.8637 8.64761 10.8637 8.83914 10.6869L15 5" stroke="currentColor"
+
+
+            stroke-width="2" stroke-linecap="round"></path>
+
+
+        </svg> -->
+
+
+      </button>
+
+
+
+
+</div>
     </nav>
 
     <!-- Barra(rotas) -->

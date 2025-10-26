@@ -7,7 +7,8 @@
           <p class="text-gray-600">Preencha os dados do novo produto</p>
         </div>
 
-        <ProductFormComponent @submit="onSubmit" />
+        <!-- Sem @submit -->
+        <ProductFormComponent />
       </div>
     </div>
   </div>
@@ -15,11 +16,4 @@
 
 <script setup>
 import ProductFormComponent from '../components/ProductFormComponent.vue'
-import { useProductForm } from '../composables/useProductForm'
-
-const { submitForm } = useProductForm()
-
-async function onSubmit(formData) {
-  await submitForm()
-}
 </script>

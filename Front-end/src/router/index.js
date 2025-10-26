@@ -3,6 +3,8 @@ import HomeView from '../views/HomeView.vue'
 import ProductView from '../views/ProductView.vue'
 import SobreView from '../views/SobreView.vue'
 import ProductDetailView from '../views/ProductDetailView.vue'
+import ProductCreateView from '../views/ProductCreateView.vue'
+import CarrinhoView from '../views/CarrinhoView.vue'
 
 
 const router = createRouter({
