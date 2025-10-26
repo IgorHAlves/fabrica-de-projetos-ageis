@@ -15,21 +15,6 @@
 
   </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
   <div v-else class="text-center mt-24">
     <p>Carregando produto...</p>
   </div>
