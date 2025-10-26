@@ -7,7 +7,7 @@ namespace ECOMMERCE.CORE.Interfaces;
 
 public interface ICouponService
 {
-    public Guid CreateCoupon(Coupon coupon);
+    public Guid CreateCoupon(CreateCouponDTO couponDTO);
     public Paginator<GetCouponDTO> GetCoupons(int pageNumber, int pageSize);
     public GetCouponDTO FindCouponByCode(string Code);
     public void DeleteCoupon(string code);
