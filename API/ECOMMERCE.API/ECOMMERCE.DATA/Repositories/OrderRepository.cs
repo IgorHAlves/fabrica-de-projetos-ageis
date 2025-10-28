@@ -24,6 +24,7 @@ public class OrderRepository : IOrderRepository
         var query =  _context.Orders;
             
         var list = query.Include(order => order.OrderItems)
+            .ThenInclude(orderItem => orderItem.Product)
             .Skip((pageNumber - 1) * pageSize)
             .Take(pageSize)
             .ToList();
@@ -43,7 +44,11 @@ public class OrderRepository : IOrderRepository
 
     public Order GetOrder(Guid id)
     {
-        return _context.Orders.FirstOrDefault(order => order.Id == id);
+        return _context.Orders
+            .Include(order => order.OrderItems)
+            .ThenInclude(orderItem => orderItem.Product)
+            .FirstOrDefault(order => order.Id == id);
+        
     }
 
     public Order CreateOrder(Order order)
