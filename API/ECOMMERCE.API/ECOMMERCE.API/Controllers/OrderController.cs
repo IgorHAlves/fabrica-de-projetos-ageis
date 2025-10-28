@@ -5,6 +5,7 @@ using ECOMMERCE.CORE.DTO.Order;
 using ECOMMERCE.CORE.Helper;
 using ECOMMERCE.CORE.Interfaces;
 using Keycloak.Net.Models.Root;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ECOMMERCE.API.Controllers;
@@ -51,7 +52,7 @@ public class OrderController : ControllerBase
         return Ok(order);
     }
 
-    //[Authorize]
+    [Authorize]
     [HttpPost]
     public async Task<IActionResult> CreateOrder([FromBody] CreateOrderDTO orderDto)
     {

@@ -31,7 +31,7 @@ public class OrderService : IOrderService
            }
             
            Product product;
-           List<Product>? products = null;
+           List<Product> products = new List<Product>();
            foreach (var item in orderDto.OrderItems)
            {
                product = _productRepository.GetProduct(item.ProductId);
@@ -42,7 +42,7 @@ public class OrderService : IOrderService
                products.Add(product);
            }
 
-           List<OrderItem>? orderItems = null;
+           List<OrderItem> orderItems = new List<OrderItem>();
 
            OrderItem orderItem;
            foreach (var item in products)
@@ -55,6 +55,8 @@ public class OrderService : IOrderService
                    Quantity = orderDto.OrderItems.Where(o => o.ProductId == item.Id).Select(o => o.Quantity)
                        .FirstOrDefault()
                };
+               
+               orderItems.Add(orderItem);
            }
 
            Order order = new Order()
