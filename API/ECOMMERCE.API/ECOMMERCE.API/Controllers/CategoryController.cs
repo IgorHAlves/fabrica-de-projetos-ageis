@@ -15,6 +15,7 @@ public class CategoryController : Controller
     {
         _categoryService = categoryService;
     }
+
     // [Authorize]
     [HttpGet("id:guid")]
     public IActionResult GetCategory([FromRoute] Guid id)
@@ -24,9 +25,10 @@ public class CategoryController : Controller
     }
 
     [HttpGet]
-    public IActionResult GetCategories([FromQuery] string? name, [FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 10)
+    public IActionResult GetCategories([FromQuery] string? name, [FromQuery] int pageNumber = 1,
+        [FromQuery] int pageSize = 10)
     {
-        Paginator<GetCategoriesDTO> getCategoriesList = _categoryService.GetCategories(name,pageNumber, pageSize);
+        Paginator<GetCategoriesDTO> getCategoriesList = _categoryService.GetCategories(name, pageNumber, pageSize);
         return Ok(getCategoriesList);
     }
 
@@ -36,15 +38,16 @@ public class CategoryController : Controller
         var category = _categoryService.CreateCategory(dto);
         return Ok(category);
     }
-    
+
     [HttpPut]
-        public IActionResult PutCategory([FromBody]UpdateCategoriesDTO dto)
-        {
-            var updateCategory = _categoryService.UpdateCategory(dto);
-            return Ok(updateCategory);
-        }
+    public IActionResult PutCategory([FromBody] UpdateCategoriesDTO dto)
+    {
+        var updateCategory = _categoryService.UpdateCategory(dto);
+        return Ok(updateCategory);
+    }
+
     [HttpDelete("id:guid")]
-    public IActionResult DeleteCategory([FromRoute]Guid id)
+    public IActionResult DeleteCategory([FromRoute] Guid id)
     {
         var deleteCategory = _categoryService.DeleteCategory(id);
         return Ok(deleteCategory);

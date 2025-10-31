@@ -88,9 +88,9 @@ public class ProductServices : IProductService
         }
     }
 
-    public GetProductDTO UpdateProduct(UpdateProductDTO dto)
+    public GetProductDTO UpdateProduct(Guid Id,UpdateProductDTO dto)
     { 
-        var product = _productRepository.UpdateProduct(dto);
+        var product = _productRepository.UpdateProduct(Id,dto);
         return new GetProductDTO
         {
             Id = product.Id,
@@ -104,11 +104,9 @@ public class ProductServices : IProductService
         };
     }
 
-    public Product DeleteProduct(Guid id)
+    public void DeleteProduct(Guid id)
     {
-        var deleteProduct = _productRepository.GetProduct(id);
         _productRepository.DeleteProduct(id);
-        return deleteProduct;
     }
 
 }

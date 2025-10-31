@@ -28,7 +28,7 @@ public partial class EcommerceDbContext : DbContext
             .HasOne<Product>()
             .WithMany()
             .HasForeignKey(product => product.IdPai )
-            .OnDelete(DeleteBehavior.Restrict);
+            .OnDelete(DeleteBehavior.SetNull);
         
         //Categories
         modelBuilder.Entity<Category>()

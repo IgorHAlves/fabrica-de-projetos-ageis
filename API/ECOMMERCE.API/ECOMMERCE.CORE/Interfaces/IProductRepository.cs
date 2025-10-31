@@ -10,6 +10,6 @@ public interface IProductRepository
     public Paginator<Product> GetProducts(string? name, int skip, int take);
     public Product CreateProduct(Product product);
     public bool HasProductByCategoryId(Guid categoryId);
-    public Product UpdateProduct(UpdateProductDTO dto);
+    public Product UpdateProduct(Guid Id,UpdateProductDTO dto);
     public void DeleteProduct(Guid id);
 }

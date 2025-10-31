@@ -41,19 +41,21 @@ public class ProductController : Controller
         return Ok(product);
     }
     
-    // [Authorize]
-    [HttpPut]
-    public IActionResult PutProduct([FromBody] UpdateProductDTO dto)
+    // [Authorize]esmeralda é equivalente a qual mmr no dota 2
+    [HttpPut("{idProduct:guid}")]
+    public IActionResult PutProduct([FromRoute] Guid idProduct,[FromBody] UpdateProductDTO dto)
     {
-        var product = _productService.UpdateProduct(dto);
+        var product = _productService.UpdateProduct(idProduct,dto);
         return Ok(product);
     }
     
     // [Authorize]
-    [HttpDelete("{id:guid}")]
+    [HttpDelete("{idProduct:guid}")]
+
     public IActionResult DeleteProduct([FromRoute] Guid idProduct)
     {
-        Product deleteProduct = _productService.DeleteProduct(idProduct);
-        return Ok(deleteProduct);
+        _productService.DeleteProduct(idProduct);
+        
+        return Ok();
     }
 }

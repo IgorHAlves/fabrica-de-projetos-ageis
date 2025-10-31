@@ -39,8 +39,11 @@ public class ProductRepository : IProductRepository
     {
         pageNumber = pageNumber < 1 ? 1 : pageNumber;
         
-        var products = _ecommerceDbContext.Products.Include(x => x.Category);
-       
+        IQueryable<Product> products = _ecommerceDbContext.Products.Include(x => x.Category);
+        
+        if (name != null)
+            products = products.Where(product => product.Name.Contains(name));
+        
         var listaProducts =  products.OrderBy(product => product.Name)
             .Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
         var total = products.Count();
@@ -58,9 +61,9 @@ public class ProductRepository : IProductRepository
         };
     }
 
-    public Product UpdateProduct(UpdateProductDTO productDto)
+    public Product UpdateProduct(Guid Id,UpdateProductDTO productDto)
     {
-        var product = _ecommerceDbContext.Products.FirstOrDefault(product => product.Id == productDto.Id);
+        var product = _ecommerceDbContext.Products.FirstOrDefault(product => product.Id == Id);
         if (product == null)
         {
             throw new Exception("Produto não encontrado");
