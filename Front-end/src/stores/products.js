@@ -24,7 +24,10 @@ export const useProductsStore = defineStore('products', () => {
             showSuccessToast('Produtos carregados com sucesso!')
         } catch (e) {
             errorMessage.value = 'Falha ao carregar produtos.'
-            console.error('Erro ao buscar produtos:', e)
+            // Loga erro apenas em desenvolvimento
+            if (import.meta.env.DEV) {
+                console.error('Erro ao buscar produtos:', e)
+            }
             showError('Erro ao carregar produtos', 'Não foi possível carregar a lista de produtos.')
         } finally {
             isLoading.value = false
@@ -35,22 +38,16 @@ export const useProductsStore = defineStore('products', () => {
         isLoading.value = true
         resetError()
         try {
-            console.log('Enviando produto para API:', productInput)
-            console.log('URL da requisição:', api.defaults.baseURL + 'Product')
-
             const response = await api.post('Product', productInput)
-            console.log('Resposta da API:', response)
-            console.log('Produto criado:', response.data)
-
             const newProduct = response.data
             products.value = [newProduct, ...products.value]
             return newProduct
         } catch (e) {
             errorMessage.value = 'Falha ao cadastrar produto.'
-            console.error('Erro detalhado ao criar produto:', e)
-            console.error('Status do erro:', e.response?.status)
-            console.error('Dados do erro:', e.response?.data)
-            console.error('URL da requisição:', e.config?.url)
+            // Loga erro apenas em desenvolvimento
+            if (import.meta.env.DEV) {
+                console.error('Erro ao criar produto:', e)
+            }
             throw e
         } finally {
             isLoading.value = false
@@ -78,7 +75,10 @@ export const useProductsStore = defineStore('products', () => {
             return true
         } catch (e) {
             errorMessage.value = 'Falha ao deletar produto.'
-            console.error('Erro ao deletar produto:', e)
+            // Loga erro apenas em desenvolvimento
+            if (import.meta.env.DEV) {
+                console.error('Erro ao deletar produto:', e)
+            }
             showError('Erro ao deletar produto', 'Não foi possível deletar o produto.')
             return false
         } finally {

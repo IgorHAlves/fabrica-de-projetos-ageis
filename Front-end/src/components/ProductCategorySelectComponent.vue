@@ -18,6 +18,7 @@
 import { ref, onMounted } from 'vue'
 import { getCategories } from '@/Services/CategoriesService'
 
+// Props do componente
 const props = defineProps({
     modelValue: {
         type: [String, Number],
@@ -31,26 +32,44 @@ const props = defineProps({
 
 const emit = defineEmits(['update:modelValue'])
 
+// Estado local do componente
 const categories = ref([])
 const loading = ref(false)
 const categoriesError = ref('')
 
+/**
+ * Carrega as categorias da API
+ * Trata erros de conexão e outros erros
+ */
 async function loadCategories() {
     loading.value = true
     categoriesError.value = ''
 
     try {
+        // Busca categorias usando o service
         const data = await getCategories()
-        categories.value = data || []
-        console.log('Categorias carregadas com sucesso:', categories.value)
+
+        // Verifica se retornou dados válidos
+        if (Array.isArray(data) && data.length > 0) {
+            categories.value = data
+        } else {
+            // Se não há categorias, mantém array vazio
+            categories.value = []
+            // Só mostra erro se realmente houve problema (não apenas lista vazia)
+            if (!data || data.length === 0) {
+                categoriesError.value = 'Nenhuma categoria disponível. Verifique se o backend está rodando.'
+            }
+        }
     } catch (error) {
-        categoriesError.value = 'Erro ao carregar categorias'
-        console.error('Erro ao carregar categorias:', error)
+        // Trata erros não capturados pelo service
+        categoriesError.value = 'Erro ao carregar categorias. Verifique a conexão com o backend.'
+        categories.value = [] // Garante que seja um array
     } finally {
         loading.value = false
     }
 }
 
+// Carrega categorias quando o componente é montado
 onMounted(() => {
     loadCategories()
 })

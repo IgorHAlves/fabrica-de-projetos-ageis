@@ -1,22 +1,25 @@
 import api from './Axios';
 
+/**
+ * Busca todas as categorias da API
+ * @returns {Promise<Array>} Array de categorias ou array vazio em caso de erro
+ */
 export async function getCategories() {
     try {
-        console.log('Fazendo requisição para:', api.defaults.baseURL + 'Category');
+        // Faz a requisição GET para buscar categorias
         const response = await api.get('Category');
-        console.log('Resposta completa da API:', response);
-        console.log('Dados da resposta:', response.data);
 
         // A API retorna {items: Array, actualPage: 1, totalItens: 2, totalPages: 1}
         // Precisamos extrair o array 'items' que contém as categorias
-        const categories = response.data?.items || [];
-        console.log('Categorias extraídas:', categories);
+        const categories = response.data?.items || response.data || [];
+
         return categories;
     } catch (error) {
-        console.error('Erro detalhado ao buscar categorias:', error);
-        console.error('Status do erro:', error.response?.status);
-        console.error('Dados do erro:', error.response?.data);
-        console.error('URL da requisição:', error.config?.url);
+        // Retorna array vazio em caso de erro para não quebrar a aplicação
+        // Loga erro apenas em desenvolvimento
+        if (import.meta.env.DEV && error.code !== 'ERR_NETWORK') {
+            console.error('Erro ao buscar categorias:', error);
+        }
         return [];
     }
 }

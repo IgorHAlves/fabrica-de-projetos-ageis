@@ -79,8 +79,7 @@
                     <div class="relative group">
                         <img :src="modelValue" alt="Prévia da imagem"
                             class="w-20 h-20 object-cover rounded-lg border-2 border-green-200 shadow-sm hover:shadow-md transition-shadow duration-200 cursor-pointer"
-                            @click="previewImage" @error="console.error('Erro ao carregar imagem:', modelValue)"
-                            title="Clique para visualizar em tamanho real" />
+                            @click="previewImage" title="Clique para visualizar em tamanho real" />
                         <div
                             class="absolute inset-0 bg-black/0 hover:bg-black/20 rounded-lg transition-colors duration-200 flex items-center justify-center opacity-0 group-hover:opacity-100 pointer-events-none">
                             <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -138,7 +137,6 @@ async function onFileChange(e) {
         const uploadPreset = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET
 
         if (!cloudName || !uploadPreset) {
-            console.warn('Cloudinary não configurado. Imagem será ignorada.')
             emit('update:modelValue', '')
             return
         }
@@ -148,10 +146,8 @@ async function onFileChange(e) {
             emit('upload-progress', p)
         })
         emit('update:modelValue', res.secure_url)
-        console.log('Imagem enviada com sucesso:', res.secure_url)
         showSuccessToast('Imagem carregada com sucesso!')
     } catch (error) {
-        console.error('Erro ao enviar imagem:', error)
         emit('update:modelValue', '')
         showErrorToast('Erro ao carregar imagem')
     }
@@ -164,10 +160,7 @@ function removeImage() {
 }
 
 function previewImage() {
-    console.log('previewImage chamada, modelValue:', props.modelValue)
-
     if (!props.modelValue) {
-        console.warn('Nenhuma imagem para visualizar')
         return
     }
 
@@ -177,7 +170,6 @@ function previewImage() {
 
 // Função usando modal (mais confiável que popup)
 function showModalPreview() {
-    console.log('Criando modal para imagem:', props.modelValue)
 
     // Remover modal existente se houver
     const existingModal = document.getElementById('image-preview-modal')
@@ -354,6 +346,5 @@ function showModalPreview() {
         e.stopPropagation()
     })
 
-    console.log('Modal criado com sucesso')
 }
 </script>

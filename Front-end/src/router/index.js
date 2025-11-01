@@ -10,6 +10,11 @@ import CarrinhoView from '../views/CarrinhoView.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    // Rota raiz: redireciona para /home
+    {
+      path: '/',
+      redirect: '/home'
+    },
     {
       path: '/home',
       name: 'Home',
@@ -20,7 +25,6 @@ const router = createRouter({
       name: 'sobre',
       component: SobreView
     },
-
     {
       path: '/produtos',
       name: 'produtos',
@@ -41,11 +45,6 @@ const router = createRouter({
       path: '/admin/produtos/novo',
       name: 'produtoNovo',
       component: ProductCreateView
-    },
-    {
-      path: '/carrinho',
-      name: 'carrinho',
-      component: CarrinhoView
     }
   ]
 })
