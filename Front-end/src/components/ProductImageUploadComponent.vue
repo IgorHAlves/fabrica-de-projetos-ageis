@@ -1,6 +1,9 @@
 <template>
-    <div class="bg-gray-50 p-6 rounded-xl border border-gray-100">
-        <label for="imageFile" class="block text-sm font-semibold text-gray-700 mb-3">Upload da Imagem</label>
+    <div class="bg-gradient-to-br from-pink-50 to-rose-50 p-6 rounded-xl border-2 border-pink-100">
+        <label for="imageFile" class="block text-sm font-bold text-gray-900 mb-3 flex items-center">
+            <i class="fa-solid fa-image mr-2 text-pink-600"></i>
+            Upload da Imagem <span class="text-red-500 ml-1">*</span>
+        </label>
 
         <!-- File Input -->
         <div class="mb-4">
@@ -8,25 +11,18 @@
                 <input id="imageFile" type="file" accept="image/*" @change="onFileChange"
                     class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" />
                 <div
-                    class="border-2 border-dashed border-gray-300 rounded-xl p-8 text-center hover:border-gray-400 hover:bg-gray-50 transition-all duration-200 cursor-pointer group">
+                    class="border-2 border-dashed border-pink-300 rounded-xl p-8 text-center hover:border-pink-400 hover:bg-pink-50 transition-all duration-200 cursor-pointer group">
                     <div class="flex flex-col items-center space-y-4">
                         <div
-                            class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center group-hover:bg-gray-200 transition-colors duration-200">
-                            <svg class="w-8 h-8 text-gray-400 group-hover:text-gray-500" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-                            </svg>
+                            class="w-16 h-16 bg-gradient-to-br from-pink-100 to-rose-100 rounded-full flex items-center justify-center group-hover:from-pink-200 group-hover:to-rose-200 transition-all duration-200">
+                            <i class="fa-solid fa-cloud-arrow-up text-3xl text-pink-500 group-hover:text-pink-600"></i>
                         </div>
                         <div>
-                            <p class="text-lg font-medium text-gray-900">Clique para selecionar uma imagem</p>
-                            <p class="text-sm text-gray-500 mt-1">ou arraste e solte aqui</p>
+                            <p class="text-lg font-bold text-gray-900">Clique para selecionar uma imagem</p>
+                            <p class="text-sm text-gray-600 mt-1">ou arraste e solte aqui</p>
                         </div>
-                        <div class="flex items-center space-x-2 text-xs text-gray-400">
-                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
+                        <div class="flex items-center space-x-2 text-xs text-gray-500 bg-white px-3 py-1 rounded-full">
+                            <i class="fa-solid fa-info-circle text-pink-500"></i>
                             <span>JPG, PNG, GIF até 10MB</span>
                         </div>
                     </div>
@@ -99,8 +95,14 @@
         </div>
 
         <!-- Error Messages -->
-        <p v-if="error" class="mt-2 text-sm text-red-600 font-medium">{{ error }}</p>
-        <p class="mt-2 text-sm text-gray-500">Formatos aceitos: JPG, PNG, GIF. Máximo 10MB.</p>
+        <p v-if="error" class="mt-2 text-sm text-red-600 font-medium flex items-center">
+            <i class="fa-solid fa-exclamation-circle mr-2"></i>
+            {{ error }}
+        </p>
+        <p class="mt-2 text-sm text-gray-600 flex items-center">
+            <i class="fa-solid fa-circle-info mr-2 text-pink-500"></i>
+            Formatos aceitos: JPG, PNG, GIF. Máximo 10MB.
+        </p>
 
     </div>
 </template>

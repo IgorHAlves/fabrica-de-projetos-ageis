@@ -250,7 +250,7 @@ export const useCartStore = defineStore('cart', () => {
 
     /**
      * Finaliza a compra (checkout)
-     * Por enquanto apenas simula o processamento
+     * Atualiza estoque no backend para cada produto
      */
     async function checkout() {
         try {
@@ -269,24 +269,91 @@ export const useCartStore = defineStore('cart', () => {
             )
 
             if (result.isConfirmed) {
-                // Simula processamento da compra
-                // Aqui você pode integrar com uma API de pagamento, por exemplo
-                await new Promise(resolve => setTimeout(resolve, 1000)) // Simula delay
+                // Importa o service para atualizar estoque
+                const { updateProductStock } = await import('../Services/ProductsService')
 
-                // Mostra mensagem de sucesso
-                showSuccess(
-                    'Compra Finalizada!',
-                    `Sua compra foi processada com sucesso. Total: R$ ${totalPrice.value.toFixed(2)}`
-                )
+                try {
+                    // Atualiza estoque de cada produto no backend
+                    const updatePromises = items.value.map(async (item) => {
+                        if (item.stock !== undefined && item.id) {
+                            try {
+                                return await updateProductStock(item.id, item.quantity)
+                            } catch (error) {
+                                // Re-lança o erro com informações do produto
+                                const errorWithProduct = new Error(`Erro ao atualizar produto ${item.name || item.id}: ${error.message}`)
+                                errorWithProduct.originalError = error
+                                errorWithProduct.productId = item.id
+                                errorWithProduct.productName = item.name
+                                throw errorWithProduct
+                            }
+                        }
+                        return Promise.resolve()
+                    })
 
-                // Limpa o carrinho após a compra
-                clearCart()
-                return true
+                    // Aguarda todas as atualizações
+                    await Promise.all(updatePromises)
+
+                    // Mostra mensagem de sucesso
+                    showSuccess(
+                        'Compra Finalizada!',
+                        `Sua compra foi processada com sucesso. Total: R$ ${totalPrice.value.toFixed(2)}`
+                    )
+
+                    // Limpa o carrinho após a compra
+                    clearCart()
+
+                    // Recarrega produtos para atualizar estoque na lista
+                    // Emite evento customizado para que a view atualize
+                    window.dispatchEvent(new CustomEvent('cart-checkout-completed'))
+
+                    return true
+                } catch (updateError) {
+                    // Trata erros de atualização de estoque
+                    let errorMessage = 'Não foi possível finalizar a compra.'
+
+                    // Verifica se é erro de foreign key constraint
+                    const originalError = updateError.originalError || updateError
+                    const errorStr = (originalError.message || '').toLowerCase()
+                    const errorResponseData = originalError.response?.data
+                    let errorDataString = ''
+
+                    if (errorResponseData) {
+                        if (typeof errorResponseData === 'string') {
+                            errorDataString = errorResponseData.toLowerCase()
+                        } else if (errorResponseData.message) {
+                            errorDataString = errorResponseData.message.toLowerCase()
+                        } else {
+                            errorDataString = JSON.stringify(errorResponseData).toLowerCase()
+                        }
+                    }
+
+                    const fullErrorString = errorStr + ' ' + errorDataString
+
+                    if (fullErrorString.includes('foreign key') ||
+                        fullErrorString.includes('categoryid') ||
+                        fullErrorString.includes('fk_products_categories') ||
+                        fullErrorString.includes('cannot add or update')) {
+                        errorMessage = `Erro ao atualizar estoque: o produto "${updateError.productName || updateError.productId}" tem uma categoria inválida. Por favor, remova este produto do carrinho e tente novamente.`
+                    } else if (updateError.productName) {
+                        errorMessage = `Erro ao atualizar o produto "${updateError.productName}". Por favor, tente novamente.`
+                    }
+
+                    showError('Erro ao finalizar compra', errorMessage)
+                    return false
+                }
             }
 
             return false
         } catch (error) {
-            showError('Erro', 'Não foi possível finalizar a compra.')
+            // Trata erros gerais
+            let errorMessage = 'Não foi possível finalizar a compra. Verifique se o backend está disponível.'
+
+            const errorStr = (error.message || '').toLowerCase()
+            if (errorStr.includes('network') || errorStr.includes('connection')) {
+                errorMessage = 'Erro de conexão. Verifique se o backend está rodando.'
+            }
+
+            showError('Erro', errorMessage)
             return false
         }
     }

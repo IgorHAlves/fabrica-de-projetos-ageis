@@ -18,21 +18,29 @@ const { showSuccess, showError, showConfirm } = useAlerts();
 // Busca do query parameter
 const searchTerm = computed(() => route.query.search || '');
 
-// Produtos filtrados baseado na busca
+// Produtos filtrados baseado na busca e sem variações (produtos com idPai)
 const filteredProducts = computed(() => {
-  if (!searchTerm.value || !products.value.items) {
-    return products.value;
+  let items = products.value.items || []
+  
+  // Remove variações (produtos com idPai)
+  items = items.filter(product => {
+    const idPai = product.idPai || product.IdPai || product.id_pai
+    return !idPai // Só mantém produtos que NÃO têm idPai
+  })
+  
+  // Aplica filtro de busca se houver
+  if (searchTerm.value) {
+    const term = searchTerm.value.toLowerCase();
+    items = items.filter(product =>
+      product.name?.toLowerCase().includes(term) ||
+      product.description?.toLowerCase().includes(term)
+    )
   }
-
-  const term = searchTerm.value.toLowerCase();
-  const filtered = products.value.items.filter(product =>
-    product.name?.toLowerCase().includes(term) ||
-    product.description?.toLowerCase().includes(term)
-  );
 
   return {
     ...products.value,
-    items: filtered
+    items: items,
+    totalItems: items.length // Atualiza contagem total
   };
 });
 

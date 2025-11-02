@@ -38,15 +38,57 @@ export const useProductsStore = defineStore('products', () => {
         isLoading.value = true
         resetError()
         try {
+            if (import.meta.env.DEV) {
+                console.log('Enviando para API:', JSON.stringify(productInput, null, 2))
+            }
             const response = await api.post('Product', productInput)
             const newProduct = response.data
+            if (import.meta.env.DEV) {
+                console.log('Resposta do backend:', newProduct)
+            }
             products.value = [newProduct, ...products.value]
             return newProduct
         } catch (e) {
             errorMessage.value = 'Falha ao cadastrar produto.'
-            // Loga erro apenas em desenvolvimento
+            // Loga erro detalhado apenas em desenvolvimento
             if (import.meta.env.DEV) {
-                console.error('Erro ao criar produto:', e)
+                const errorData = e.response?.data
+
+                // Função para extrair innerException recursivamente
+                function extractInnerException(obj, depth = 0) {
+                    if (depth > 5 || !obj || typeof obj !== 'object') return ''
+
+                    const keys = ['innerException', 'InnerException', 'inner', 'error', 'detail', 'exception']
+                    for (const key of keys) {
+                        if (obj[key]) {
+                            if (typeof obj[key] === 'string') return obj[key]
+                            if (typeof obj[key] === 'object') {
+                                const nested = extractInnerException(obj[key], depth + 1)
+                                if (nested) return nested
+                            }
+                        }
+                    }
+                    return ''
+                }
+
+                const innerException = extractInnerException(errorData) ||
+                    errorData?.innerException ||
+                    errorData?.InnerException ||
+                    errorData?.error?.innerException ||
+                    errorData?.errors ||
+                    errorData?.detail ||
+                    ''
+
+                console.error('=== ERRO NA STORE - CRIAÇÃO DE PRODUTO ===')
+                console.error('Mensagem:', e.message)
+                console.error('Status:', e.response?.status, e.response?.statusText)
+                console.error('Response Data:', errorData)
+                if (innerException) {
+                    console.error('=== INNER EXCEPTION ===')
+                    console.error(innerException)
+                }
+                console.error('Dados enviados:', productInput)
+                console.error('==========================================')
             }
             throw e
         } finally {

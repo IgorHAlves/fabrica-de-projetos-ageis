@@ -41,17 +41,18 @@
                         </button>
                     </div>
                     <div class="py-1">
-                        <button v-for="(term, index) in searchHistory.history.value" :key="index"
-                            @click.stop="selectHistoryTerm(term)"
-                            class="w-full text-left px-4 py-2 hover:bg-gray-100 flex items-center justify-between group"
-                            :aria-label="`Buscar por ${term}`">
-                            <span class="text-gray-700">{{ term }}</span>
+                        <div v-for="(term, index) in searchHistory.history.value" :key="index"
+                            class="flex items-center justify-between group hover:bg-gray-100">
+                            <button @click.stop="selectHistoryTerm(term)"
+                                class="flex-1 text-left px-4 py-2 text-gray-700" :aria-label="`Buscar por ${term}`">
+                                {{ term }}
+                            </button>
                             <button @click.stop="searchHistory.removeFromHistory(term)"
-                                class="opacity-0 group-hover:opacity-100 text-gray-400 hover:text-red-500"
+                                class="opacity-0 group-hover:opacity-100 text-gray-400 hover:text-red-500 px-4 py-2"
                                 aria-label="Remover do histórico">
                                 <i class="fa-solid fa-xmark text-xs"></i>
                             </button>
-                        </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -123,7 +124,9 @@
             <li>
                 <RouterLink to="/admin/produtos/novo" class="hover:text-blue-500">Cadastrar Produto</RouterLink>
             </li>
-            <li><a href="/about" class="hover:text-blue-500">Sobre</a></li>
+            <li>
+                <RouterLink to="/sobre" class="hover:text-blue-500">Sobre</RouterLink>
+            </li>
         </ul>
     </nav>
 </template>

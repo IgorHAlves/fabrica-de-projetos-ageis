@@ -1,16 +1,38 @@
 <template>
-    <div class="bg-gray-50 p-6 rounded-xl border border-gray-100">
-        <label for="category" class="block text-sm font-semibold text-gray-700 mb-3">Categoria</label>
-        <select id="category" :value="modelValue" @input="$emit('update:modelValue', $event.target.value)" required
-            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-400 focus:border-gray-400 transition-all duration-200 appearance-none bg-white">
+    <div class="bg-gradient-to-br from-indigo-50 to-blue-50 p-6 rounded-xl border-2 border-indigo-100">
+        <label for="category" class="block text-sm font-bold text-gray-900 mb-3 flex items-center">
+            <i class="fa-solid fa-layer-group mr-2 text-indigo-600"></i>
+            Categoria <span class="text-red-500 ml-1">*</span>
+        </label>
+        <select id="category" :value="modelValue" @input="handleCategoryChange" @blur="$emit('blur')"
+            :required="!disabled" :disabled="disabled" :class="[
+                'w-full px-4 py-3 border-2 rounded-lg focus:ring-2 transition-all duration-200 appearance-none text-gray-900 font-medium',
+                disabled ? 'bg-gray-100 cursor-not-allowed opacity-60' : 'bg-white',
+                error ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : 'border-gray-200 focus:border-indigo-500 focus:ring-indigo-500'
+            ]">
             <option disabled value="">Selecione uma categoria</option>
-            <option v-for="category in categories" :key="category.id" :value="category.id">
+            <option v-for="category in categories" :key="category.id" :value="Number(category.id)">
                 {{ category.name }}
             </option>
         </select>
-        <p v-if="error" class="mt-2 text-sm text-red-600 font-medium">{{ error }}</p>
-        <p v-if="loading" class="mt-2 text-sm text-gray-600 font-medium">Carregando categorias...</p>
-        <p v-if="categoriesError" class="mt-2 text-sm text-red-600 font-medium">{{ categoriesError }}</p>
+        <p v-if="loading" class="mt-2 text-sm text-indigo-600 font-medium flex items-center">
+            <i class="fa-solid fa-spinner fa-spin mr-2"></i>
+            Carregando categorias...
+        </p>
+        <p v-if="error" class="mt-2 text-sm text-red-600 font-medium flex items-center">
+            <i class="fa-solid fa-exclamation-circle mr-2"></i>
+            {{ error }}
+        </p>
+        <p v-if="categoriesError" class="mt-2 text-sm text-red-600 font-medium flex items-center">
+            <i class="fa-solid fa-exclamation-triangle mr-2"></i>
+            {{ categoriesError }}
+        </p>
+        <div v-if="disabled" class="mt-3 bg-yellow-50 border border-yellow-200 rounded-lg p-3">
+            <p class="text-xs text-yellow-800 flex items-center">
+                <i class="fa-solid fa-info-circle mr-2"></i>
+                A categoria será herdada automaticamente do produto pai quando você criar uma variação.
+            </p>
+        </div>
     </div>
 </template>
 
@@ -27,15 +49,49 @@ const props = defineProps({
     error: {
         type: String,
         default: ''
+    },
+    disabled: {
+        type: Boolean,
+        default: false
     }
 })
 
-const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits(['update:modelValue', 'blur'])
 
 // Estado local do componente
 const categories = ref([])
 const loading = ref(false)
 const categoriesError = ref('')
+
+/**
+ * Handler para mudança de categoria
+ * Garante que o valor seja sempre um número válido
+ */
+function handleCategoryChange(event) {
+    const selectedValue = event.target.value
+
+    // Se estiver vazio, emite string vazia
+    if (!selectedValue || selectedValue === '') {
+        emit('update:modelValue', '')
+        return
+    }
+
+    // Converte para número e valida
+    const categoryId = Number(selectedValue)
+
+    // Verifica se a categoria existe na lista carregada
+    const categoryExists = categories.value.some(cat => Number(cat.id) === categoryId)
+
+    if (isNaN(categoryId) || !categoryExists) {
+        // Se não existe, limpa a seleção
+        emit('update:modelValue', '')
+        categoriesError.value = 'Categoria selecionada não é válida. Por favor, selecione novamente.'
+        return
+    }
+
+    // Emite o valor como número
+    emit('update:modelValue', categoryId)
+}
 
 /**
  * Carrega as categorias da API
