@@ -2,6 +2,7 @@ using ECOMMERCE.CORE.Entity;
 using ECOMMERCE.CORE.Helper;
 using ECOMMERCE.CORE.Interfaces;
 using ECOMMERCE.DATA.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace ECOMMERCE.DATA.Repositories;
 

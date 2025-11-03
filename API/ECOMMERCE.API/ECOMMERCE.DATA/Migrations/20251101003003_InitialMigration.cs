@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ECOMMERCE.DATA.Migrations
 {
     /// <inheritdoc />
-    public partial class AjustadoDelete : Migration
+    public partial class InitialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,6 +17,22 @@ namespace ECOMMERCE.DATA.Migrations
 
             migrationBuilder.DropTable(
                 name: "Sale");
+
+            migrationBuilder.CreateTable(
+                name: "Coupons",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+                    Code = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Value = table.Column<int>(type: "int", nullable: false),
+                    CategoryEnum = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Coupons", x => x.Id);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Products_Products_IdPai",
@@ -33,6 +49,9 @@ namespace ECOMMERCE.DATA.Migrations
             migrationBuilder.DropForeignKey(
                 name: "FK_Products_Products_IdPai",
                 table: "Products");
+
+            migrationBuilder.DropTable(
+                name: "Coupons");
 
             migrationBuilder.CreateTable(
                 name: "Sale",
