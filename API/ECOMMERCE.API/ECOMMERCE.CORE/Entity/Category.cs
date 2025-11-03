@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace ECOMMERCE.CORE.Entity
 {
-    public class Category
+    public class Category : BaseEntity
     {
-        public Guid Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public List<Product>? Products { get; set; }

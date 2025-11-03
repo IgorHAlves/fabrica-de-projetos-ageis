@@ -2,9 +2,8 @@
 
 namespace ECOMMERCE.CORE.Entity
 {
-    public class User
+    public class User : BaseEntity
     {
-        public Guid Id { get; set; }
         public string KeycloakId { get; set; }
         public Guid? AddressId { get; set; }
         public Address? Address { get; set; }
