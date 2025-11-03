@@ -20,13 +20,14 @@ public class CouponService : ICouponService
     {
         try
         {
-            CreateCouponDTO newCoupon = new CreateCouponDTO()
+            Coupon newCoupon = new Coupon()
             {
                 Code = couponDTO.Code,
                 CategoryEnum = couponDTO.CategoryEnum,
-                Value = couponDTO.Value,
-                Id = couponDTO.Id
+                Value = couponDTO.Value
             };
+            var coupon = _couponRepository.CreateCoupon(newCoupon);
+            
             return newCoupon.Id;
         }
         catch (Exception e)
@@ -69,13 +70,9 @@ public class CouponService : ICouponService
     {
         Coupon coupon = _couponRepository.FindCouponByCode(Code);
 
-        GetCouponDTO getCouponDTO = new GetCouponDTO()
-        {
-            Code = coupon.Code,
-            Value = coupon.Value,
-            CategoryEnum = coupon.CategoryEnum
-        };
-        return getCouponDTO;
+        GetCouponDTO couponDTO = GetCouponDTO.AutoMapGetCouponDto(coupon);
+        
+        return couponDTO;
     }
 
     public void DeleteCoupon(string code)

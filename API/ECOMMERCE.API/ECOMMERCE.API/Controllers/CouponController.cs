@@ -31,7 +31,7 @@ public class CouponController : ControllerBase
         }
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("{code}")]
     public async Task<IActionResult> GetCoupon([FromRoute] string code)
     {
         try
@@ -59,7 +59,7 @@ public class CouponController : ControllerBase
         }
     }
 
-    [HttpDelete("{id}")]
+    [HttpDelete("{code}")]
     public async Task<IActionResult> DeleteCoupon([FromRoute] string code)
     {
         try

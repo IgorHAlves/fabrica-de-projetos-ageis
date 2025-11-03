@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ECOMMERCE.DATA.Migrations
 {
     [DbContext(typeof(EcommerceDbContext))]
-    [Migration("20251030010521_AjustadoDelete")]
-    partial class AjustadoDelete
+    [Migration("20251101003003_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

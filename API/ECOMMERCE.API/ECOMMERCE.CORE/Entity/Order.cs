@@ -2,9 +2,8 @@ using ECOMMERCE.CORE.Entity;
 
 namespace ECOMMERCE.API.Entity;
 
-public class Order
+public class Order : BaseEntity
 {
-    public Guid Id { get; set; }
     public DateTime Date { get; set; }
     public decimal Price { get; set; }
     public List<OrderItem> OrderItems { get; set; }
