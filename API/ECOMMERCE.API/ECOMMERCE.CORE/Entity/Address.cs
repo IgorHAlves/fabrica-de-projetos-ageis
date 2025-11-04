@@ -1,14 +1,16 @@
-﻿namespace ECOMMERCE.CORE.Entity
+﻿using ECOMMERCE.CORE.Interfaces;
+
+namespace ECOMMERCE.CORE.Entity
 {
-    public class Address
+    public class Address : BaseEntity
     {
-        public Guid Id { get; set; }
-        public string Street { get; set; }
-        public string number { get; set; }
-        public string CEP { get; set; }
-        public Address()
-        {
-            
-        }
+        public string? Cep { get; set; }
+        public string? Logradouro { get; set; }
+        public string? Complemento { get; set; }
+        public string? Estado  { get; set; }
+        public string? Bairro { get; set; }
+        public string? Localidade { get; set; }
+        public string? Uf { get; set; }
+        public string? Ddd { get; set; }
     }
 } 

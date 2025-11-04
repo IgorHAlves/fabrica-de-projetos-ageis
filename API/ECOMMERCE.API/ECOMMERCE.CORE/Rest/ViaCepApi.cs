@@ -1,11 +1,12 @@
 using System.Net.Http.Headers;
 using System.Runtime.InteropServices.JavaScript;
 using System.Text.Json;
+using ECOMMERCE.CORE.DTO;
 using ECOMMERCE.CORE.Interfaces;
 
 namespace ECOMMERCE.CORE.Rest;
 
-public class ViaCepApi : IViaCEP
+public class ViaCepApi : IViaCep
 {
     private readonly HttpClient _client;
 
@@ -20,17 +21,20 @@ public class ViaCepApi : IViaCEP
             new MediaTypeWithQualityHeaderValue("application/json"));
     }
 
-    public async Task<HttpResponseMessage?> SearchAsync(string cep)
+    public async Task<AddressDTO?> SearchAsync(string cep)
     {
         var repsonse = await _client.GetAsync($"{cep}/json");
 
+        var content = await repsonse.Content.ReadAsStringAsync();
+        
+        var address = JsonSerializer.Deserialize<AddressDTO>(content);
+        
         if (!repsonse.IsSuccessStatusCode)
         {
-            throw new Exception(repsonse.ReasonPhrase);
+            throw new Exception(content);
         }
         
-        var content = await repsonse.Content.ReadAsStringAsync();
-        return JsonSerializer.Deserialize<HttpResponseMessage>(content);
+        return address;
     }
 
 }

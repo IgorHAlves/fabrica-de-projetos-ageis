@@ -16,12 +16,16 @@ public class ShippingController : ControllerBase
         _shippingService = shippingService;
     }
 
-    [HttpGet]
+    [HttpGet("{cep}")]
     public async Task<IActionResult> GetShipping(string cep)
     {
         try
         {
-            var shipping = _shippingService.SearchAsync(cep);
+            var shipping = await _shippingService.SearchAsync(cep);
+            if (shipping == null)
+            {
+                return NotFound($"CEP {cep} não encontrado.");
+            }
             return Ok(shipping);
         }
         catch (Exception e)

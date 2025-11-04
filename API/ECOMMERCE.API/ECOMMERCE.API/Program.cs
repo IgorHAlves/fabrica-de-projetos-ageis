@@ -51,13 +51,10 @@ namespace ECOMMERCE.API
             builder.Services.AddScoped<ICouponRepository, CouponRepository>();
             
             builder.Services.AddScoped<ICouponService, CouponService>();
-
-            //
-            // builder.Services.AddScoped<IViaCEP, ViaCepApi>();
-            //
-            // builder.Services.AddScoped<IShippingRepository, ShippingRepository>();
-            //
-            // builder.Services.AddScoped<IShippingService, ShippingService>();
+            
+            builder.Services.AddScoped<IViaCep, ViaCepApi>();
+            
+            builder.Services.AddScoped<IShippingService, ShippingService>();
             
             string mySqlConnection = builder.Configuration.GetConnectionString("DefaultConnection");
 

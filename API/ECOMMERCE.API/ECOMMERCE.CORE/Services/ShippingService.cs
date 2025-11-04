@@ -1,3 +1,4 @@
+using ECOMMERCE.CORE.DTO;
 using ECOMMERCE.CORE.Interfaces;
 using ECOMMERCE.CORE.Rest;
 
@@ -5,16 +6,17 @@ namespace ECOMMERCE.CORE.Services;
 
 public class ShippingService : IShippingService
 {
-    private readonly IShippingRepository _shippingRepository;
+    private readonly IViaCep _viaCep;
 
-    public ShippingService(IShippingRepository shippingRepository)
+    public ShippingService(IViaCep viaCep)
     {
-        _shippingRepository = shippingRepository;
+        _viaCep = viaCep;
     }
 
-    public async Task<HttpResponseMessage?> SearchAsync(string cep)
+    public async Task<AddressDTO?> SearchAsync(string cep)
     {
-        return await _shippingRepository.SearchAsync(cep);
+        
+        return await _viaCep.SearchAsync(cep);
     }
 
 
