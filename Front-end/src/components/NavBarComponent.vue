@@ -22,82 +22,61 @@
             </div>
         </form>
 
-<div class="flex justify-center">
+        <div class="flex justify-center items-center">
+            <router-link to="/carrinho"
+                class="ml-6 items-center gap-2 p-1 rounded-full border-2 border-black bg-gray-600 hover:bg-gray-800 shadow text-white transition duration-200 justify-center items-center inline-flex duration-300 hover:shadow-[0_0_24px_black]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 64 64" fill="none">
+                    <path d="M16 16h4l6 24h20l4-16H26" stroke="white" stroke-width="2" fill="none" />
+                    <circle cx="26" cy="48" r="4" fill="white" />
+                    <circle cx="44" cy="48" r="4" fill="white" />
+                </svg>
+            </router-link>
 
 
+            <div class="relative inline-block group duration-800 ml-4 ">
+                <button
+                    class="ml-6 flex items-center gap-2 p-3 rounded-full border border-gray-800 border-2 bg-gray-600 hover:bg-blue-800 shadow mr-20 text-white transition duration-300 hover:shadow-[0_0_24px_blue]">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="7" r="4" />
+                        <path d="M5.5 21a7.5 7.5 0 0 1 13 0" />
+                    </svg>
+                </button>
 
-      <router-link to="/carrinho"
+                <div
+                    class="absolute hidden group-hover:block right-0 mt-2 w-44 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 shadow-lg z-20 border border-blue-600 mt-0 font-bold">
+                    <a href="https://practicetestautomation.com/practice-test-login/"
+                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-400 z-20 hover:shadow-2xl transition border-1 border-black ">Login</a>
+                    <a href="http://localhost:5173/home"
+                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-400 z-20 hover:shadow-2xl transition border-1 border-black">Sair</a>
+                </div>
+            </div>
 
-
-        class="inline-flex justify-center items-center gap-2 m-1 py-2 px-2 text-sm bg-black text-white rounded-full cursor-pointer font-semibold text-center shadow-xs transition-all duration-500 hover:bg-gray-700 hover:text">
-
-
-        <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 64 64" fill="none">
-
-
-          <path d="M16 16h4l6 24h20l4-16H26" stroke="white" stroke-width="2" fill="none" />
-
-
-          <circle cx="26" cy="48" r="4" fill="white" />
-
-
-          <circle cx="44" cy="48" r="4" fill="white" />
-
-
-        </svg>
-
-
-      </router-link>
-
-
-
-
-
-
-
-
-      <button type="button" data-target="dropdown-with-icon"
-
-
-        class="dropdown-toggle inline-flex justify-center items-center gap-2 py-1 m-1 px-4 text-sm bg-black text-white rounded-full cursor-pointer font-semibold text-center shadow-xs transition-all duration-500 hover:bg-gray-700 hover:text">
-
-
-        Login
-
-
-        <!-- <svg class="dropdown-open:rotate-180 w-2.5 h-2.5 text-white" width="16" height="16" viewBox="0 0 16 16"
-
-
-          fill="none" xmlns="http://www.w3.org/2000/svg">
-
-
-          <path d="M2 5L8.16086 10.6869C8.35239 10.8637 8.64761 10.8637 8.83914 10.6869L15 5" stroke="currentColor"
-
-
-            stroke-width="2" stroke-linecap="round"></path>
-
-
-        </svg> -->
-
-
-      </button>
-
-
-
-
-</div>
+        </div>
     </nav>
 
     <!-- Barra(rotas) -->
-    <nav class="flex justify-center gap-8 items-center p-4 bg-white shadow font-semibold border-b mt-2 shadow hover:shadow-lg transition">
+    <nav
+        class="flex justify-center gap-8 items-center p-4 bg-white shadow font-semibold border-b mt-2 shadow hover:shadow-lg transition">
         <ul class="flex gap-14 items-center">
-            <li><RouterLink to="/" class="hover:text-blue-500">Home</RouterLink></li>
-            <li><RouterLink to="/produtos" class="hover:text-blue-500">Produtos</RouterLink></li>
-            <li><RouterLink to="/admin/produtos/novo" class="hover:text-blue-500">Cadastrar Produto</RouterLink></li>
-            <li><a href="/about" class="hover:text-blue-500">Sobre</a></li>
+            <li>
+                <RouterLink to="/home" class="hover:text-blue-500">Home</RouterLink>
+            </li>
+            <li>
+                <RouterLink to="/produtos" class="hover:text-blue-500">Produtos</RouterLink>
+            </li>
+            <li>
+                <RouterLink to="/admin/produtos/novo" class="hover:text-blue-500">Cadastrar Produto</RouterLink>
+            </li>
+            <li>
+                <RouterLink to="/sobre" class="hover:text-blue-500">Sobre</RouterLink>
+            </li>
         </ul>
     </nav>
+
 </template>
+
 <script setup>
-import { RouterLink } from 'vue-router';
+import router from '@/router';
+import { RouterLink, useRouter } from 'vue-router';
 </script>

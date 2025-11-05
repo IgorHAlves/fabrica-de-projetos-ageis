@@ -6,8 +6,6 @@
           <h1 class="text-4xl font-bold text-gray-900 mb-2">Cadastrar Produto</h1>
           <p class="text-gray-600">Preencha os dados do novo produto</p>
         </div>
-
-        <!-- Sem @submit -->
         <ProductFormComponent />
       </div>
     </div>

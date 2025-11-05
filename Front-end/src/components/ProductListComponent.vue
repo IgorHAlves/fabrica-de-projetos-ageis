@@ -8,12 +8,13 @@ const props = defineProps({
     required: true
   }
 });
-const emit = defineEmits(['add-to-cart']);
 
-function adicionarAoCarrinho(produto) {
-  emit('add-to-cart', produto);
-}
-</script>
+// const emit = defineEmits(['add-to-cart']);
+
+// function adicionarAoCarrinho(produto) {
+//   emit('add-to-cart', produto);
+// }
+// </script>
 
 
 <template>
