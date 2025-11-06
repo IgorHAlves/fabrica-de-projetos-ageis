@@ -62,7 +62,16 @@ export const useCartStore = defineStore('cart', () => {
     let isInitializing = true
 
     // Carrega itens do localStorage
-    const loadedItems = loadCartFromStorage()
+    let loadedItems = []
+    try {
+        loadedItems = loadCartFromStorage()
+    } catch (error) {
+        // Em caso de erro, inicia com array vazio
+        loadedItems = []
+        if (import.meta.env.DEV) {
+            console.error('Erro ao carregar carrinho do localStorage:', error)
+        }
+    }
 
     // Array que armazena os itens do carrinho
     // Carrega do localStorage ao inicializar
@@ -80,30 +89,44 @@ export const useCartStore = defineStore('cart', () => {
 
     // Computed: Retorna o total de itens no carrinho (soma das quantidades)
     const totalItems = computed(() => {
-        return items.value.reduce((total, item) => total + item.quantity, 0)
+        if (!items.value || items.value.length === 0) return 0
+        return items.value.reduce((total, item) => {
+            const qty = item.quantity || 0
+            return total + qty
+        }, 0)
     })
 
     // Computed: Retorna o valor total do carrinho (soma dos preços * quantidades)
     const totalPrice = computed(() => {
-        return items.value.reduce((total, item) => total + (item.price * item.quantity), 0)
+        if (!items.value || items.value.length === 0) return 0
+        return items.value.reduce((total, item) => {
+            const price = item.price || 0
+            const qty = item.quantity || 0
+            return total + (price * qty)
+        }, 0)
     })
 
     // Computed: Verifica se o carrinho está vazio
     const isEmpty = computed(() => {
-        return items.value.length === 0
+        return !items.value || items.value.length === 0
     })
 
     // Observa mudanças no carrinho e salva automaticamente no localStorage
     // Não salva durante a inicialização para evitar sobrescrever dados
+    // Usa flush: 'post' para evitar múltiplas chamadas durante atualizações
     watch(
         items,
         (newItems) => {
             // Só salva se não estiver inicializando
             if (!isInitializing) {
-                saveCartToStorage(newItems)
+                // Usa setTimeout para evitar múltiplas chamadas muito rápidas
+                clearTimeout(window._cartSaveTimeout)
+                window._cartSaveTimeout = setTimeout(() => {
+                    saveCartToStorage(newItems)
+                }, 100)
             }
         },
-        { deep: true } // Observa mudanças profundas (quantidade, etc)
+        { deep: true, flush: 'post' } // Observa mudanças profundas (quantidade, etc)
     )
 
     /**
@@ -133,6 +156,15 @@ export const useCartStore = defineStore('cart', () => {
                     return
                 }
 
+                // Atualiza propriedades do produto (pode ter mudado)
+                // Garante que imageUrl seja atualizado se existir no produto
+                if (product.imageUrl) {
+                    existingItem.imageUrl = product.imageUrl
+                }
+                existingItem.name = product.name || existingItem.name
+                existingItem.price = product.price !== undefined ? product.price : existingItem.price
+                existingItem.stock = product.stock !== undefined ? product.stock : existingItem.stock
+
                 // Se já existe e tem estoque, aumenta a quantidade
                 existingItem.quantity += 1
                 showSuccessToast(`${product.name} adicionado ao carrinho! (Quantidade: ${existingItem.quantity})`)
@@ -146,8 +178,14 @@ export const useCartStore = defineStore('cart', () => {
                 }
 
                 // Se não existe, adiciona novo item com quantidade 1
+                // Garante que imageUrl seja copiado explicitamente
                 items.value.push({
-                    ...product,
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    imageUrl: product.imageUrl || null,
+                    stock: product.stock,
+                    description: product.description,
                     quantity: 1
                 })
                 showSuccessToast(`${product.name} adicionado ao carrinho!`)
@@ -250,7 +288,7 @@ export const useCartStore = defineStore('cart', () => {
 
     /**
      * Finaliza a compra (checkout)
-     * Atualiza estoque no backend para cada produto
+     * Cria um pedido (Order) no backend via POST
      */
     async function checkout() {
         try {
@@ -269,29 +307,34 @@ export const useCartStore = defineStore('cart', () => {
             )
 
             if (result.isConfirmed) {
-                // Importa o service para atualizar estoque
-                const { updateProductStock } = await import('../Services/ProductsService')
+                // Importa o service para criar pedido
+                const { createOrder } = await import('../Services/OrderService')
 
                 try {
-                    // Atualiza estoque de cada produto no backend
-                    const updatePromises = items.value.map(async (item) => {
-                        if (item.stock !== undefined && item.id) {
-                            try {
-                                return await updateProductStock(item.id, item.quantity)
-                            } catch (error) {
-                                // Re-lança o erro com informações do produto
-                                const errorWithProduct = new Error(`Erro ao atualizar produto ${item.name || item.id}: ${error.message}`)
-                                errorWithProduct.originalError = error
-                                errorWithProduct.productId = item.id
-                                errorWithProduct.productName = item.name
-                                throw errorWithProduct
-                            }
-                        }
-                        return Promise.resolve()
-                    })
+                    // Prepara os dados do pedido
+                    // Monta os itens do pedido baseado nos itens do carrinho
+                    const orderItems = items.value.map(item => ({
+                        productId: item.id,
+                        quantity: item.quantity,
+                        price: item.price
+                    }))
 
-                    // Aguarda todas as atualizações
-                    await Promise.all(updatePromises)
+                    // Monta o objeto do pedido
+                    const orderData = {
+                        items: orderItems,
+                        total: totalPrice.value
+                    }
+
+                    if (import.meta.env.DEV) {
+                        console.log('Criando pedido:', orderData)
+                    }
+
+                    // Cria o pedido no backend
+                    const createdOrder = await createOrder(orderData)
+
+                    if (import.meta.env.DEV) {
+                        console.log('Pedido criado com sucesso:', createdOrder)
+                    }
 
                     // Mostra mensagem de sucesso
                     showSuccess(
@@ -307,12 +350,12 @@ export const useCartStore = defineStore('cart', () => {
                     window.dispatchEvent(new CustomEvent('cart-checkout-completed'))
 
                     return true
-                } catch (updateError) {
-                    // Trata erros de atualização de estoque
+                } catch (orderError) {
+                    // Trata erros de criação de pedido
                     let errorMessage = 'Não foi possível finalizar a compra.'
 
                     // Verifica se é erro de foreign key constraint
-                    const originalError = updateError.originalError || updateError
+                    const originalError = orderError.originalError || orderError
                     const errorStr = (originalError.message || '').toLowerCase()
                     const errorResponseData = originalError.response?.data
                     let errorDataString = ''
@@ -333,9 +376,20 @@ export const useCartStore = defineStore('cart', () => {
                         fullErrorString.includes('categoryid') ||
                         fullErrorString.includes('fk_products_categories') ||
                         fullErrorString.includes('cannot add or update')) {
-                        errorMessage = `Erro ao atualizar estoque: o produto "${updateError.productName || updateError.productId}" tem uma categoria inválida. Por favor, remova este produto do carrinho e tente novamente.`
-                    } else if (updateError.productName) {
-                        errorMessage = `Erro ao atualizar o produto "${updateError.productName}". Por favor, tente novamente.`
+                        errorMessage = `Erro ao criar pedido: um dos produtos tem uma categoria inválida. Por favor, remova o produto do carrinho e tente novamente.`
+                    } else if (fullErrorString.includes('stock') || fullErrorString.includes('estoque')) {
+                        errorMessage = `Erro ao criar pedido: não há estoque suficiente para um dos produtos. Verifique o carrinho e tente novamente.`
+                    } else if (errorResponseData && typeof errorResponseData === 'object') {
+                        // Tenta extrair mensagem mais específica do backend
+                        const backendMessage = errorResponseData.message || errorResponseData.title || errorResponseData.detail
+                        if (backendMessage) {
+                            errorMessage = `Erro ao criar pedido: ${backendMessage}`
+                        }
+                    }
+
+                    if (import.meta.env.DEV) {
+                        console.error('Erro ao criar pedido:', orderError)
+                        console.error('Dados do pedido:', orderData)
                     }
 
                     showError('Erro ao finalizar compra', errorMessage)

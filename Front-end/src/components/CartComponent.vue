@@ -36,16 +36,16 @@
         <router-link :to="`/productDetail/${item.id}`"
           class="flex items-center space-x-4 flex-1 w-full sm:w-auto cursor-pointer group hover:opacity-90 transition-opacity">
           <!-- Imagem do produto ou placeholder -->
-          <div class="relative">
-            <img v-if="item.imageUrl" :src="item.imageUrl" :alt="item.name"
-              class="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-lg shadow-md group-hover:shadow-lg transition-shadow duration-300">
+          <div class="relative w-20 h-20 sm:w-24 sm:h-24 flex-shrink-0">
+            <img v-if="item.imageUrl && item.imageUrl.trim() && !hasImageFailed(item.id)" 
+              :src="item.imageUrl" 
+              :alt="item.name"
+              class="w-full h-full object-cover rounded-lg shadow-md group-hover:shadow-lg transition-shadow duration-300"
+              @error="(e) => handleImageError(e, item.id)"
+              loading="lazy">
             <div v-else
-              class="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-gray-200 to-gray-300 rounded-lg flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow duration-300">
+              class="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 rounded-lg flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow duration-300">
               <i class="fa-solid fa-image text-3xl text-gray-400"></i>
-            </div>
-            <!-- Indicador de clique -->
-            <div class="absolute inset-0 bg-blue-500 bg-opacity-0 group-hover:bg-opacity-10 rounded-lg transition-all duration-300 flex items-center justify-center">
-              <i class="fa-solid fa-external-link-alt text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm"></i>
             </div>
           </div>
 
@@ -136,6 +136,7 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
 import { useCart } from '../composables/useCart'
 
 // Usa o composable do carrinho para acessar a store
@@ -149,6 +150,32 @@ const {
   decreaseQuantity, // Função para diminuir quantidade
   checkout         // Função para finalizar compra
 } = useCart()
+
+// Rastreia imagens com erro por item ID
+const failedImages = ref({})
+
+/**
+ * Verifica se a imagem de um item falhou ao carregar
+ */
+function hasImageFailed(itemId) {
+  return failedImages.value && failedImages.value[itemId] === true
+}
+
+/**
+ * Handler para erro ao carregar imagem
+ */
+function handleImageError(event, itemId) {
+  // Garante que failedImages.value é um objeto
+  if (!failedImages.value) {
+    failedImages.value = {}
+  }
+  // Marca a imagem deste item como falhou
+  failedImages.value[itemId] = true
+  
+  if (import.meta.env.DEV) {
+    console.log('Imagem falhou ao carregar para item:', itemId, event.target.src)
+  }
+}
 
 /**
  * Handler para finalizar a compra

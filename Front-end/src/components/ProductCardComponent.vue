@@ -21,15 +21,6 @@
       <p class="text-gray-600 text-sm mb-2 line-clamp-2 flex-1">
         {{ truncateText(product.description || 'Sem descrição disponível', 80) }}
       </p>
-
-      <!-- Quantidade em estoque disponível -->
-      <div class="mb-2">
-        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium"
-          :class="getStockClass(availableStock)">
-          <i class="fa-solid fa-box mr-1"></i>
-          Estoque: {{ product.stock !== undefined ? availableStock : 'Indisponível' }}
-        </span>
-      </div>
     </router-link>
 
     <!-- Preço e botão de ação -->
@@ -40,9 +31,9 @@
       </p>
 
       <!-- Botão de adicionar ao carrinho -->
-      <button @click.stop="handleAddToCart"
+      <button @click.stop.prevent="handleAddToCart"
         class="w-full bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors duration-200 font-semibold flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-        aria-label="Adicionar ao carrinho" :disabled="isOutOfStock">
+        aria-label="Adicionar ao carrinho" :disabled="isOutOfStock || isAddingToCart">
         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6" />
@@ -55,7 +46,7 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { useCart } from '../composables/useCart'
 
 // Props do componente
@@ -72,6 +63,9 @@ const props = defineProps({
 
 // Usa o composable do carrinho diretamente
 const { addToCart, items: cartItems } = useCart()
+
+// Flag para evitar cliques duplicados
+const isAddingToCart = ref(false)
 
 /**
  * Calcula estoque disponível considerando quantidade no carrinho
@@ -139,13 +133,25 @@ function handleImageError(event) {
  * Handler para adicionar produto ao carrinho
  * Usa o composable useCart que já mostra mensagens de feedback
  * Não emite evento para evitar duplicação
+ * Protegido contra cliques duplicados
  */
 function handleAddToCart() {
+  // Evita cliques duplicados
+  if (isAddingToCart.value) {
+    return
+  }
+
+  isAddingToCart.value = true
   try {
     // Adiciona ao carrinho usando a store diretamente
     addToCart(props.product)
   } catch (error) {
     // Erro já é tratado pela store
+  } finally {
+    // Libera após um pequeno delay para evitar duplo clique
+    setTimeout(() => {
+      isAddingToCart.value = false
+    }, 500)
   }
 }
 </script>

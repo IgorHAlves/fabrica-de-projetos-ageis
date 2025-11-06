@@ -125,9 +125,11 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
+import { useRoute, onBeforeRouteUpdate } from 'vue-router'
 import ProductCardComponent from '../components/ProductCardComponent.vue'
 import { getProducts } from '../Services/ProductsService'
 
+const route = useRoute()
 const featuredProducts = ref([])
 const isLoading = ref(false)
 
@@ -136,7 +138,14 @@ const isLoading = ref(false)
  * Filtra variações (produtos com idPai) para não mostrar na home
  */
 async function loadFeaturedProducts() {
+  // Evita múltiplas chamadas simultâneas
+  if (isLoadingHome) {
+    return
+  }
+
+  isLoadingHome = true
   isLoading.value = true
+  
   try {
     const data = await getProducts(1, 8, '')
     let items = data.items || []
@@ -147,16 +156,38 @@ async function loadFeaturedProducts() {
       return !idPai // Só mantém produtos que NÃO têm idPai
     })
     
+    // Remove produtos sem estoque (stock === 0 ou undefined)
+    items = items.filter(product => {
+      const stock = product.stock
+      return stock !== undefined && stock !== null && stock > 0
+    })
+    
     featuredProducts.value = items
   } catch (error) {
     featuredProducts.value = []
   } finally {
     isLoading.value = false
+    isLoadingHome = false
   }
 }
 
 onMounted(() => {
   loadFeaturedProducts()
+  
+  // Listener para atualizar produtos após checkout
+  window.addEventListener('cart-checkout-completed', loadFeaturedProducts)
+})
+
+// Flag para evitar múltiplas chamadas
+let isLoadingHome = false
+
+// Hook do Vue Router: recarrega quando a rota é atualizada (mesmo componente, rota diferente)
+let lastHomePath = route.path
+onBeforeRouteUpdate((to, from) => {
+  if (to.name === 'Home' && to.path !== from.path && to.path !== lastHomePath && !isLoadingHome) {
+    lastHomePath = to.path
+    loadFeaturedProducts()
+  }
 })
 </script>
 

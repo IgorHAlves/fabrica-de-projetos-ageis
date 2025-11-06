@@ -21,7 +21,6 @@ export const useProductsStore = defineStore('products', () => {
         try {
             const response = await api.get('Product')
             products.value = response.data.items || []
-            showSuccessToast('Produtos carregados com sucesso!')
         } catch (e) {
             errorMessage.value = 'Falha ao carregar produtos.'
             // Loga erro apenas em desenvolvimento

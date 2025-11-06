@@ -1,6 +1,6 @@
 <script setup>
-import { ref, onMounted, computed, watch } from 'vue';
-import { useRoute } from 'vue-router';
+import { ref, onMounted, computed } from 'vue';
+import { useRoute, onBeforeRouteUpdate } from 'vue-router';
 import ProductCardComponent from '../components/ProductCardComponent.vue';
 import { getProducts } from '../Services/ProductsService';
 import { useProductsStore } from '@/stores/products';
@@ -18,7 +18,7 @@ const { showSuccess, showError, showConfirm } = useAlerts();
 // Busca do query parameter
 const searchTerm = computed(() => route.query.search || '');
 
-// Produtos filtrados baseado na busca e sem variações (produtos com idPai)
+// Produtos filtrados baseado na busca, sem variações e sem produtos sem estoque
 const filteredProducts = computed(() => {
   let items = products.value.items || []
   
@@ -26,6 +26,12 @@ const filteredProducts = computed(() => {
   items = items.filter(product => {
     const idPai = product.idPai || product.IdPai || product.id_pai
     return !idPai // Só mantém produtos que NÃO têm idPai
+  })
+  
+  // Remove produtos sem estoque (stock === 0 ou undefined)
+  items = items.filter(product => {
+    const stock = product.stock
+    return stock !== undefined && stock !== null && stock > 0
   })
   
   // Aplica filtro de busca se houver
@@ -44,11 +50,21 @@ const filteredProducts = computed(() => {
   };
 });
 
+// Flag para evitar múltiplas chamadas simultâneas
+let isLoadingProducts = false
+
 /**
  * Carrega produtos da API com paginação e busca
  */
 async function carregarProdutos() {
+  // Evita múltiplas chamadas simultâneas
+  if (isLoadingProducts) {
+    return
+  }
+
+  isLoadingProducts = true
   isLoading.value = true
+  
   try {
     // Passa o termo de busca para a API
     const data = await getProducts(pageNumber.value, pageSize, searchTerm.value);
@@ -61,18 +77,33 @@ async function carregarProdutos() {
     products.value = { items: [], totalPages: 0 };
   } finally {
     isLoading.value = false
+    isLoadingProducts = false
   }
 }
 
-onMounted(carregarProdutos);
+onMounted(() => {
+  carregarProdutos();
+  
+  // Listener para atualizar produtos após checkout
+  window.addEventListener('cart-checkout-completed', carregarProdutos);
+});
 
-// Observa mudanças na rota (query parameters) e recarrega produtos se necessário
-watch(() => route.query, () => {
-  // Recarrega produtos quando a busca mudar
-  if (route.name === 'produtos') {
+// Hook do Vue Router: recarrega quando a rota é atualizada (mesmo componente, rota diferente)
+let lastRoutePath = route.path
+let lastRouteQuery = JSON.stringify(route.query)
+onBeforeRouteUpdate((to, from) => {
+  const toPath = to.path
+  const toQuery = JSON.stringify(to.query || {})
+  
+  // Só recarrega se realmente mudou
+  if (to.name === 'produtos' && 
+      (toPath !== lastRoutePath || toQuery !== lastRouteQuery) &&
+      !isLoadingProducts) {
+    lastRoutePath = toPath
+    lastRouteQuery = toQuery
     carregarProdutos();
   }
-}, { deep: true });
+});
 
 /**
  * Atualiza a lista de produtos
@@ -161,7 +192,7 @@ async function deletarProduto(product) {
       <div v-else-if="filteredProducts.items && filteredProducts.items.length"
         class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
         <div v-for="product in filteredProducts.items" :key="product.id" class="relative group">
-          <ProductCardComponent :product="product" @add="AdicionaraoCarrinho" />
+          <ProductCardComponent :product="product" />
 
           <!-- Botão de deletar -->
           <button @click="deletarProduto(product)"
@@ -227,3 +258,4 @@ async function deletarProduto(product) {
     </div>
   </div>
 </template>
+

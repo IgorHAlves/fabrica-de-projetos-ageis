@@ -11,7 +11,14 @@ export function useAlerts() {
             showError: (title, text = '') => alert(`ERRO - ${title}: ${text}`),
             showWarning: (title, text = '') => alert(`AVISO - ${title}: ${text}`),
             showInfo: (title, text = '') => alert(`INFO - ${title}: ${text}`),
-            showConfirm: (title, text = '') => confirm(`${title}: ${text}`),
+            showConfirm: (title, text = '', confirmText = 'Sim', cancelText = 'Não') => {
+                const result = confirm(`${title}: ${text}`)
+                return Promise.resolve({
+                    isConfirmed: result,
+                    isDismissed: !result,
+                    value: result
+                })
+            },
             showSuccessToast: (message) => console.log(`Toast: ${message}`),
             showErrorToast: (message) => console.error(`Toast Error: ${message}`),
             showLoading: (title = 'Carregando...') => console.log(`Loading: ${title}`),
@@ -30,7 +37,7 @@ export function useAlerts() {
             timer: 1500,
             timerProgressBar: true
         })
-        
+
     }
 
     // Alert de erro

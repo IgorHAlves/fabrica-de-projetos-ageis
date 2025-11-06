@@ -227,7 +227,7 @@
               
               <!-- Se não tem variações, adiciona direto -->
               <button v-else 
-                @click="handleAddToCart" 
+                @click.prevent="handleAddToCart" 
                 :disabled="isOutOfStock || isLoadingAdd"
                 class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-4 px-6 rounded-xl hover:from-blue-700 hover:to-indigo-700 focus:ring-4 focus:ring-blue-300 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 font-bold text-lg shadow-lg hover:shadow-xl transform hover:scale-[1.02] flex items-center justify-center"
                 aria-label="Adicionar ao carrinho">
@@ -386,7 +386,7 @@
 
         <!-- Footer do Modal -->
         <div class="border-t border-gray-200 p-6 bg-gray-50 flex items-center justify-between gap-4">
-          <div v-if="selectedVariationForModal !== null || selectedVariationForModal === null">
+          <div>
             <p class="text-sm text-gray-600">
               <span class="font-semibold text-gray-900">Selecionado:</span>
               {{ selectedVariationForModal ? selectedVariationForModal.name : product?.name }}
@@ -402,7 +402,7 @@
               class="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors font-semibold">
               Cancelar
             </button>
-            <button @click="handleAddVariationToCart"
+            <button @click.prevent="handleAddVariationToCart"
               :disabled="isLoadingAdd"
               class="px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all font-semibold shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2">
               <i v-if="isLoadingAdd" class="fa-solid fa-spinner fa-spin"></i>
@@ -418,7 +418,7 @@
 
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, onBeforeRouteUpdate } from 'vue-router'
 import { getProductById, getProductVariations } from '../Services/ProductsService'
 import { useCart } from '../composables/useCart'
 import { useAlerts } from '../composables/useAlerts'
@@ -480,18 +480,35 @@ function handleImageError(event) {
   event.target.src = 'https://via.placeholder.com/600x600?text=Sem+Imagem'
 }
 
+// Flag para evitar múltiplas chamadas simultâneas
+let isLoadingData = false
+
 // Função para carregar produto e variações
 async function loadProductData() {
+  // Evita múltiplas chamadas simultâneas
+  if (isLoadingData || isLoading.value) {
+    return
+  }
+
+  isLoadingData = true
   isLoading.value = true
   error.value = null
   variations.value = []
   parentProduct.value = null
   
   try {
+    const productId = route.params.id
+    if (!productId) {
+      error.value = 'ID do produto não fornecido.'
+      isLoading.value = false
+      return
+    }
+
     // Carrega o produto
-    product.value = await getProductById(route.params.id)
+    product.value = await getProductById(productId)
     if (!product.value) {
       error.value = 'O produto solicitado não foi encontrado.'
+      isLoading.value = false
       return
     }
     
@@ -518,11 +535,13 @@ async function loadProductData() {
     // Busca variações do produto pai (pode ser do próprio produto ou do pai)
     isLoadingVariations.value = true
     try {
-      variations.value = await getProductVariations(parentId)
+      const loadedVariations = await getProductVariations(parentId)
       
       // Se o produto atual é uma variação, filtra ele mesmo da lista
       if (idPai) {
-        variations.value = variations.value.filter(v => v.id !== product.value.id)
+        variations.value = loadedVariations.filter(v => v.id !== product.value.id)
+      } else {
+        variations.value = loadedVariations
       }
       
       if (import.meta.env.DEV) {
@@ -543,6 +562,7 @@ async function loadProductData() {
     }
   } finally {
     isLoading.value = false
+    isLoadingData = false
   }
 }
 
@@ -551,9 +571,14 @@ onMounted(() => {
   loadProductData()
 })
 
-// Recarrega os dados quando a rota mudar (ao clicar em uma variação)
-watch(() => route.params.id, () => {
-  loadProductData()
+// Hook do Vue Router: recarrega quando a rota é atualizada (mesmo componente, rota diferente)
+let lastProductId = route.params.id
+onBeforeRouteUpdate(async (to, from) => {
+  // Se o ID do produto mudou e não está carregando, recarrega
+  if (to.params.id !== from.params.id && to.params.id !== lastProductId && !isLoadingData) {
+    lastProductId = to.params.id
+    await loadProductData()
+  }
 })
 
 /**
@@ -561,7 +586,7 @@ watch(() => route.params.id, () => {
  * Usa a store do carrinho via composable
  */
 async function handleAddToCart() {
-  if (!product.value || isOutOfStock.value) return
+  if (!product.value || isOutOfStock.value || isLoadingAdd.value) return
 
   isLoadingAdd.value = true
   try {
@@ -588,16 +613,18 @@ async function handleAddToCart() {
  * Handler para adicionar variação selecionada ao carrinho
  */
 async function handleAddVariationToCart() {
+  if (isLoadingAdd.value) return
+  
   const productToAdd = selectedVariationForModal.value || product.value
   
   if (!productToAdd) return
   
   // Verifica estoque
   const stockToCheck = selectedVariationForModal.value 
-    ? selectedVariationForModal.value.stock 
+    ? (selectedVariationForModal.value.stock !== undefined ? selectedVariationForModal.value.stock : 0)
     : availableStock.value
     
-  if (stockToCheck === 0) {
+  if (stockToCheck === 0 || stockToCheck === undefined) {
     await showErrorAlert('Produto Esgotado', 'Esta variação está esgotada.')
     return
   }
