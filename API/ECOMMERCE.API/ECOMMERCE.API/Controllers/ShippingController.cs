@@ -1,5 +1,4 @@
 using ECOMMERCE.CORE.Interfaces;
-using ECOMMERCE.CORE.Rest;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ECOMMERCE.API.Controllers;
@@ -21,12 +20,12 @@ public class ShippingController : ControllerBase
     {
         try
         {
-            var shipping = await _shippingService.SearchAsync(cep);
-            if (shipping == null)
+            var address = await _shippingService.GetShipping(cep);
+            if (address == null)
             {
                 return NotFound($"CEP {cep} não encontrado.");
             }
-            return Ok(shipping);
+            return Ok(address);
         }
         catch (Exception e)
         {
