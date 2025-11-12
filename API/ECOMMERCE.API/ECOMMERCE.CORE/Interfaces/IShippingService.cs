@@ -1,9 +1,8 @@
-using ECOMMERCE.CORE.DTO;
-using ECOMMERCE.CORE.Rest;
+using ECOMMERCE.CORE.DTO.Shipping;
 
 namespace ECOMMERCE.CORE.Interfaces;
 
 public interface IShippingService
-{
-    public Task<AddressDTO?> SearchAsync(string cep);
+{ 
+    public Task<CreateShippingDTO> GetShipping(string cep);
 }

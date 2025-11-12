@@ -2,7 +2,6 @@
 using ECOMMERCE.API.Interfaces;
 using ECOMMERCE.API.Repositories;
 using ECOMMERCE.CORE.Interfaces;
-using ECOMMERCE.CORE.Rest;
 using ECOMMERCE.CORE.Services;
 using ECOMMERCE.DATA.Data;
 using ECOMMERCE.DATA.Interfaces;
@@ -13,6 +12,7 @@ using Keycloak.AuthServices.Sdk.Admin;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using ViaCep.Rest;
 using IAuthorizationService = ECOMMERCE.CORE.Interfaces.IAuthorizationService;
 
 namespace ECOMMERCE.API
@@ -52,7 +52,7 @@ namespace ECOMMERCE.API
             
             builder.Services.AddScoped<ICouponService, CouponService>();
             
-            builder.Services.AddScoped<IViaCep, ViaCepApi>();
+            builder.Services.AddScoped<ViaCepApi, ViaCepApi>();
             
             builder.Services.AddScoped<IShippingService, ShippingService>();
             
