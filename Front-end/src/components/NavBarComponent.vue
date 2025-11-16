@@ -9,9 +9,9 @@
         </div>
 
         <!-- Barra de pesquisa -->
-        <form class="flex-1 max-w-md mx-4">
+        <form class="flex-1 max-w-md mx-4" @submit.prevent="search()">
             <div class="relative text-gray-600 focus-within:text-gray-400">
-                <input type="text" placeholder="Buscar produtos..." class="w-full border border-gray-300 rounded-full py-2 px-4 pl-10 
+                <input type="text" v-model="searchText" placeholder="Buscar produtos..." class="w-full border border-gray-300 rounded-full py-2 px-4 pl-10 
                  focus:outline-none focus:ring-2 focus:ring-gray-500" />
                 <span class="absolute inset-y-0 left-0 flex items-center pl-3">
                     <svg class="h-5 w-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -77,6 +77,23 @@
 </template>
 
 <script setup>
-import router from '@/router';
-import { RouterLink, useRouter } from 'vue-router';
+import { routeLocationKey, RouterLink, useRouter } from 'vue-router';
+import { useProductsStore } from '@/stores/ProductStore';
+import { ref } from 'vue';
+
+
+const searchText = ref('')
+const store = useProductsStore()
+const router = useRouter()
+
+function search(){
+    store.setSearchName(searchText.value)
+
+    if (router.currentRoute.value.name != 'produtos'){
+        router.push({name:'produtos'})
+    }
+
+    store.pageNumber = 1
+    store.fetchProducts()
+}
 </script>
