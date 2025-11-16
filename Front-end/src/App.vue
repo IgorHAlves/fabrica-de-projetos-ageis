@@ -13,10 +13,6 @@ import { RouterLink, RouterView } from 'vue-router'
   <Footer />
 </template>
 
-
-
-
-
 <script>
 import NavBar from './components/NavBarComponent.vue'
 import Footer from './components/FooterComponent.vue'

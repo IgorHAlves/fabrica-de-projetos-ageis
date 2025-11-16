@@ -4,10 +4,10 @@
 
     <div class="container mx-auto bg-blue-100 p-8 rounded-lg shadow">
       <div
-        v-if="products.items && products.items.length"
+        v-if="store.items && store.items.length"
         class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8"
       >
-        <div v-for="product in products.items" :key="product.id" class="relative group">
+        <div v-for="product in store.items" :key="product.id" class="relative group">
           <ProductCardComponent :product="product" @add="AdicionaraoCarrinho" />
 
           <!-- Botão de deletar -->
@@ -34,7 +34,7 @@
       <div class="flex justify-center gap-4 mt-8">
         <button
           @click="anterior"
-          :disabled="pageNumber === 1"
+          :disabled="store.pageNumber === 1"
           title="Anterior"
           class="px-4 py-2 bg-white text-gray-700 rounded hover:bg-gray-400 transition disabled:opacity-50"
         >
@@ -50,7 +50,7 @@
 
         <button
           @click="proximo"
-          :disabled="pageNumber === products.totalPages"
+          :disabled="store.pageNumber === store.totalPages"
           title="Próximo"
           class="px-4 py-2 bg-white text-gray-700 rounded hover:bg-gray-400 transition disabled:opacity-50"
         >
@@ -75,46 +75,27 @@
 
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import {onMounted } from 'vue';
 import ProductCardComponent from '../components/ProductCardComponent.vue';
-import { getProducts } from '../Services/ProductsService';
 import { useProductsStore } from '@/stores/products';
 import { useAlerts } from '../composables/useAlerts';
-
-const products = ref({ items: [], totalPages: 0 });
-const pageNumber = ref(1);
-const pageSize = 12;
 
 const store = useProductsStore();
 const { showSuccess, showError, showConfirm } = useAlerts();
 
-async function carregarProdutos() {
-  try {
-    const data = await getProducts(pageNumber.value, pageSize);
-    products.value = data;
-    console.log('Produtos carregados:', products.value);
-  } catch (error) {
-    console.error('Erro ao carregar produtos:', error);
-  }
-}
-
-onMounted(carregarProdutos);
-
-async function atualizarProdutos() {
-  await carregarProdutos();
-}
+onMounted(store.fetchProducts);
 
 function proximo() {
-  if (pageNumber.value < products.value.totalPages) {
-    pageNumber.value++;
-    atualizarProdutos();
+  if (store.pageNumber < store.totalPages) {
+    store.pageNumber++;
+    store.fetchProducts();
   }
 }
 
 function anterior() {
-  if (pageNumber.value > 1) {
-    pageNumber.value--;
-    atualizarProdutos();
+  if (store.pageNumber > 1) {
+    store.pageNumber--;
+    store.fetchProducts();
   }
 }
 

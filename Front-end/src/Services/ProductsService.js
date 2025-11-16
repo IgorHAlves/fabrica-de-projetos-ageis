@@ -1,24 +1,17 @@
 import api from './Axios';
 
 
-export async function getProducts(pageNumber = 1, pageSize = 12) {
-
+export async function getProducts(pageNumber = 1, pageSize = 12, name = '') {
   try {
+    const params = { pageNumber, pageSize }
+    if (name) params.name = name
 
-
-    const response = await api.get('Product', { params: { pageNumber, pageSize } });
-
-
-    return response.data;
-
+    const response = await api.get('Product', { params })
+    return response.data
   } catch (error) {
-
-    console.error('Erro ao buscar produtos:', error);
-
-    return [];
-
+    console.error('Erro ao buscar produtos:', error)
+    return { items: [], totalPages: 0 }
   }
-
 }
 
 export async function createProduct(productData) {
