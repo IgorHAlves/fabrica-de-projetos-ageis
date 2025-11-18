@@ -12,6 +12,7 @@ using Keycloak.AuthServices.Sdk.Admin;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using Pix;
 using ViaCep.Rest;
 using IAuthorizationService = ECOMMERCE.CORE.Interfaces.IAuthorizationService;
 
@@ -55,6 +56,8 @@ namespace ECOMMERCE.API
             builder.Services.AddScoped<ViaCepApi, ViaCepApi>();
             
             builder.Services.AddScoped<IShippingService, ShippingService>();
+
+            builder.Services.AddScoped<PixService, PixService>();
             
             string mySqlConnection = builder.Configuration.GetConnectionString("DefaultConnection");
 
