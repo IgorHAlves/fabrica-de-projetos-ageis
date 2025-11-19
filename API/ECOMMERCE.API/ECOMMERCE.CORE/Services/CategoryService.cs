@@ -20,12 +20,20 @@ public class CategoryService : ICategoryService
 
     public Guid CreateCategory(CreateCategoryDTO dto)
     {
-        Category newCategory = new Category();
-        newCategory.Name = dto.Name;
-        newCategory.Description = dto.Description;
+        try
+        {
+            Category newCategory = new Category();
+            newCategory.Name = dto.Name;
+            newCategory.Description = dto.Description;
 
-        Category category = _categoryRepository.CreateCategory(newCategory); 
-        return category.Id;
+            Category category = _categoryRepository.CreateCategory(newCategory); 
+            return category.Id;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Erro ao criar categoria",  ex);
+        }
+        
     }
 
     public GetCategoriesDTO GetCategory(Guid id)

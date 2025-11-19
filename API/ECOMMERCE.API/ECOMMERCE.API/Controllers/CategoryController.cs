@@ -17,7 +17,7 @@ public class CategoryController : Controller
     }
 
     // [Authorize]
-    [HttpGet("id:guid")]
+    [HttpGet("{id:guid}")]
     public IActionResult GetCategory([FromRoute] Guid id)
     {
         GetCategoriesDTO getCategory = _categoryService.GetCategory(id);
@@ -39,14 +39,14 @@ public class CategoryController : Controller
         return Ok(category);
     }
 
-    [HttpPut]
+    [HttpPut("{ig:guid}")]
     public IActionResult PutCategory([FromBody] UpdateCategoriesDTO dto)
     {
         var updateCategory = _categoryService.UpdateCategory(dto);
         return Ok(updateCategory);
     }
 
-    [HttpDelete("id:guid")]
+    [HttpDelete("{ig:guid}")]
     public IActionResult DeleteCategory([FromRoute] Guid id)
     {
         var deleteCategory = _categoryService.DeleteCategory(id);
