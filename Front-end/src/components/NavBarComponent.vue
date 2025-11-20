@@ -63,6 +63,12 @@
                 <RouterLink to="/home" class="hover:text-blue-500">Home</RouterLink>
             </li>
             <li>
+                <RouterLink to="/categorias" class="hover:text-blue-500">Categoria</RouterLink>
+            </li>
+            <li>
+                <RouterLink to="/admin/categorias/nova" class="hover:text-blue-500">Cadastrar Categoria</RouterLink>
+            </li>
+            <li>
                 <RouterLink to="/produtos" class="hover:text-blue-500">Produtos</RouterLink>
             </li>
             <li>
