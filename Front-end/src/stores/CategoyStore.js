@@ -32,7 +32,11 @@ export const useCategorysStore = defineStore('categories', {
                 description: this.description
             }
             const id = await createCategory(categoryData)
-            console.log(id);
+
+            this.name = ''
+            this.description = ''
+
+            return id;
         }
     }
 })
