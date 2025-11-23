@@ -33,7 +33,7 @@
             </router-link>
 
 
-            <div class="relative inline-block group duration-800 ml-4 ">
+            <div class="relative inline-block group ml-4">
                 <button
                     class="ml-6 flex items-center gap-2 p-3 rounded-full border border-gray-800 border-2 bg-gray-600 hover:bg-blue-800 shadow mr-20 text-white transition duration-300 hover:shadow-[0_0_24px_blue]">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -44,13 +44,26 @@
                 </button>
 
                 <div
-                    class="absolute hidden group-hover:block right-0 mt-2 w-44 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 shadow-lg z-20 border border-blue-600 mt-0 font-bold">
-                    <a href="https://practicetestautomation.com/practice-test-login/"
-                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-400 z-20 hover:shadow-2xl transition border-1 border-black ">Login</a>
-                    <a href="http://localhost:5173/home"
-                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-400 z-20 hover:shadow-2xl transition border-1 border-black">Sair</a>
+                    class="absolute opacity-0 invisible group-hover:opacity-100 group-hover:visible right-0 mt-2 w-44 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 z-20 border border-blue-600 font-bold transition-all duration-200">
+                    <div
+    class="absolute opacity-0 invisible group-hover:opacity-100 group-hover:visible right-0 mt-2 w-44 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 z-20 border border-blue-600 font-bold transition-all duration-200">
+    
+    <button 
+        @click="login"
+        class="w-full text-left block px-4 py-2 text-sm text-gray-700 hover:bg-gray-400">
+        Login
+    </button>
+
+    <button 
+        @click="logout"
+        class="w-full text-left block px-4 py-2 text-sm text-gray-700 hover:bg-gray-400">
+        Sair
+    </button>
+</div>
+
                 </div>
             </div>
+
 
         </div>
     </nav>
@@ -86,7 +99,7 @@
 import { routeLocationKey, RouterLink, useRouter } from 'vue-router';
 import { useProductsStore } from '@/stores/ProductStore';
 import { ref } from 'vue';
-
+import { getCurrentInstance } from 'vue'
 
 const searchText = ref('')
 const store = useProductsStore()
@@ -102,4 +115,17 @@ function search(){
     store.pageNumber = 1
     store.fetchProducts()
 }
+
+//keycloak
+const { appContext } = getCurrentInstance()
+const keycloak = appContext.config.globalProperties.$keycloak
+
+const login = () => {
+  keycloak.login({ redirectUri: window.location.origin })
+}
+
+const logout = () => {
+  keycloak.logout({ redirectUri: window.location.origin })
+}
+
 </script>

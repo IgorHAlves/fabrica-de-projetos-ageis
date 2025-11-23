@@ -17,7 +17,7 @@ public class UserController : Controller
         _userService = userService;
     }
 
-    // [Authorize]
+    [Authorize]
     [HttpGet]
     public async Task<IActionResult> VerifyUser()
     {
