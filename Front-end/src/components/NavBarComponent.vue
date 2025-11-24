@@ -133,13 +133,13 @@
                     Gerenciar Cupons
                 </RouterLink>
             </li>
-            <li><a href="/about" class="hover:text-blue-500">Sobre</a></li>
+            <li><RouterLink to="/sobre" class="hover:text-blue-500">Sobre</RouterLink></li>
         </ul>
     </nav>
 </template>
 <script setup>
 import { ref, watch } from 'vue'
-import { RouterLink, useRouter, useRoute } from 'vue-router'
+import { RouterLink, useRoute, useRouter } from 'vue-router'
 import { useCart } from '../composables/useCart'
 import { useDebounce } from '../composables/useDebounce'
 import { useSearchHistory } from '../composables/useSearchHistory'
