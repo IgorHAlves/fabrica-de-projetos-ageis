@@ -1,5 +1,5 @@
 <template>
-    <nav class="flex justify-between items-center p-4 bg-white shadow border-b mt-2 shadow hover:shadow-lg transition">
+    <nav class="flex justify-between items-center p-4 bg-white shadow border-b hover:shadow-lg transition">
 
         <!-- Logo -->
         <div class="flex items-center gap-4">
@@ -76,66 +76,28 @@
                     {{ totalItems > 99 ? '99+' : totalItems }}
                 </span>
             </router-link>
-
-
-
-
-
-
-
-
-            <button type="button" data-target="dropdown-with-icon"
-                class="dropdown-toggle inline-flex justify-center items-center gap-2 py-1 m-1 px-4 text-sm bg-black text-white rounded-full cursor-pointer font-semibold text-center shadow-xs transition-all duration-500 hover:bg-gray-700 hover:text">
-
-
-                Login
-
-
-                <!-- <svg class="dropdown-open:rotate-180 w-2.5 h-2.5 text-white" width="16" height="16" viewBox="0 0 16 16"
-
-
-          fill="none" xmlns="http://www.w3.org/2000/svg">
-
-
-          <path d="M2 5L8.16086 10.6869C8.35239 10.8637 8.64761 10.8637 8.83914 10.6869L15 5" stroke="currentColor"
-
-
-            stroke-width="2" stroke-linecap="round"></path>
-
-
-        </svg> -->
-
-
-            </button>
-
-
-
-
         </div>
     </nav>
-
+    
     <!-- Barra(rotas) -->
     <nav
-        class="flex justify-center gap-8 items-center p-4 bg-white shadow font-semibold border-b mt-2 shadow hover:shadow-lg transition">
-        <ul class="flex gap-14 items-center">
-            <li>
-                <RouterLink to="/" class="hover:text-blue-500">Home</RouterLink>
-            </li>
-            <li>
-                <RouterLink to="/produtos" class="hover:text-blue-500">Produtos</RouterLink>
-            </li>
-            <li>
-                <RouterLink to="/admin/produtos/novo" class="hover:text-blue-500">Cadastrar Produto</RouterLink>
-            </li>
-            <li>
-                <RouterLink to="/admin/cupons" class="hover:text-blue-500">
-                    <i class="fa-solid fa-ticket mr-1"></i>
-                    Gerenciar Cupons
-                </RouterLink>
-            </li>
-            <li><RouterLink to="/sobre" class="hover:text-blue-500">Sobre</RouterLink></li>
-        </ul>
-    </nav>
+    class="flex justify-center gap-8 items-center p-4 bg-white shadow font-semibold border-b mt-2 shadow hover:shadow-lg transition">
+    <ul class="flex gap-14 items-center">
+        <li>
+            <RouterLink to="/" class="hover:text-blue-500">Home</RouterLink>
+        </li>
+        <li>
+            <RouterLink to="/produtos" class="hover:text-blue-500">Produtos</RouterLink>
+        </li>
+        <li><RouterLink to="/sobre" class="hover:text-blue-500">Sobre</RouterLink></li>
+        <li>
+            <RouterLink to="/admin/dashboard" class="hover:text-blue-500">
+                <i class="fa-solid fa-shield-halved mr-1"></i>
+                Painel Admin
+            </RouterLink>
+        </li>
+    </ul>
+</nav>
 </template>
 <script setup>
 import { ref, watch } from 'vue'

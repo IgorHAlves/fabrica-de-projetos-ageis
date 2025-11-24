@@ -1,10 +1,10 @@
 <script setup>
-import { ref, onMounted, computed } from 'vue';
-import { useRoute, onBeforeRouteUpdate } from 'vue-router';
-import ProductCardComponent from '../components/ProductCardComponent.vue';
-import { getProducts } from '../Services/ProductsService';
 import { useProductsStore } from '@/stores/products';
+import { computed, onMounted, ref } from 'vue';
+import { onBeforeRouteUpdate, useRoute } from 'vue-router';
+import ProductCardComponent from '../components/ProductCardComponent.vue';
 import { useAlerts } from '../composables/useAlerts';
+import { getProducts } from '../Services/ProductsService';
 
 const route = useRoute();
 const products = ref({ items: [], totalPages: 0 });
@@ -46,31 +46,23 @@ const filteredProducts = computed(() => {
   return {
     ...products.value,
     items: items,
-    totalItems: items.length // Atualiza contagem total
+    totalItems: items.length
   };
 });
 
 // Flag para evitar múltiplas chamadas simultâneas
 let isLoadingProducts = false
 
-/**
- * Carrega produtos da API com paginação e busca
- */
 async function carregarProdutos() {
-  // Evita múltiplas chamadas simultâneas
-  if (isLoadingProducts) {
-    return
-  }
+  if (isLoadingProducts) return
 
   isLoadingProducts = true
   isLoading.value = true
   
   try {
-    // Passa o termo de busca para a API
     const data = await getProducts(pageNumber.value, pageSize, searchTerm.value);
     products.value = data;
   } catch (error) {
-    // Em caso de erro, mostra mensagem apenas se não for erro de rede esperado
     if (error.response) {
       showError('Erro ao carregar produtos', 'Não foi possível carregar a lista de produtos.')
     }
@@ -83,19 +75,15 @@ async function carregarProdutos() {
 
 onMounted(() => {
   carregarProdutos();
-  
-  // Listener para atualizar produtos após checkout
   window.addEventListener('cart-checkout-completed', carregarProdutos);
 });
 
-// Hook do Vue Router: recarrega quando a rota é atualizada (mesmo componente, rota diferente)
 let lastRoutePath = route.path
 let lastRouteQuery = JSON.stringify(route.query)
 onBeforeRouteUpdate((to, from) => {
   const toPath = to.path
   const toQuery = JSON.stringify(to.query || {})
   
-  // Só recarrega se realmente mudou
   if (to.name === 'produtos' && 
       (toPath !== lastRoutePath || toQuery !== lastRouteQuery) &&
       !isLoadingProducts) {
@@ -105,16 +93,10 @@ onBeforeRouteUpdate((to, from) => {
   }
 });
 
-/**
- * Atualiza a lista de produtos
- */
 async function atualizarProdutos() {
   await carregarProdutos();
 }
 
-/**
- * Navega para a próxima página
- */
 function proximo() {
   if (pageNumber.value < products.value.totalPages) {
     pageNumber.value++;
@@ -122,9 +104,6 @@ function proximo() {
   }
 }
 
-/**
- * Navega para a página anterior
- */
 function anterior() {
   if (pageNumber.value > 1) {
     pageNumber.value--;
@@ -132,21 +111,6 @@ function anterior() {
   }
 }
 
-/**
- * Função mantida para compatibilidade com eventos @add
- * Nota: O ProductCardComponent agora adiciona diretamente ao carrinho,
- * então esta função não é mais necessária mas é mantida para evitar erros
- * @param {Object} product - Produto a ser adicionado
- */
-function AdicionaraoCarrinho(product) {
-  // Não faz nada - o componente já adiciona diretamente via useCart
-  // Mantida apenas para não quebrar se algum componente ainda usar @add
-}
-
-/**
- * Deleta um produto após confirmação
- * @param {Object} product - Produto a ser deletado
- */
 async function deletarProduto(product) {
   const result = await showConfirm(
     'Deletar Produto',
@@ -158,7 +122,6 @@ async function deletarProduto(product) {
   if (result.isConfirmed) {
     const success = await store.deleteProduct(product.id);
     if (success) {
-      // Atualiza a lista local sem precisar recarregar toda a página
       products.value.items = products.value.items.filter(p => p.id !== product.id);
       showSuccess('Produto deletado com sucesso!');
     } else {
@@ -169,92 +132,88 @@ async function deletarProduto(product) {
 </script>
 
 <template>
-  <div class="max-w-7xl mx-auto p-4">
-    <h1 class="text-3xl font-bold mb-4">Lista de Produtos</h1>
+  <div class="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-5xl font-extrabold mb-4">
+          <i class="fa-solid fa-store mr-3"></i>
+          Nossos Produtos
+        </h1>
+        <p class="text-xl text-blue-100 max-w-2xl mx-auto">
+          Explore nossa coleção completa de produtos incríveis
+        </p>
+      </div>
+    </section>
 
-    <!-- Mostra termo de busca se houver -->
-    <div v-if="searchTerm" class="mb-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
-      <p class="text-gray-700">
-        <i class="fa-solid fa-magnifying-glass mr-2 text-blue-500"></i>
-        Buscando por: <span class="font-semibold text-blue-600">"{{ searchTerm }}"</span>
-        <span class="text-sm text-gray-500 ml-2">({{ filteredProducts.items?.length || 0 }} resultado(s))</span>
-      </p>
+    <!-- Search Result Banner -->
+    <div v-if="searchTerm" class="bg-white border-b border-gray-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div class="flex items-center justify-between">
+          <p class="text-gray-700">
+            <i class="fa-solid fa-magnifying-glass mr-2 text-blue-500"></i>
+            Buscando por: <span class="font-semibold text-blue-600">"{{ searchTerm }}"</span>
+            <span class="text-sm text-gray-500 ml-2">({{ filteredProducts.items?.length || 0 }} resultado(s))</span>
+          </p>
+        </div>
+      </div>
     </div>
 
-    <div class="container mx-auto bg-blue-100 p-8 rounded-lg shadow">
-      <!-- Estado de carregamento -->
-      <div v-if="isLoading" class="text-center py-12">
-        <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 mb-4"></div>
-        <p class="text-gray-600">Carregando produtos...</p>
-      </div>
+    <!-- Products Section -->
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Loading State -->
+        <div v-if="isLoading" class="text-center py-12">
+          <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 mb-4"></div>
+          <p class="text-gray-600">Carregando produtos...</p>
+        </div>
 
-      <!-- Lista de produtos -->
-      <div v-else-if="filteredProducts.items && filteredProducts.items.length"
-        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-        <div v-for="product in filteredProducts.items" :key="product.id" class="relative group">
-          <ProductCardComponent :product="product" />
+        <!-- Products Grid -->
+        <div v-else-if="filteredProducts.items && filteredProducts.items.length"
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div v-for="product in filteredProducts.items" :key="product.id" class="relative group">
+            <ProductCardComponent :product="product" />
 
-          <!-- Botão de deletar -->
-          <button @click="deletarProduto(product)"
-            class="absolute top-2 right-2 bg-red-500 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-red-600"
-            title="Deletar produto" aria-label="Deletar produto">
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-            </svg>
+            <!-- Delete Button (Admin Only) -->
+            <button @click="deletarProduto(product)"
+              class="absolute top-2 right-2 bg-red-500 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-red-600"
+              title="Deletar produto" aria-label="Deletar produto">
+              <i class="fa-solid fa-trash text-sm"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Empty State -->
+        <div v-else class="text-center py-12">
+          <i class="fa-solid fa-box-open text-6xl text-gray-300 mb-4"></i>
+          <p class="text-gray-600 text-lg mb-2">
+            {{ searchTerm ? 'Nenhum produto encontrado para sua busca' : 'Nenhum produto disponível' }}
+          </p>
+          <p v-if="searchTerm" class="text-gray-500 text-sm">
+            Tente buscar por outros termos ou navegue por todas as categorias
+          </p>
+        </div>
+
+        <!-- Pagination -->
+        <div v-if="filteredProducts.items && filteredProducts.items.length > 0 && products.totalPages > 1"
+          class="flex justify-center items-center gap-4 mt-12">
+          <button @click="anterior" :disabled="pageNumber === 1"
+            class="px-6 py-3 bg-white border border-gray-300 rounded-lg font-semibold text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 shadow-sm hover:shadow">
+            <i class="fa-solid fa-chevron-left mr-2"></i>
+            Anterior
+          </button>
+
+          <span class="text-gray-700 font-medium">
+            Página {{ pageNumber }} de {{ products.totalPages }}
+          </span>
+
+          <button @click="proximo" :disabled="pageNumber >= products.totalPages"
+            class="px-6 py-3 bg-white border border-gray-300 rounded-lg font-semibold text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 shadow-sm hover:shadow">
+            Próximo
+            <i class="fa-solid fa-chevron-right ml-2"></i>
           </button>
         </div>
       </div>
-
-      <!-- Estado vazio: quando não há produtos (e não está carregando) -->
-      <div v-else-if="!isLoading" class="text-center py-12">
-        <i class="fa-solid fa-box-open mx-auto text-6xl text-gray-400 mb-4"></i>
-        <p class="text-gray-500 text-lg font-semibold">
-          {{ searchTerm ? 'Nenhum produto encontrado para "' + searchTerm + '"' : 'Nenhum produto encontrado' }}
-        </p>
-        <p class="text-gray-400 text-sm mt-2">
-          <template v-if="searchTerm">
-            Tente buscar com outro termo ou limpe a busca.
-          </template>
-          <template v-else>
-            Verifique se o backend está rodando ou tente novamente mais tarde.
-          </template>
-        </p>
-        <button v-if="searchTerm" @click="$router.push('/produtos')"
-          class="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
-          Limpar busca
-        </button>
-      </div>
-
-      <!-- Paginação -->
-      <div v-if="filteredProducts.items && filteredProducts.items.length > 0 && products.totalPages > 1 && !searchTerm"
-        class="flex justify-center items-center gap-4 mt-8">
-        <!-- Botão Anterior -->
-        <button @click="anterior" :disabled="pageNumber === 1" title="Página anterior" aria-label="Página anterior"
-          class="px-4 py-2 bg-white text-gray-700 rounded-lg hover:bg-gray-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 shadow-sm">
-          <svg viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
-            <path fill-rule="evenodd" clip-rule="evenodd"
-              d="M11.78 5.22a.75.75 0 0 1 0 1.06L8.06 10l3.72 3.72a.75.75 0 1 1-1.06 1.06l-4.25-4.25a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0z" />
-          </svg>
-          Anterior
-        </button>
-
-        <!-- Indicador de página -->
-        <span class="text-gray-600 font-semibold">
-          Página {{ pageNumber }} de {{ products.totalPages }}
-        </span>
-
-        <!-- Botão Próximo -->
-        <button @click="proximo" :disabled="pageNumber === products.totalPages" title="Próxima página"
-          aria-label="Próxima página"
-          class="px-4 py-2 bg-white text-gray-700 rounded-lg hover:bg-gray-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 shadow-sm">
-          Próximo
-          <svg viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
-            <path fill-rule="evenodd" clip-rule="evenodd"
-              d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06z" />
-          </svg>
-        </button>
-      </div>
-    </div>
+    </section>
   </div>
 </template>

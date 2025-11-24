@@ -82,12 +82,19 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useProductForm } from '../composables/useProductForm'
 import ProductCategorySelectComponent from './ProductCategorySelectComponent.vue'
 import ProductImageUploadComponent from './ProductImageUploadComponent.vue'
 import ProductParentSelectComponent from './ProductParentSelectComponent.vue'
-import { useProductForm } from '../composables/useProductForm'
 
-const { form, errors, touched, isLoading, validate, markAsTouched, submitForm } = useProductForm()
+const props = defineProps({
+  productId: {
+    type: String,
+    default: null
+  }
+})
+
+const { form, errors, touched, isLoading, validate, markAsTouched, submitForm } = useProductForm(props.productId)
 
 const uploadProgress = ref(0)
 

@@ -244,32 +244,6 @@
           </div>
         </div>
       </div>
-
-
-      <!-- Seção de informações adicionais -->
-      <div class="mt-8 bg-white rounded-2xl shadow-xl p-6 lg:p-8">
-        <h2 class="text-2xl font-bold text-gray-900 mb-4">
-          <i class="fa-solid fa-info-circle mr-2 text-blue-600"></i>
-          Informações do Produto
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div class="p-4 bg-gray-50 rounded-lg">
-            <p class="text-sm text-gray-500 mb-1">ID do Produto</p>
-            <p class="font-semibold text-gray-900">{{ product.id }}</p>
-          </div>
-          <div class="p-4 bg-gray-50 rounded-lg">
-            <p class="text-sm text-gray-500 mb-1">Estoque Disponível</p>
-            <p class="font-semibold text-gray-900">{{ product.stock !== undefined ? product.stock : 'N/A' }} unidades
-            </p>
-          </div>
-          <div class="p-4 bg-gray-50 rounded-lg">
-            <p class="text-sm text-gray-500 mb-1">Status</p>
-            <p class="font-semibold" :class="isOutOfStock ? 'text-red-600' : 'text-green-600'">
-              {{ isOutOfStock ? 'Esgotado' : 'Disponível' }}
-            </p>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Modal de Seleção de Variações -->
@@ -417,11 +391,11 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, watch } from 'vue'
-import { useRoute, onBeforeRouteUpdate } from 'vue-router'
+import { computed, onMounted, ref, watch } from 'vue'
+import { onBeforeRouteUpdate, useRoute } from 'vue-router'
 import { getProductById, getProductVariations } from '../Services/ProductsService'
-import { useCart } from '../composables/useCart'
 import { useAlerts } from '../composables/useAlerts'
+import { useCart } from '../composables/useCart'
 
 const route = useRoute()
 const product = ref(null)

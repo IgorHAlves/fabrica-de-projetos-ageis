@@ -1,10 +1,13 @@
-import { reactive, ref, watch } from 'vue'
 import { useProductsStore } from '@/stores/products'
+import { reactive, ref, watch } from 'vue'
+import { getProductById } from '../Services/ProductsService'
 import { useAlerts } from './useAlerts'
 
-export function useProductForm() {
+export function useProductForm(productId = null) {
     const store = useProductsStore()
     const { showSuccess, showError, showLoading, closeLoading } = useAlerts()
+    const isEditMode = ref(!!productId)
+    const isLoadingProduct = ref(false)
 
     const form = reactive({
         name: '',
@@ -149,11 +152,41 @@ export function useProductForm() {
         })
     }
 
+    async function loadProduct(id) {
+        if (!id) return
+
+        isLoadingProduct.value = true
+        try {
+            const product = await getProductById(id)
+            if (product) {
+                form.name = product.name || product.Name || ''
+                form.price = product.price || product.Price || null
+                form.stock = product.stock || product.Stock || null
+                form.description = product.description || product.Description || ''
+                form.category = product.idCategory || product.IdCategory || product.categoryId || product.CategoryId || ''
+                form.imageUrl = product.imageUrl || product.ImageUrl || ''
+                form.idPai = product.idPai || product.IdPai || null
+            }
+        } catch (error) {
+            console.error('Erro ao carregar produto:', error)
+            showError('Erro', 'Não foi possível carregar os dados do produto.')
+        } finally {
+            isLoadingProduct.value = false
+        }
+    }
+
+    // Load product data when productId changes or on mount
+    watch(() => productId, (newId) => {
+        if (newId) {
+            loadProduct(newId)
+        }
+    }, { immediate: true })
+
     async function submitForm() {
         if (!validate()) return false
 
         isLoading.value = true
-        showLoading('Cadastrando produto...')
+        showLoading(isEditMode.value ? 'Atualizando produto...' : 'Cadastrando produto...')
 
         // Declara variáveis no escopo da função para acessar no catch
         let finalCategoryId = null
@@ -409,7 +442,7 @@ export function useProductForm() {
             }
 
             if (import.meta.env.DEV) {
-            console.error('Erro ao criar produto:', error)
+                console.error('Erro ao criar produto:', error)
                 console.error('Dados que tentaram ser enviados:', {
                     finalCategoryId: finalCategoryId || 'não definido',
                     idPai: form.idPai || null,
