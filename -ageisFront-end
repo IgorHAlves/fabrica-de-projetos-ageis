@@ -1,0 +1,53 @@
+*   [33m94824fa[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfeature/frontEnd/Cart[m[33m, [m[1;31morigin/development[m[33m, [m[1;32mdevelopment[m[33m)[m Merge pull request #33 from IgorHAlves/fix/api/searchProducts
+[31m|[m[32m\[m  
+[31m|[m * [33m03cd2cd[m[33m ([m[1;31morigin/fix/api/searchProducts[m[33m)[m fix: ajustado delete, getbyid e update de produtos
+[31m|[m[31m/[m  
+*   [33m1368fb0[m Merge pull request #32 from IgorHAlves/fix/api/getOrders
+[33m|[m[34m\[m  
+[33m|[m * [33md921379[m[33m ([m[1;31morigin/fix/api/getOrders[m[33m)[m fix: ajuste na visualizalçao dos pedidos (orders)
+[33m|[m[33m/[m  
+*   [33m0f1c2c1[m Merge pull request #31 from IgorHAlves/mod/api/Shipping
+[35m|[m[36m\[m  
+* [36m\[m   [33ma543929[m Merge pull request #30 from IgorHAlves/fix/frontend/newProduct
+[1;31m|[m[1;32m\[m [36m\[m  
+[1;31m|[m * [36m|[m [33m98e1fd8[m[33m ([m[1;31morigin/fix/frontend/newProduct[m[33m)[m fix:ajustado formulario para cadastro de produtos
+[1;31m|[m[1;31m/[m [36m/[m  
+* [36m|[m   [33m0d6dcce[m Merge pull request #29 from IgorHAlves/feat/frontend/paginationDetail
+[1;33m|[m[1;34m\[m [36m\[m  
+[1;33m|[m * [36m|[m [33m9a79e84[m[33m ([m[1;31morigin/feat/frontend/paginationDetail[m[33m)[m Fixed merge conflicts
+[1;33m|[m * [36m|[m   [33m2c2786f[m Fixed merge conflicts
+[1;33m|[m [1;35m|[m[1;33m\[m [36m\[m  
+[1;33m|[m [1;35m|[m[1;33m/[m [36m/[m  
+[1;33m|[m[1;33m/[m[1;35m|[m [36m|[m   
+[1;33m|[m * [36m|[m [33m07a6b4c[m Delete node_modules/pagedone/src/js/pagedone.js
+[1;33m|[m * [36m|[m [33m0813440[m Delete node_modules/pagedone/package.json
+[1;33m|[m * [36m|[m [33m766ac8e[m Delete node_modules/pagedone/README.md
+[1;33m|[m * [36m|[m [33mb3fa22b[m Delete node_modules/pagedone/LICENSE
+[1;33m|[m * [36m|[m [33mcce2354[m Delete node_modules/.package-lock.json
+[1;33m|[m * [36m|[m [33mace475c[m Delete node_modules/pagedone/src/css/pagedone.css
+[1;33m|[m * [36m|[m [33m67369fa[m Fix baseURL format in Axios service
+[1;33m|[m * [36m|[m [33m59cefae[m ok
+[1;33m|[m [1;36m|[m [36m|[m * [33m9b8b931[m[33m ([m[1;31morigin/mod/api/Shipping[m[33m)[m mod: Alterado retorno da Exceção da ViaCepApi
+[1;33m|[m [1;36m|[m [36m|[m[36m/[m  
+[1;33m|[m [1;36m|[m * [33m5d4bbf3[m mod: Finalizado integração dos metodos com API
+[1;33m|[m [1;36m|[m[1;33m/[m  
+[1;33m|[m[1;33m/[m[1;36m|[m   
+* [1;36m|[m   [33m6f1a75c[m Merge pull request #28 from IgorHAlves/feat/frontend/newProduct
+[32m|[m[33m\[m [1;36m\[m  
+[32m|[m * [1;36m|[m [33md414799[m[33m ([m[1;31morigin/feat/frontend/newProduct[m[33m)[m last
+[32m|[m * [1;36m|[m [33m23f49bb[m first
+[32m|[m [1;36m|[m[1;36m/[m  
+* [1;36m|[m   [33m83a0f82[m Merge pull request #27 from IgorHAlves/feat/api/Coupon
+[1;36m|[m[35m\[m [1;36m\[m  
+[1;36m|[m [35m|[m[1;36m/[m  
+[1;36m|[m[1;36m/[m[35m|[m   
+[1;36m|[m * [33m93b3dd7[m feat: Criado metodos da service de Coupon
+[1;36m|[m * [33m6d9c289[m feat: Criado ecosistema de Coupon
+[1;36m|[m[1;36m/[m  
+[1;36m|[m * [33m8e40ccd[m[33m ([m[1;31morigin/feat/api/Shipping[m[33m)[m feat: Criando Shipping
+[1;36m|[m[1;36m/[m  
+*   [33m0510623[m Merge pull request #26 from IgorHAlves/fix/api/pagination
+[1;31m|[m[1;32m\[m  
+[1;31m|[m * [33m01ea68e[m fix: ajustado paginacoes do product, da order e da category
+[1;31m|[m[1;31m/[m  
+* [33m24818ae[m Config: Salvando development

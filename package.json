@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "axios": "^1.12.2",
+    "pagedone": "^1.2.2"
+  }
+}
