@@ -5,6 +5,7 @@ namespace ECOMMERCE.CORE.Entity
     public class Address : BaseEntity
     {
         public string? Cep { get; set; }
+        public string? Number { get; set; }
         public string? Logradouro { get; set; }
         public string? Complemento { get; set; }
         public string? Estado  { get; set; }
