@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ECOMMERCE.DATA.Migrations
 {
     [DbContext(typeof(EcommerceDbContext))]
-    [Migration("20251101003003_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20251124221753_MigrationToAddressTwo")]
+    partial class MigrationToAddressTwo
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -53,16 +53,31 @@ namespace ECOMMERCE.DATA.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
-                    b.Property<string>("CEP")
-                        .IsRequired()
+                    b.Property<string>("Bairro")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Street")
-                        .IsRequired()
+                    b.Property<string>("Cep")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("number")
-                        .IsRequired()
+                    b.Property<string>("Complemento")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Ddd")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Estado")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Localidade")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Logradouro")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Number")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Uf")
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");

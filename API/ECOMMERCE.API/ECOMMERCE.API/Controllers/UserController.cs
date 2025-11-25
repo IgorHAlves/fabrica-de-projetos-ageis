@@ -28,5 +28,15 @@ public class UserController : Controller
         return Ok(userLogin);
     }
     
+    [Authorize]
+    [HttpPost]
+    public async Task<IActionResult> CreateAddress([FromBody] CreateAddressDTO address)
+    {
+        string keycloakId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? User.FindFirst("sub")?.Value;
+        
+        Guid addressId = _userService.CreateAddress(keycloakId,address);
+
+        return Ok(addressId);
+    }
     
 }
