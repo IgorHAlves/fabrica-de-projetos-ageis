@@ -69,11 +69,6 @@
 </template>
 
 
-
-
-
-
-
 <script setup>
 import {onMounted } from 'vue';
 import ProductCardComponent from '../components/ProductCardComponent.vue';
