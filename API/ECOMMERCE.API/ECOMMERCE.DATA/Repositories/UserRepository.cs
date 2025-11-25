@@ -31,4 +31,18 @@ public class UserRepository : IUserRepository
         
         return user;
     }
+
+    public Guid CreateAddress(string keycloakId, Address address)
+    {
+        User user = _ecommerceDbContext.Users.FirstOrDefault(user => user.KeycloakId == keycloakId);
+        
+        user.Address = address;
+        _ecommerceDbContext.Add(address); 
+        _ecommerceDbContext.SaveChanges();
+
+
+        return user.Address.Id;
+    }
+    
+    
 }

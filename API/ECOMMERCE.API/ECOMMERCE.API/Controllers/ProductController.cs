@@ -33,7 +33,7 @@ public class ProductController : Controller
         return Ok(product);
     }
     
-    // [Authorize]
+    [Authorize(Roles = "admin")]
     [HttpPost]
     public IActionResult PostProduct([FromBody] CreateProductDTO dto)
     {
@@ -41,7 +41,7 @@ public class ProductController : Controller
         return Ok(product);
     }
     
-    // [Authorize]esmeralda é equivalente a qual mmr no dota 2
+    [Authorize(Roles = "admin")]
     [HttpPut("{idProduct:guid}")]
     public IActionResult PutProduct([FromRoute] Guid idProduct,[FromBody] UpdateProductDTO dto)
     {
@@ -49,7 +49,7 @@ public class ProductController : Controller
         return Ok(product);
     }
     
-    // [Authorize]
+    [Authorize(Roles = "admin")]
     [HttpDelete("{idProduct:guid}")]
 
     public IActionResult DeleteProduct([FromRoute] Guid idProduct)

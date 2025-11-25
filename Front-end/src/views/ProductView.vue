@@ -77,7 +77,7 @@
 <script setup>
 import {onMounted } from 'vue';
 import ProductCardComponent from '../components/ProductCardComponent.vue';
-import { useProductsStore } from '@/stores/products';
+import { useProductsStore } from '../stores/ProductStore';
 import { useAlerts } from '../composables/useAlerts';
 
 const store = useProductsStore();

@@ -1,6 +1,7 @@
 using ECOMMERCE.CORE.DTO.Category;
 using ECOMMERCE.CORE.Helper;
 using ECOMMERCE.CORE.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ECOMMERCE.API.Controllers;
@@ -24,6 +25,7 @@ public class CategoryController : Controller
         return Ok(getCategory);
     }
 
+    // [Authorize]
     [HttpGet]
     public IActionResult GetCategories([FromQuery] string? name, [FromQuery] int pageNumber = 1,
         [FromQuery] int pageSize = 10)
@@ -32,6 +34,7 @@ public class CategoryController : Controller
         return Ok(getCategoriesList);
     }
 
+    [Authorize(Roles = "admin")]
     [HttpPost]
     public IActionResult PostCategory([FromBody] CreateCategoryDTO dto)
     {
@@ -39,6 +42,8 @@ public class CategoryController : Controller
         return Ok(category);
     }
 
+    
+    [Authorize(Roles = "admin")]
     [HttpPut("{ig:guid}")]
     public IActionResult PutCategory([FromBody] UpdateCategoriesDTO dto)
     {
@@ -46,6 +51,7 @@ public class CategoryController : Controller
         return Ok(updateCategory);
     }
 
+    [Authorize(Roles = "admin")]
     [HttpDelete("{ig:guid}")]
     public IActionResult DeleteCategory([FromRoute] Guid id)
     {

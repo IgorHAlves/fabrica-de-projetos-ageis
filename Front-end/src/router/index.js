@@ -5,7 +5,8 @@ import SobreView from '../views/SobreView.vue'
 import ProductDetailView from '../views/ProductDetailView.vue'
 import ProductCreateView from '../views/ProductCreateView.vue'
 import CarrinhoView from '../views/CarrinhoView.vue'
-import { getProductById } from '@/Services/ProductsService'
+import CategoryView from '@/views/CategoryView.vue'
+import CategoryCreateView from '@/views/CategoryCreateView.vue'
 
 
 const router = createRouter({
@@ -16,6 +17,18 @@ const router = createRouter({
       name: 'home',
       component: HomeView,
       meta: { breadcrumb: 'Pagina Inicial' }
+    },
+    {
+      path: '/categorias',
+      name: 'categorias',
+      component: CategoryView,
+      meta: { breadcrumb: 'Categorias' }
+    },
+    {
+      path: '/admin/categorias/nova',
+      name: 'categoriaNova',
+      component: CategoryCreateView,
+      meta: { breadcrumb: 'Criar Categorias' }
     },
 
     {
