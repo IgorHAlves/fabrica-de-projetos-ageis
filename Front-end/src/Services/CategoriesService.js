@@ -21,6 +21,22 @@ export async function getCategories() {
     }
 }
 
+export async function getCategoriesList() {
+    try {
+        console.log('Fazendo requisição para:', api.defaults.baseURL + 'Category');
+        const response = await api.get('Category');
+        const categories = response;
+        console.log('Categorias extraídas:', categories);
+        return categories.data;
+    } catch (error) {
+        console.error('Erro detalhado ao buscar categorias:', error);
+        console.error('Status do erro:', error.response?.status);
+        console.error('Dados do erro:', error.response?.data);
+        console.error('URL da requisição:', error.config?.url);
+        return [];
+    }
+}
+
 export async function createCategory(categoryData) {
     try {
         const response = await api.post('Category', categoryData);
