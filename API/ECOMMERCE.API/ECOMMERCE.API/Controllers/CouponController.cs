@@ -17,7 +17,7 @@ public class CouponController : ControllerBase
         _couponService = couponService;
     }
 
-    [HttpGet(nameof(GetCoupons))]
+    [HttpGet]
     public async Task<IActionResult> GetCoupons([FromQuery] int pageNumber = 1,[FromQuery] int pageSize = 10)
     {
         try
@@ -31,7 +31,7 @@ public class CouponController : ControllerBase
         }
     }
 
-    [HttpGet(nameof(GetCoupon))]
+    [HttpGet("{code}")]
     public async Task<IActionResult> GetCoupon([FromRoute] string code)
     {
         try
@@ -45,7 +45,7 @@ public class CouponController : ControllerBase
         }
     }
 
-    [HttpPost(nameof(CreateCoupon))]
+    [HttpPost]
     public async Task<IActionResult> CreateCoupon(CreateCouponDTO couponDTO)
     {
         try
@@ -59,7 +59,7 @@ public class CouponController : ControllerBase
         }
     }
 
-    [HttpDelete(nameof(DeleteCoupon))]
+    [HttpDelete("{code}")]
     public async Task<IActionResult> DeleteCoupon([FromRoute] string code)
     {
         try
