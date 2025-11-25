@@ -24,6 +24,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ECOMMERCE.CORE\ECOMMERCE.CORE.csproj" />
     <ProjectReference Include="..\ECOMMERCE.DATA\ECOMMERCE.DATA.csproj" />
+    <ProjectReference Include="..\Pix\Pix.csproj" />
   </ItemGroup>
 
 </Project>
