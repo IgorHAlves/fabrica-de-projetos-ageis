@@ -74,6 +74,10 @@ public partial class EcommerceDbContext : DbContext
         //Coupon
         modelBuilder.Entity<Coupon>()
             .HasKey(coupon => coupon.Id );
+        
+        //Addres
+        modelBuilder.Entity<Address>()
+            .HasKey(address => address.Id );
     }
       
 }

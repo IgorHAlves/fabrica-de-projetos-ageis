@@ -28,4 +28,18 @@ public class UserService : IUserService
         
         return userDTO;
     }
+
+    public Guid CreateAddress(string keycloakId, CreateAddressDTO address)
+    {
+        Address newAddress = new Address()
+        {
+            Cep = address.CEP,
+            Logradouro = address.Street,
+            Number = address.Number
+        };
+        
+        Guid addresId = _userRepository.CreateAddress(keycloakId, newAddress);
+        return addresId;
+    }
+
 }

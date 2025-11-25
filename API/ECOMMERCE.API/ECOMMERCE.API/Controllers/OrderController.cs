@@ -52,7 +52,8 @@ public class OrderController : ControllerBase
         return Ok(order);
     }
 
-    // [Authorize]
+    
+    [Authorize]
     [HttpPost]
     public async Task<IActionResult> CreateOrder([FromBody] CreateOrderDTO orderDto)
     {

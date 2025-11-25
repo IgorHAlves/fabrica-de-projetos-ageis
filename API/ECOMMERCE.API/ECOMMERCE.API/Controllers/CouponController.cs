@@ -2,6 +2,7 @@ using ECOMMERCE.CORE.DTO.Coupon;
 using ECOMMERCE.CORE.Entity;
 using ECOMMERCE.CORE.Helper;
 using ECOMMERCE.CORE.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ECOMMERCE.API.Controllers;
@@ -45,6 +46,7 @@ public class CouponController : ControllerBase
         }
     }
 
+    [Authorize(Roles = "admin")]
     [HttpPost]
     public async Task<IActionResult> CreateCoupon(CreateCouponDTO couponDTO)
     {
@@ -59,6 +61,7 @@ public class CouponController : ControllerBase
         }
     }
 
+    [Authorize(Roles = "admin")]
     [HttpDelete("{code}")]
     public async Task<IActionResult> DeleteCoupon([FromRoute] string code)
     {

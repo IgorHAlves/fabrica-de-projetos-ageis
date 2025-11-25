@@ -1,6 +1,7 @@
 using ECOMMERCE.CORE.DTO.Category;
 using ECOMMERCE.CORE.Helper;
 using ECOMMERCE.CORE.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ECOMMERCE.API.Controllers;
@@ -17,13 +18,14 @@ public class CategoryController : Controller
     }
 
     // [Authorize]
-    [HttpGet("id:guid")]
+    [HttpGet("{id:guid}")]
     public IActionResult GetCategory([FromRoute] Guid id)
     {
         GetCategoriesDTO getCategory = _categoryService.GetCategory(id);
         return Ok(getCategory);
     }
 
+    // [Authorize]
     [HttpGet]
     public IActionResult GetCategories([FromQuery] string? name, [FromQuery] int pageNumber = 1,
         [FromQuery] int pageSize = 10)
@@ -32,6 +34,7 @@ public class CategoryController : Controller
         return Ok(getCategoriesList);
     }
 
+    [Authorize(Roles = "admin")]
     [HttpPost]
     public IActionResult PostCategory([FromBody] CreateCategoryDTO dto)
     {
@@ -39,14 +42,17 @@ public class CategoryController : Controller
         return Ok(category);
     }
 
-    [HttpPut]
+    
+    [Authorize(Roles = "admin")]
+    [HttpPut("{ig:guid}")]
     public IActionResult PutCategory([FromBody] UpdateCategoriesDTO dto)
     {
         var updateCategory = _categoryService.UpdateCategory(dto);
         return Ok(updateCategory);
     }
 
-    [HttpDelete("id:guid")]
+    [Authorize(Roles = "admin")]
+    [HttpDelete("{ig:guid}")]
     public IActionResult DeleteCategory([FromRoute] Guid id)
     {
         var deleteCategory = _categoryService.DeleteCategory(id);
