@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViaCep", "ViaCep\ViaCep.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pix", "Pix\Pix.csproj", "{1C349167-FC31-4703-ABA4-1347D0EF7493}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECOMMERCE.TESTS", "ECOMMERCE.TESTS\ECOMMERCE.TESTS.csproj", "{E800B1ED-531D-4496-85F3-05946CBF8169}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{1C349167-FC31-4703-ABA4-1347D0EF7493}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C349167-FC31-4703-ABA4-1347D0EF7493}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C349167-FC31-4703-ABA4-1347D0EF7493}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E800B1ED-531D-4496-85F3-05946CBF8169}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E800B1ED-531D-4496-85F3-05946CBF8169}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E800B1ED-531D-4496-85F3-05946CBF8169}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E800B1ED-531D-4496-85F3-05946CBF8169}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
