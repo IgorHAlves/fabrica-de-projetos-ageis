@@ -1,0 +1,14 @@
+ü
+ì/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/obj/Debug/net8.0/ECOMMERCE.API.MvcApplicationPartsAssemblyInfo.csutf-8å
+Ä/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/obj/Debug/net8.0/ECOMMERCE.API.AssemblyInfo.csutf-8ù
+ë/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/obj/Debug/net8.0/.NETCoreApp,Version=v8.0.AssemblyAttributes.csutf-8é
+Ç/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/obj/Debug/net8.0/ECOMMERCE.API.GlobalUsings.g.csutf-8e
+\/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Program.csutf-8x
+o/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/UserController.csutf-8|
+s/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/ShippingController.csutf-8{
+r/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/ProductController.csutf-8{
+r/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/PaymentController.csutf-8y
+p/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/OrderController.csutf-8z
+q/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/CouponController.csutf-8|
+s/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/CategoryController.csutf-8Å
+x/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/AuthorizationController.csutf-8

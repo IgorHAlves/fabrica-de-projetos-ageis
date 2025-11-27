@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Moq;
 using Xunit;
 
@@ -125,7 +124,7 @@ namespace ECOMMERCE.TESTS.Services
         }
 
         // -------------------------------------------------------------
-        // TEST 4: GET ORDERS
+        // TEST 4: GET ORDERS SUCCESS
         // -------------------------------------------------------------
         [Fact]
         public void GetOrders_ShouldReturnMappedDTO()
@@ -173,7 +172,7 @@ namespace ECOMMERCE.TESTS.Services
         }
 
         // -------------------------------------------------------------
-        // TEST 5: GET ORDER BY ID
+        // TEST 5: GET ORDER BY ID SUCCESS
         // -------------------------------------------------------------
         [Fact]
         public void GetOrder_ShouldReturnMappedDTO()
@@ -211,6 +210,41 @@ namespace ECOMMERCE.TESTS.Services
             Assert.Equal("Produto X", result.Products[0].ProductName);
             Assert.Equal(100, result.Products[0].ProductPrice);
             Assert.Equal(order.Price, result.OrderPrice);
+        }
+
+        // -------------------------------------------------------------
+        // TEST 6: CREATEORDER — CATCH BLOCK
+        // -------------------------------------------------------------
+        [Fact]
+        public void CreateOrder_ShouldWrapExceptionInCatchBlock()
+        {
+            var dto = new CreateOrderDTO
+            {
+                UserKeycloackId = "u1",
+                OrderItems = new List<OrderItemDTO>()
+            };
+
+            _userRepoMock
+                .Setup(r => r.GetUserByKeycloakId("u1"))
+                .Throws(new Exception("Erro no banco"));
+
+            var ex = Assert.Throws<Exception>(() => _orderService.CreateOrder(dto));
+
+            Assert.Contains("Erro ao criar pedido: Erro no banco", ex.Message);
+        }
+
+        // -------------------------------------------------------------
+        // TEST 7: GETORDERS — CATCH BLOCK
+        // -------------------------------------------------------------
+        [Fact]
+        public void GetOrders_ShouldThrowWrappedException()
+        {
+            _orderRepoMock.Setup(r => r.GetOrders(1, 10))
+                .Throws(new Exception("Erro no repositório"));
+
+            var ex = Assert.Throws<Exception>(() => _orderService.GetOrders(1, 10));
+
+            Assert.Equal("Erro no repositório", ex.Message);
         }
     }
 }

@@ -1,0 +1,1 @@
+~Rh/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.DATA/ECOMMERCE.DATA.csproj¢net8.0òCSharp12

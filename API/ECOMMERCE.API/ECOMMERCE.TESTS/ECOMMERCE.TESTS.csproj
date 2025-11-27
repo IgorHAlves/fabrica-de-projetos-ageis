@@ -23,6 +23,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ECOMMERCE.API\ECOMMERCE.API.csproj" />
+    <ProjectReference Include="..\ECOMMERCE.CORE\ECOMMERCE.CORE.csproj" />
+    <ProjectReference Include="..\ECOMMERCE.DATA\ECOMMERCE.DATA.csproj" />
+    <ProjectReference Include="..\ViaCep\ViaCep.csproj" />
+    <ProjectReference Include="..\Pix\Pix.csproj" />
   </ItemGroup>
 
 </Project>

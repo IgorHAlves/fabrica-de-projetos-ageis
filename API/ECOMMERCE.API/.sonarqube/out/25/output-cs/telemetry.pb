@@ -1,0 +1,1 @@
+hRR/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/Pix/Pix.csproj¢net8.0òCSharp12

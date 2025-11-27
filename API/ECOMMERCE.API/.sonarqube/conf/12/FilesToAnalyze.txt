@@ -1,0 +1,2 @@
+﻿/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/Pix/PixPayload.cs
+/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/Pix/PixService.cs
