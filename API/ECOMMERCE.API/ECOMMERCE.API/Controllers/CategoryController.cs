@@ -8,7 +8,7 @@ namespace ECOMMERCE.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class CategoryController : Controller
+public class CategoryController : ControllerBase
 {
     private readonly ICategoryService _categoryService;
 
@@ -52,7 +52,7 @@ public class CategoryController : Controller
     }
 
     [Authorize(Roles = "admin")]
-    [HttpDelete("{ig:guid}")]
+    [HttpDelete("{id:guid}")]
     public IActionResult DeleteCategory([FromRoute] Guid id)
     {
         var deleteCategory = _categoryService.DeleteCategory(id);

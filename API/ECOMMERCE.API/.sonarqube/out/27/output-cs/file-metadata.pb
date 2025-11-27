@@ -1,0 +1,15 @@
+é
+Ç/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.DATA/obj/Debug/net8.0/ECOMMERCE.DATA.AssemblyInfo.csutf-8û
+í/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.DATA/obj/Debug/net8.0/.NETCoreApp,Version=v8.0.AssemblyAttributes.csutf-8ê
+Ñ/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.DATA/obj/Debug/net8.0/ECOMMERCE.DATA.GlobalUsings.g.csutf-8z
+q/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.DATA/Repositories/UserRepository.csutf-8}
+t/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.DATA/Repositories/ProductRepository.csutf-8{
+r/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.DATA/Repositories/OrderRepository.csutf-8|
+s/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.DATA/Repositories/CouponRepository.csutf-8~
+u/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.DATA/Repositories/CategoryRepository.csutf-8}
+t/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.DATA/Repositories/AddressRepository.csutf-8å
+Ä/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.DATA/Migrations/EcommerceDbContextModelSnapshot.csutf-8ö
+é/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.DATA/Migrations/20251124221753_MigrationToAddressTwo.Designer.csutf-8è
+Ö/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.DATA/Migrations/20251124221753_MigrationToAddressTwo.csutf-8}
+t/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.DATA/Data/EcommerceDbContextFactory.csutf-8v
+m/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.DATA/Data/EcommerceDbContext.csutf-8

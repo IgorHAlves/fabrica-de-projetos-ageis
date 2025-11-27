@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SonarProjectConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sonarsource.com/msbuild/analyzer/2021/1">
+  <AnalysisConfigPath>/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/.sonarqube/conf/SonarQubeAnalysisConfig.xml</AnalysisConfigPath>
+  <ProjectPath>/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/Pix/Pix.csproj</ProjectPath>
+  <FilesToAnalyzePath>/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/.sonarqube/conf/25/FilesToAnalyze.txt</FilesToAnalyzePath>
+  <OutPath>/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/.sonarqube/out/25</OutPath>
+  <ProjectType>Product</ProjectType>
+  <TargetFramework>net8.0</TargetFramework>
+</SonarProjectConfig>

@@ -1,0 +1,11 @@
+﻿/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/Services/OrderServiceTests.cs
+/home/ti-acim/.nuget/packages/microsoft.net.test.sdk/17.8.0/build/netcoreapp3.1/Microsoft.NET.Test.Sdk.Program.cs
+/home/ti-acim/.nuget/packages/xunit.runner.visualstudio/2.5.3/build/net6.0/xunit.runner.visualstudio.dotnetcore.testadapter.dll
+/home/ti-acim/.nuget/packages/xunit.runner.visualstudio/2.5.3/build/net6.0/xunit.runner.reporters.netcoreapp10.dll
+/home/ti-acim/.nuget/packages/xunit.runner.visualstudio/2.5.3/build/net6.0/xunit.runner.utility.netcoreapp10.dll
+/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/TestResults/3ba40c8a-8685-4e10-9c30-950b4f5fda04/coverage.cobertura.xml
+/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/TestResults/5f661511-75f3-430d-8d8e-d7eb1c8487e6/coverage.cobertura.xml
+/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/TestResults/82cdf6b2-444f-4cb7-86f7-943a095e02af/coverage.cobertura.xml
+/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/TestResults/9e853744-a434-4614-b231-edafecab7579/coverage.cobertura.xml
+/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/TestResults/c4136ae8-7edf-4eb4-b1fe-8b1830129b9a/coverage.cobertura.xml
+/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/TestResults/d38fd489-f80c-4d13-830d-d1cf51227901/coverage.cobertura.xml
