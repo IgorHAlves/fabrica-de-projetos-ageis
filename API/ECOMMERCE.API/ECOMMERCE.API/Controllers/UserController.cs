@@ -29,7 +29,7 @@ public class UserController : Controller
     }
     
     [Authorize]
-    [HttpPost]
+    [HttpPost("Address")]
     public async Task<IActionResult> CreateAddress([FromBody] CreateAddressDTO address)
     {
         string keycloakId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? User.FindFirst("sub")?.Value;
