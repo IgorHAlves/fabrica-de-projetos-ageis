@@ -1,12 +1,11 @@
 using ECOMMERCE.CORE.DTO.Category;
 using ECOMMERCE.CORE.Entity;
-using ECOMMERCE.CORE.Interfaces;
 using ECOMMERCE.CORE.Services;
 using ECOMMERCE.DATA.Data;
 using ECOMMERCE.DATA.Repositories;
 using Shouldly;
 
-namespace ECOMMERCE.TESTS.CategoryTests;
+namespace ECOMMERCE.TESTS;
 
 public class CategoryServiceTests
 {
