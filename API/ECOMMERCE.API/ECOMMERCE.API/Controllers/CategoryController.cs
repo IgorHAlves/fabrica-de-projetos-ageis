@@ -42,9 +42,8 @@ public class CategoryController : Controller
         return Ok(category);
     }
 
-    
     [Authorize(Roles = "admin")]
-    [HttpPut("{ig:guid}")]
+    [HttpPut("{id:guid}")]
     public IActionResult PutCategory([FromBody] UpdateCategoriesDTO dto)
     {
         var updateCategory = _categoryService.UpdateCategory(dto);
@@ -52,7 +51,7 @@ public class CategoryController : Controller
     }
 
     [Authorize(Roles = "admin")]
-    [HttpDelete("{ig:guid}")]
+    [HttpDelete("{id:guid}")]
     public IActionResult DeleteCategory([FromRoute] Guid id)
     {
         var deleteCategory = _categoryService.DeleteCategory(id);

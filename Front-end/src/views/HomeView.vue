@@ -37,9 +37,8 @@
         </div>
 
         <!-- Loading State -->
-        <div v-if="isLoading" class="text-center py-12">
-          <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 mb-4"></div>
-          <p class="text-gray-600">Carregando produtos...</p>
+        <div v-if="isLoading" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <ProductSkeleton v-for="i in 4" :key="i" />
         </div>
 
         <!-- Products Grid -->
@@ -52,10 +51,6 @@
         <div v-else class="text-center py-12">
           <i class="fa-solid fa-box-open text-6xl text-gray-300 mb-4"></i>
           <p class="text-gray-600 text-lg">Nenhum produto encontrado</p>
-          <router-link to="/admin/produtos/novo"
-            class="mt-4 inline-block bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-colors">
-            Cadastrar Primeiro Produto
-          </router-link>
         </div>
 
         <!-- Ver Todos os Produtos -->
@@ -105,28 +100,14 @@
         </div>
       </div>
     </section>
-
-    <!-- CTA Section -->
-    <section class="py-16 bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-4xl font-bold mb-4">Comece a Comprar Agora</h2>
-        <p class="text-xl text-indigo-100 mb-8">
-          Cadastre produtos e comece a vender hoje mesmo
-        </p>
-        <router-link to="/admin/produtos/novo"
-          class="inline-block bg-white text-indigo-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-indigo-50 transition-all duration-300 transform hover:scale-105 shadow-lg">
-          <i class="fa-solid fa-plus-circle mr-2"></i>
-          Cadastrar Produto
-        </router-link>
-      </div>
-    </section>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-import { useRoute, onBeforeRouteUpdate } from 'vue-router'
+import { onMounted, ref } from 'vue'
+import { onBeforeRouteUpdate, useRoute } from 'vue-router'
 import ProductCardComponent from '../components/ProductCardComponent.vue'
+import ProductSkeleton from '../components/ProductSkeleton.vue'
 import { getProducts } from '../Services/ProductsService'
 
 const route = useRoute()
@@ -197,7 +178,6 @@ onBeforeRouteUpdate((to, from) => {
     opacity: 0;
     transform: translateY(20px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);

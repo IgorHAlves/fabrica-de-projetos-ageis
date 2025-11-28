@@ -41,13 +41,18 @@ namespace ECOMMERCE.DATA.Repositories
         public Paginator<Category> GetCategories(string? name, int pageNumber, int pageSize)
         {
             pageNumber = pageNumber < 1 ? 1 : pageNumber;
+            pageSize = pageSize < 1 ? 10 : pageSize; // Garantir que pageSize nunca seja 0
             
-            var categories = _ecommerceDbContext.Categories.Include(x => x.Products);
+            var categories = _ecommerceDbContext.Categories.Include(x => x.Products).AsQueryable();
             
-            List<Category> listCategories = categories.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+                int totalItens = categories.Count();
             
-            int totalItens = categories.Count();
-            int totalPages = (int)Math.Ceiling((double)totalItens / pageSize);
+            List<Category> listCategories = categories
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+            
+            int totalPages = totalItens > 0 ? (int)Math.Ceiling((double)totalItens / pageSize) : 0;
              
             return new Paginator<Category>()
             {

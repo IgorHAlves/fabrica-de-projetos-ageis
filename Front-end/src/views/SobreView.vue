@@ -19,65 +19,53 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- César -->
+          <!-- Luiz Henrique -->
           <div
             class="bg-white rounded-xl shadow-lg p-6 text-center transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
-            <div
-              class="bg-gradient-to-br from-blue-400 to-blue-600 w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span class="text-3xl font-bold text-white">C</span>
-            </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-2">César Augusto</h3>
+            <img 
+              src="@/assets/img/luiz.jpg" 
+              alt="Luiz Henrique"
+              class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-yellow-400" />
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Luiz Henrique</h3>
             <p class="text-gray-600 mb-4">Front-End Developer</p>
             <div class="flex justify-center gap-3">
-              <a href="#"
-                class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gradient-to-bl hover:from-purple-500 hover:via-pink-500 hover:to-yellow-500 transition-all duration-300 group">
-                <i class="fa-brands fa-instagram text-gray-600 group-hover:text-white transition-colors"></i>
-              </a>
-              <a href="#"
-                class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-black transition-all duration-300 group">
-                <i class="fa-brands fa-x-twitter text-gray-600 group-hover:text-white transition-colors"></i>
+              <a href="https://github.com/lorocks51987" target="_blank" rel="noopener noreferrer"
+                class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-900 transition-all duration-300 group">
+                <i class="fa-brands fa-github text-gray-600 group-hover:text-white transition-colors"></i>
               </a>
             </div>
           </div>
 
-          <!-- Igor -->
+          <!-- Igor Henrique -->
           <div
             class="bg-white rounded-xl shadow-lg p-6 text-center transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
-            <div
-              class="bg-gradient-to-br from-green-400 to-green-600 w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span class="text-3xl font-bold text-white">I</span>
-            </div>
+            <img 
+              src="@/assets/img/Igor.jpg" 
+              alt="Igor Henrique"
+              class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-green-400" />
             <h3 class="text-xl font-bold text-gray-900 mb-2">Igor Henrique</h3>
             <p class="text-gray-600 mb-4">Full-Stack Developer</p>
             <div class="flex justify-center gap-3">
-              <a href="#"
-                class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gradient-to-bl hover:from-purple-500 hover:via-pink-500 hover:to-yellow-500 transition-all duration-300 group">
-                <i class="fa-brands fa-instagram text-gray-600 group-hover:text-white transition-colors"></i>
-              </a>
-              <a href="#"
-                class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-black transition-all duration-300 group">
-                <i class="fa-brands fa-x-twitter text-gray-600 group-hover:text-white transition-colors"></i>
+              <a href="https://github.com/IgorHAlves" target="_blank" rel="noopener noreferrer"
+                class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-900 transition-all duration-300 group">
+                <i class="fa-brands fa-github text-gray-600 group-hover:text-white transition-colors"></i>
               </a>
             </div>
           </div>
 
-          <!-- André -->
+          <!-- César Augusto -->
           <div
             class="bg-white rounded-xl shadow-lg p-6 text-center transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
-            <div
-              class="bg-gradient-to-br from-purple-400 to-purple-600 w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span class="text-3xl font-bold text-white">A</span>
-            </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-2">André Luiz</h3>
-            <p class="text-gray-600 mb-4">Back-End Developer</p>
+            <img 
+              src="@/assets/img/cesar.jpg" 
+              alt="César Augusto"
+              class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-blue-400" />
+            <h3 class="text-xl font-bold text-gray-900 mb-2">César Augusto</h3>
+            <p class="text-gray-600 mb-4">Front-End Developer</p>
             <div class="flex justify-center gap-3">
-              <a href="#"
-                class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gradient-to-bl hover:from-purple-500 hover:via-pink-500 hover:to-yellow-500 transition-all duration-300 group">
-                <i class="fa-brands fa-instagram text-gray-600 group-hover:text-white transition-colors"></i>
-              </a>
-              <a href="#"
-                class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-black transition-all duration-300 group">
-                <i class="fa-brands fa-x-twitter text-gray-600 group-hover:text-white transition-colors"></i>
+              <a href="https://github.com/CesarAg05" target="_blank" rel="noopener noreferrer"
+                class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-900 transition-all duration-300 group">
+                <i class="fa-brands fa-github text-gray-600 group-hover:text-white transition-colors"></i>
               </a>
             </div>
           </div>
@@ -85,41 +73,33 @@
           <!-- Rafael -->
           <div
             class="bg-white rounded-xl shadow-lg p-6 text-center transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
-            <div
-              class="bg-gradient-to-br from-red-400 to-red-600 w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span class="text-3xl font-bold text-white">R</span>
-            </div>
+            <img 
+              src="@/assets/img/Rafa.jpg" 
+              alt="Rafael"
+              class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-red-400" />
             <h3 class="text-xl font-bold text-gray-900 mb-2">Rafael</h3>
             <p class="text-gray-600 mb-4">Back-End Developer</p>
             <div class="flex justify-center gap-3">
-              <a href="#"
-                class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gradient-to-bl hover:from-purple-500 hover:via-pink-500 hover:to-yellow-500 transition-all duration-300 group">
-                <i class="fa-brands fa-instagram text-gray-600 group-hover:text-white transition-colors"></i>
-              </a>
-              <a href="#"
-                class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-black transition-all duration-300 group">
-                <i class="fa-brands fa-x-twitter text-gray-600 group-hover:text-white transition-colors"></i>
+              <a href="https://github.com/Rtwosantoss" target="_blank" rel="noopener noreferrer"
+                class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-900 transition-all duration-300 group">
+                <i class="fa-brands fa-github text-gray-600 group-hover:text-white transition-colors"></i>
               </a>
             </div>
           </div>
 
-          <!-- Luiz Henrique -->
+          <!-- André Luiz -->
           <div
             class="bg-white rounded-xl shadow-lg p-6 text-center transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
-            <div
-              class="bg-gradient-to-br from-yellow-400 to-orange-500 w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span class="text-3xl font-bold text-white">L</span>
-            </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-2">Luiz Henrique</h3>
-            <p class="text-gray-600 mb-4">Front-End Developer</p>
+            <img 
+              src="@/assets/img/André.png" 
+              alt="André Luiz"
+              class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-purple-400" />
+            <h3 class="text-xl font-bold text-gray-900 mb-2">André Luiz</h3>
+            <p class="text-gray-600 mb-4">Back-End Developer</p>
             <div class="flex justify-center gap-3">
-              <a href="#"
-                class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gradient-to-bl hover:from-purple-500 hover:via-pink-500 hover:to-yellow-500 transition-all duration-300 group">
-                <i class="fa-brands fa-instagram text-gray-600 group-hover:text-white transition-colors"></i>
-              </a>
-              <a href="#"
-                class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-black transition-all duration-300 group">
-                <i class="fa-brands fa-x-twitter text-gray-600 group-hover:text-white transition-colors"></i>
+              <a href="https://github.com/oandrecarvalho" target="_blank" rel="noopener noreferrer"
+                class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-900 transition-all duration-300 group">
+                <i class="fa-brands fa-github text-gray-600 group-hover:text-white transition-colors"></i>
               </a>
             </div>
           </div>
@@ -152,22 +132,31 @@
         <div class="text-center mb-12">
           <h2 class="text-4xl font-bold text-gray-900 mb-4">Tecnologias Utilizadas</h2>
         </div>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
           <div class="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-xl transition-shadow">
-            <i class="fa-brands fa-vuejs text-4xl text-green-500 mb-3"></i>
+            <i class="fa-brands fa-vuejs text-5xl text-green-500 mb-3"></i>
             <p class="font-semibold text-gray-900">Vue.js</p>
+            <p class="text-xs text-gray-500 mt-1">Frontend</p>
           </div>
           <div class="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-xl transition-shadow">
-            <i class="fa-brands fa-node-js text-4xl text-green-600 mb-3"></i>
-            <p class="font-semibold text-gray-900">Node.js</p>
+            <i class="fa-brands fa-microsoft text-5xl text-blue-600 mb-3"></i>
+            <p class="font-semibold text-gray-900">C# .NET</p>
+            <p class="text-xs text-gray-500 mt-1">Backend</p>
           </div>
           <div class="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-xl transition-shadow">
-            <i class="fa-solid fa-database text-4xl text-blue-500 mb-3"></i>
-            <p class="font-semibold text-gray-900">MySQL</p>
+            <i class="fa-solid fa-database text-5xl text-orange-500 mb-3"></i>
+            <p class="font-semibold text-gray-900">SQL Server</p>
+            <p class="text-xs text-gray-500 mt-1">Database</p>
           </div>
           <div class="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-xl transition-shadow">
-            <i class="fa-brands fa-bootstrap text-4xl text-purple-500 mb-3"></i>
+            <i class="fa-solid fa-shield-halved text-5xl text-red-600 mb-3"></i>
+            <p class="font-semibold text-gray-900">Keycloak</p>
+            <p class="text-xs text-gray-500 mt-1">Auth</p>
+          </div>
+          <div class="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-xl transition-shadow">
+            <i class="fa-brands fa-css3-alt text-5xl text-cyan-500 mb-3"></i>
             <p class="font-semibold text-gray-900">Tailwind CSS</p>
+            <p class="text-xs text-gray-500 mt-1">Styling</p>
           </div>
         </div>
       </div>

@@ -27,7 +27,8 @@ public class OrderService : IOrderService
            var user = _userRepository.GetUserByKeycloakId(orderDto.UserKeycloackId);
            if (user == null)
            {
-               throw new Exception("User not found");
+               // Create user if not found (Lazy creation)
+               user = _userRepository.CreateUser(orderDto.UserKeycloackId);
            }
             
            Product product;
@@ -47,13 +48,14 @@ public class OrderService : IOrderService
            OrderItem orderItem;
            foreach (var item in products)
            {
+               int quantity = orderDto.OrderItems.Where(o => o.ProductId == item.Id).Select(o => o.Quantity).FirstOrDefault();
+               
                orderItem = new OrderItem
                {
                    Product = item,
                    ProductId = item.Id,
                    Price = item.Price,
-                   Quantity = orderDto.OrderItems.Where(o => o.ProductId == item.Id).Select(o => o.Quantity)
-                       .FirstOrDefault()
+                   Quantity = quantity
                };
                
                orderItems.Add(orderItem);
@@ -65,7 +67,7 @@ public class OrderService : IOrderService
                Date = DateTime.Now,
                User = user,
                OrderItems = orderItems,
-               Price = products.Sum(p => p.Price)
+               Price = orderItems.Sum(i => i.Price * i.Quantity)
            };
 
            Order newOrder = _orderRepository.CreateOrder(order);

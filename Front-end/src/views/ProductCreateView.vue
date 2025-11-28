@@ -1,17 +1,37 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-8">
-    <div class="max-w-4xl mx-auto px-4">
-      <div class="bg-white rounded-2xl shadow-xl p-8 border border-gray-200">
-        <div class="text-center mb-8">
-          <h1 class="text-4xl font-bold text-gray-900 mb-2">Cadastrar Produto</h1>
-          <p class="text-gray-600">Preencha os dados do novo produto</p>
-        </div>
-        <ProductFormComponent />
+  <div class="min-h-screen bg-gray-50 flex">
+    <!-- Sidebar -->
+    <AdminSidebar />
+
+    <!-- Main Content -->
+    <main class="flex-1 p-8">
+      <!-- Header -->
+      <div class="mb-8">
+        <h1 class="text-4xl font-bold text-gray-900 mb-2 flex items-center gap-3">
+          <i class="fa-solid fa-plus-circle text-blue-600"></i>
+          {{ productId ? 'Editar Produto' : 'Cadastrar Produto' }}
+        </h1>
+        <p class="text-gray-600">{{ productId ? 'Atualize os dados do produto' : 'Preencha os dados do novo produto' }}</p>
       </div>
-    </div>
+
+      <!-- Form -->
+      <div class="bg-white rounded-xl shadow-lg p-8 border border-gray-200">
+        <ProductFormComponent :product-id="productId" />
+      </div>
+    </main>
   </div>
 </template>
 
 <script setup>
-import ProductFormComponent from '../components/ProductFormComponent.vue'
+import { computed } from 'vue';
+import { useRoute } from 'vue-router';
+import AdminSidebar from '../components/AdminSidebar.vue';
+import ProductFormComponent from '../components/ProductFormComponent.vue';
+
+const route = useRoute();
+const productId = computed(() => {
+    const id = route.query.id || null;
+
+    return id;
+});
 </script>

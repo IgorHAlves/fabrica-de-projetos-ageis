@@ -1,4 +1,6 @@
 
+
+using ECOMMERCE.API.Auth;
 using ECOMMERCE.API.Interfaces;
 using ECOMMERCE.API.Repositories;
 using ECOMMERCE.CORE.Interfaces;
@@ -64,6 +66,10 @@ namespace ECOMMERCE.API
             builder.Services.AddDbContext<EcommerceDbContext>(options =>
                 options.UseMySql(mySqlConnection, ServerVersion.AutoDetect(mySqlConnection)));
 
+            // Registra o IClaimsTransformation para mapear roles do Keycloak - MOVIDO PARA BAIXO
+            // builder.Services.AddScoped<Microsoft.AspNetCore.Authentication.IClaimsTransformation, KeycloakRolesClaimsTransformation>();
+
+
             #region Authorization
             
             builder.Services.AddScoped<IAuthorizationService,AuthorizationService>();
@@ -100,7 +106,21 @@ namespace ECOMMERCE.API
                 .GetSection(KeycloakAuthenticationOptions.Section)
                 .Get<KeycloakAuthenticationOptions>();
 
-            builder.Services.AddKeycloakAuthentication(authenticationOptions);
+            builder.Services.AddKeycloakAuthentication(authenticationOptions, options =>
+            {
+                options.RequireHttpsMetadata = false;
+                options.SaveToken = true;
+                options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = false,
+                    ValidateLifetime = true,
+                    ClockSkew = TimeSpan.Zero
+                };
+            });
+
+            // REMOVIDO: PostConfigure não estava funcionando como esperado.
+            // A lógica foi movida para um middleware dedicado abaixo.
 
             var authorizationOptions = builder
                 .Configuration
@@ -117,6 +137,9 @@ namespace ECOMMERCE.API
             builder.Services.AddKeycloakAdminHttpClient(adminClientOptions);
 
             #endregion
+
+            // Registra o IClaimsTransformation para mapear roles do Keycloak (REMOVIDO: Usando Middleware)
+            // builder.Services.AddScoped<Microsoft.AspNetCore.Authentication.IClaimsTransformation, KeycloakRolesClaimsTransformation>();
 
 
             #region CORS
@@ -146,6 +169,11 @@ namespace ECOMMERCE.API
             
             app.UseCors("PermitirTudo"); //Parte do CORS
             app.UseAuthentication(); //Parte da autorização
+
+            // Middleware CUSTOMIZADO para Mapeamento de Roles
+            // Executa após UseAuthentication para ter acesso ao User, mas antes de UseAuthorization
+            app.UseMiddleware<ECOMMERCE.API.Auth.KeycloakRolesMiddleware>();
+
             app.UseAuthorization();
 
 

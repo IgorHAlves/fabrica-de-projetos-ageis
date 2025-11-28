@@ -1,9 +1,9 @@
-import { createApp } from 'vue'
 import { createPinia } from 'pinia'
+import { createApp } from 'vue'
 import App from './App.vue'
-import router from './router'
 import './assets/main.css'
 import keycloak from './Keycloak'
+import router from './router'
 
 const app = createApp(App)
 
@@ -12,7 +12,7 @@ app.config.globalProperties.$keycloak = keycloak
 
 keycloak.init({ onLoad: 'check-sso' })
     .then(authenticated => {
-        console.log(authenticated ? 'Usuário autenticado' : 'Usuário anônimo')
+
 
         app.use(createPinia())
         app.use(router)
