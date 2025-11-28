@@ -99,7 +99,7 @@ namespace ECOMMERCE.TESTS
             // Arrange
             var coupon = new Coupon
             {
-                Code = "DEL10",
+                Code = "DELETE10",
                 Value = 10,
                 CategoryEnum = CouponCategoryEnum.percentual
             };
