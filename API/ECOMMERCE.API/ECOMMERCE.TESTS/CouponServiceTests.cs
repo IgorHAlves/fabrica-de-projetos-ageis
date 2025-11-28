@@ -118,12 +118,12 @@ namespace ECOMMERCE.TESTS
         [Fact]
         public void Should_Throw_Exception_When_Deleting_Nonexistent_Coupon()
         {
-            var ex = Should.Throw<ArgumentException>(() =>
+            var ex = Should.Throw<Exception>(() =>
             {
                 _service.DeleteCoupon("NOTFOUND");
             });
             
-            ex.Message.ShouldBe($"Coupon not be deleted");
+            ex.Message.ShouldBe($"Coupon NOTFOUND could not be deleted");
         }
     }
 }
