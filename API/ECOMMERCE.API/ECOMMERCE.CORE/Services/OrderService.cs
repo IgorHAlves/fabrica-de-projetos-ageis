@@ -59,7 +59,7 @@ public class OrderService : IOrderService
                orderItems.Add(orderItem);
            }
 
-           Order order = new Order()
+           API.Entity.Order order = new API.Entity.Order()
            {
                UserId = user.Id,
                Date = DateTime.Now,
@@ -68,7 +68,7 @@ public class OrderService : IOrderService
                Price = products.Sum(p => p.Price)
            };
 
-           Order newOrder = _orderRepository.CreateOrder(order);
+           API.Entity.Order newOrder = _orderRepository.CreateOrder(order);
            
            return newOrder.Id;
 
@@ -83,10 +83,10 @@ public class OrderService : IOrderService
     {
         try
         {
-            Paginator<Order> orders = _orderRepository.GetOrders(pageNumber, pageSize);
+            Paginator<API.Entity.Order> orders = _orderRepository.GetOrders(pageNumber, pageSize);
             
             List<GetOrderDTO> orderListDTO = new List<GetOrderDTO>();
-            foreach (Order order in orders.Items)
+            foreach (API.Entity.Order order in orders.Items)
             {
                 List<OrderProductDTO> orderProductListDTO = new List<OrderProductDTO>();
 
@@ -122,7 +122,7 @@ public class OrderService : IOrderService
 
     public GetOrderDTO GetOrder(Guid orderId)
     {
-        Order order = _orderRepository.GetOrder(orderId);
+        API.Entity.Order order = _orderRepository.GetOrder(orderId);
         
         List<OrderProductDTO> orderProductsDTO = new List<OrderProductDTO>();
         
