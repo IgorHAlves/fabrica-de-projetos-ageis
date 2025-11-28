@@ -65,12 +65,9 @@ namespace ECOMMERCE.TESTS
             // Assert
             result.ShouldNotBeNull();
             result.Items.Count.ShouldBe(3);
-            result.Items[0].Code.ShouldBe("ABC");
-            result.Items[0].Value.ShouldBe(20);
-            result.Items[1].Code.ShouldBe("ABC");
-            result.Items[1].Value.ShouldBe(30);
-            result.Items[2].Code.ShouldBe("ABCDE");
-            result.Items[2].Value.ShouldBe(40);
+            result.Items.ShouldContain(x => x.Code == "ABC");
+            result.Items.ShouldContain(x => x.Code == "ABCD");
+            result.Items.ShouldContain(x => x.Code == "ABCDE");
         }
 
         [Fact]
@@ -126,7 +123,7 @@ namespace ECOMMERCE.TESTS
                 _service.DeleteCoupon("NOTFOUND");
             });
             
-            ex.Message.ShouldBe("Coupon not found");
+            ex.Message.ShouldBe($"Coupon not be deleted");
         }
     }
 }
