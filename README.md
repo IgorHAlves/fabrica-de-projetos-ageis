@@ -75,11 +75,11 @@ Este projeto visa simular um ambiente real de comércio eletrônico, oferecendo 
 O projeto segue uma arquitetura de **SPA (Single Page Application)** consumindo uma **REST API**.
 
 ```mermaid
-graph TD
-    Client[Cliente (Vue.js)] <--> API[API (.NET Core)]
-    API <--> DB[(MySQL)]
-    Client <--> Keycloak[Keycloak Auth]
-    API <--> Keycloak
+flowchart TD
+  Client("Cliente (Vue.js)") <-->|REST| API("API (.NET Core)")
+  API -->|consulta| DB[(MySQL)]
+  Client -->|login| Keycloak["Keycloak Auth"]
+  API -->|verifica token| Keycloak
 ```
 
 ---
