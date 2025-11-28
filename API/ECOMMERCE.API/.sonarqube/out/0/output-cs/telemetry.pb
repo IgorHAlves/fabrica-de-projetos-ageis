@@ -1,0 +1,1 @@
+nRX/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ViaCep/ViaCep.csproj¢net8.0òCSharp12

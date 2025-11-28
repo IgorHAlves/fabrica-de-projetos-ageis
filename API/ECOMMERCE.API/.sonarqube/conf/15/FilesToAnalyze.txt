@@ -1,0 +1,11 @@
+﻿/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.DATA/Data/EcommerceDbContext.cs
+/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.DATA/Data/EcommerceDbContextFactory.cs
+/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.DATA/Migrations/20251124221753_MigrationToAddressTwo.cs
+/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.DATA/Migrations/20251124221753_MigrationToAddressTwo.Designer.cs
+/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.DATA/Migrations/EcommerceDbContextModelSnapshot.cs
+/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.DATA/Repositories/AddressRepository.cs
+/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.DATA/Repositories/CategoryRepository.cs
+/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.DATA/Repositories/CouponRepository.cs
+/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.DATA/Repositories/OrderRepository.cs
+/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.DATA/Repositories/ProductRepository.cs
+/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.DATA/Repositories/UserRepository.cs

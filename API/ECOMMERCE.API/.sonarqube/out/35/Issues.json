@@ -1,0 +1,131 @@
+{
+  "$schema": "http://json.schemastore.org/sarif-1.0.0",
+  "version": "1.0.0",
+  "runs": [
+    {
+      "tool": {
+        "name": "Microsoft (R) Visual C# Compiler",
+        "version": "4.8.0.0",
+        "fileVersion": "4.8.0-7.25056.18 (a77b6e41)",
+        "semanticVersion": "4.8.0",
+        "language": "en-US"
+      },
+      "results": [
+        {
+          "ruleId": "CS8600",
+          "level": "warning",
+          "message": "Converting null literal or possible null value to non-nullable type.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/Services/OrderServiceTests.cs",
+                "region": {
+                  "startLine": 48,
+                  "startColumn": 26,
+                  "endLine": 48,
+                  "endColumn": 36
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8625",
+          "level": "warning",
+          "message": "Cannot convert null literal to non-nullable reference type.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/Services/OrderServiceTests.cs",
+                "region": {
+                  "startLine": 48,
+                  "startColumn": 26,
+                  "endLine": 48,
+                  "endColumn": 36
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8600",
+          "level": "warning",
+          "message": "Converting null literal or possible null value to non-nullable type.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/Services/OrderServiceTests.cs",
+                "region": {
+                  "startLine": 74,
+                  "startColumn": 26,
+                  "endLine": 74,
+                  "endColumn": 39
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8625",
+          "level": "warning",
+          "message": "Cannot convert null literal to non-nullable reference type.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/Services/OrderServiceTests.cs",
+                "region": {
+                  "startLine": 74,
+                  "startColumn": 26,
+                  "endLine": 74,
+                  "endColumn": 39
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        }
+      ],
+      "rules": {
+        "CS8600": {
+          "id": "CS8600",
+          "shortDescription": "Converting null literal or possible null value to non-nullable type.",
+          "defaultLevel": "warning",
+          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS8600)",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Compiler",
+              "Telemetry"
+            ]
+          }
+        },
+        "CS8625": {
+          "id": "CS8625",
+          "shortDescription": "Cannot convert null literal to non-nullable reference type.",
+          "defaultLevel": "warning",
+          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS8625)",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Compiler",
+              "Telemetry"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,1238 @@
+{
+  "$schema": "http://json.schemastore.org/sarif-1.0.0",
+  "version": "1.0.0",
+  "runs": [
+    {
+      "tool": {
+        "name": "Microsoft (R) Visual C# Compiler",
+        "version": "4.8.0.0",
+        "fileVersion": "4.8.0-7.25056.18 (a77b6e41)",
+        "semanticVersion": "4.8.0",
+        "language": "en-US"
+      },
+      "results": [
+        {
+          "ruleId": "CS8600",
+          "level": "warning",
+          "message": "Converting null literal or possible null value to non-nullable type.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/UserController.cs",
+                "region": {
+                  "startLine": 24,
+                  "startColumn": 29,
+                  "endLine": 24,
+                  "endColumn": 109
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8604",
+          "level": "warning",
+          "message": "Possible null reference argument for parameter 'keycloakId' in 'GetUserDTO IUserService.VerifyUser(string keycloakId)'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/UserController.cs",
+                "region": {
+                  "startLine": 26,
+                  "startColumn": 56,
+                  "endLine": 26,
+                  "endColumn": 66
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/UserController.cs",
+                "region": {
+                  "startLine": 22,
+                  "startColumn": 38,
+                  "endLine": 22,
+                  "endColumn": 48
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8600",
+          "level": "warning",
+          "message": "Converting null literal or possible null value to non-nullable type.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/UserController.cs",
+                "region": {
+                  "startLine": 35,
+                  "startColumn": 29,
+                  "endLine": 35,
+                  "endColumn": 109
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8604",
+          "level": "warning",
+          "message": "Possible null reference argument for parameter 'keycloakId' in 'Guid IUserService.CreateAddress(string keycloakId, CreateAddressDTO address)'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/UserController.cs",
+                "region": {
+                  "startLine": 37,
+                  "startColumn": 53,
+                  "endLine": 37,
+                  "endColumn": 63
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/UserController.cs",
+                "region": {
+                  "startLine": 33,
+                  "startColumn": 38,
+                  "endLine": 33,
+                  "endColumn": 51
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/CouponController.cs",
+                "region": {
+                  "startLine": 22,
+                  "startColumn": 38,
+                  "endLine": 22,
+                  "endColumn": 48
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/OrderController.cs",
+                "region": {
+                  "startLine": 29,
+                  "startColumn": 38,
+                  "endLine": 29,
+                  "endColumn": 47
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/CouponController.cs",
+                "region": {
+                  "startLine": 36,
+                  "startColumn": 38,
+                  "endLine": 36,
+                  "endColumn": 47
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/OrderController.cs",
+                "region": {
+                  "startLine": 45,
+                  "startColumn": 38,
+                  "endLine": 45,
+                  "endColumn": 46
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/CouponController.cs",
+                "region": {
+                  "startLine": 51,
+                  "startColumn": 38,
+                  "endLine": 51,
+                  "endColumn": 50
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/ProductController.cs",
+                "region": {
+                  "startLine": 21,
+                  "startColumn": 38,
+                  "endLine": 21,
+                  "endColumn": 49
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/CouponController.cs",
+                "region": {
+                  "startLine": 66,
+                  "startColumn": 38,
+                  "endLine": 66,
+                  "endColumn": 50
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/ProductController.cs",
+                "region": {
+                  "startLine": 29,
+                  "startColumn": 38,
+                  "endLine": 29,
+                  "endColumn": 48
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8600",
+          "level": "warning",
+          "message": "Converting null literal or possible null value to non-nullable type.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/OrderController.cs",
+                "region": {
+                  "startLine": 60,
+                  "startColumn": 29,
+                  "endLine": 60,
+                  "endColumn": 109
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS1998",
+          "level": "warning",
+          "message": "This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/OrderController.cs",
+                "region": {
+                  "startLine": 58,
+                  "startColumn": 38,
+                  "endLine": 58,
+                  "endColumn": 49
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8600",
+          "level": "warning",
+          "message": "Converting null literal or possible null value to non-nullable type.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Program.cs",
+                "region": {
+                  "startLine": 62,
+                  "startColumn": 38,
+                  "endLine": 62,
+                  "endColumn": 100
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8604",
+          "level": "warning",
+          "message": "Possible null reference argument for parameter 'keycloakOptions' in 'AuthenticationBuilder ServiceCollectionExtensions.AddKeycloakAuthentication(IServiceCollection services, KeycloakAuthenticationOptions keycloakOptions, Action<JwtBearerOptions>? configureOptions = null)'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Program.cs",
+                "region": {
+                  "startLine": 103,
+                  "startColumn": 56,
+                  "endLine": 103,
+                  "endColumn": 77
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8604",
+          "level": "warning",
+          "message": "Possible null reference argument for parameter 'keycloakOptions' in 'IServiceCollection ServiceCollectionExtensions.AddKeycloakAuthorization(IServiceCollection services, KeycloakProtectionClientOptions keycloakOptions)'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Program.cs",
+                "region": {
+                  "startLine": 110,
+                  "startColumn": 55,
+                  "endLine": 110,
+                  "endColumn": 75
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8604",
+          "level": "warning",
+          "message": "Possible null reference argument for parameter 'keycloakOptions' in 'IHttpClientBuilder ServiceCollectionExtensions.AddKeycloakAdminHttpClient(IServiceCollection services, KeycloakAdminClientOptions keycloakOptions, Action<HttpClient>? configureClient = null)'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Program.cs",
+                "region": {
+                  "startLine": 117,
+                  "startColumn": 57,
+                  "endLine": 117,
+                  "endColumn": 75
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2068",
+          "level": "warning",
+          "message": "\"password\" detected here, make sure this is not a hard-coded credential.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/appsettings.json",
+                "region": {
+                  "startLine": 3,
+                  "startColumn": 31,
+                  "endLine": 3,
+                  "endColumn": 162
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6418",
+          "level": "warning",
+          "message": "\"secret\" detected here, make sure this is not a hard-coded secret.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/appsettings.json",
+                "region": {
+                  "startLine": 19,
+                  "startColumn": 18,
+                  "endLine": 19,
+                  "endColumn": 50
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1118",
+          "level": "warning",
+          "message": "Add a 'protected' constructor or the 'static' keyword to the class declaration.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Program.cs",
+                "region": {
+                  "startLine": 21,
+                  "startColumn": 18,
+                  "endLine": 21,
+                  "endColumn": 25
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S2933",
+          "level": "warning",
+          "message": "Make '_authorizationService' 'readonly'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/AuthorizationController.cs",
+                "region": {
+                  "startLine": 11,
+                  "startColumn": 35,
+                  "endLine": 11,
+                  "endColumn": 56
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6968",
+          "level": "warning",
+          "message": "Annotate this method with ProducesResponseType containing the return type for successful responses.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/CategoryController.cs",
+                "region": {
+                  "startLine": 22,
+                  "startColumn": 26,
+                  "endLine": 22,
+                  "endColumn": 37
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/CategoryController.cs",
+                "region": {
+                  "startLine": 25,
+                  "startColumn": 16,
+                  "endLine": 25,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": null
+            }
+          }
+        },
+        {
+          "ruleId": "S6968",
+          "level": "warning",
+          "message": "Annotate this method with ProducesResponseType containing the return type for successful responses.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/CategoryController.cs",
+                "region": {
+                  "startLine": 30,
+                  "startColumn": 26,
+                  "endLine": 30,
+                  "endColumn": 39
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/CategoryController.cs",
+                "region": {
+                  "startLine": 34,
+                  "startColumn": 16,
+                  "endLine": 34,
+                  "endColumn": 37
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": null
+            }
+          }
+        },
+        {
+          "ruleId": "S6968",
+          "level": "warning",
+          "message": "Annotate this method with ProducesResponseType containing the return type for successful responses.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/CategoryController.cs",
+                "region": {
+                  "startLine": 39,
+                  "startColumn": 26,
+                  "endLine": 39,
+                  "endColumn": 38
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/CategoryController.cs",
+                "region": {
+                  "startLine": 42,
+                  "startColumn": 16,
+                  "endLine": 42,
+                  "endColumn": 28
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": null
+            }
+          }
+        },
+        {
+          "ruleId": "S6968",
+          "level": "warning",
+          "message": "Annotate this method with ProducesResponseType containing the return type for successful responses.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/CategoryController.cs",
+                "region": {
+                  "startLine": 48,
+                  "startColumn": 26,
+                  "endLine": 48,
+                  "endColumn": 37
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/CategoryController.cs",
+                "region": {
+                  "startLine": 51,
+                  "startColumn": 16,
+                  "endLine": 51,
+                  "endColumn": 34
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": null
+            }
+          }
+        },
+        {
+          "ruleId": "S6968",
+          "level": "warning",
+          "message": "Annotate this method with ProducesResponseType containing the return type for successful responses.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/CategoryController.cs",
+                "region": {
+                  "startLine": 56,
+                  "startColumn": 26,
+                  "endLine": 56,
+                  "endColumn": 40
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/CategoryController.cs",
+                "region": {
+                  "startLine": 59,
+                  "startColumn": 16,
+                  "endLine": 59,
+                  "endColumn": 34
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": null
+            }
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/CouponController.cs",
+                "region": {
+                  "startLine": 31,
+                  "startColumn": 19,
+                  "endLine": 31,
+                  "endColumn": 43
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/OrderController.cs",
+                "region": {
+                  "startLine": 39,
+                  "startColumn": 19,
+                  "endLine": 39,
+                  "endColumn": 43
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/ShippingController.cs",
+                "region": {
+                  "startLine": 32,
+                  "startColumn": 19,
+                  "endLine": 32,
+                  "endColumn": 43
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/CouponController.cs",
+                "region": {
+                  "startLine": 45,
+                  "startColumn": 19,
+                  "endLine": 45,
+                  "endColumn": 43
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6961",
+          "level": "warning",
+          "message": "Inherit from ControllerBase instead of Controller.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/UserController.cs",
+                "region": {
+                  "startLine": 11,
+                  "startColumn": 31,
+                  "endLine": 11,
+                  "endColumn": 41
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/CouponController.cs",
+                "region": {
+                  "startLine": 60,
+                  "startColumn": 19,
+                  "endLine": 60,
+                  "endColumn": 43
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/CouponController.cs",
+                "region": {
+                  "startLine": 75,
+                  "startColumn": 19,
+                  "endLine": 75,
+                  "endColumn": 43
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6968",
+          "level": "warning",
+          "message": "Annotate this method with ProducesResponseType containing the return type for successful responses.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/ProductController.cs",
+                "region": {
+                  "startLine": 46,
+                  "startColumn": 26,
+                  "endLine": 46,
+                  "endColumn": 36
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/ProductController.cs",
+                "region": {
+                  "startLine": 49,
+                  "startColumn": 16,
+                  "endLine": 49,
+                  "endColumn": 27
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": null
+            }
+          }
+        },
+        {
+          "ruleId": "S6968",
+          "level": "warning",
+          "message": "Annotate this method with ProducesResponseType containing the return type for successful responses.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/ProductController.cs",
+                "region": {
+                  "startLine": 38,
+                  "startColumn": 26,
+                  "endLine": 38,
+                  "endColumn": 37
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/ProductController.cs",
+                "region": {
+                  "startLine": 41,
+                  "startColumn": 16,
+                  "endLine": 41,
+                  "endColumn": 27
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": null
+            }
+          }
+        },
+        {
+          "ruleId": "S6961",
+          "level": "warning",
+          "message": "Inherit from ControllerBase instead of Controller.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/ProductController.cs",
+                "region": {
+                  "startLine": 11,
+                  "startColumn": 34,
+                  "endLine": 11,
+                  "endColumn": 44
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S112",
+          "level": "warning",
+          "message": "'System.Exception' should not be thrown by user code.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/PaymentController.cs",
+                "region": {
+                  "startLine": 32,
+                  "startColumn": 19,
+                  "endLine": 32,
+                  "endColumn": 43
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S6968",
+          "level": "warning",
+          "message": "Annotate this method with ProducesResponseType containing the return type for successful responses.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/PaymentController.cs",
+                "region": {
+                  "startLine": 19,
+                  "startColumn": 25,
+                  "endLine": 19,
+                  "endColumn": 34
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/PaymentController.cs",
+                "region": {
+                  "startLine": 28,
+                  "startColumn": 20,
+                  "endLine": 28,
+                  "endColumn": 34
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": null
+            }
+          }
+        },
+        {
+          "ruleId": "ASP0018",
+          "level": "note",
+          "message": "Unused route parameter 'ig'",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/CategoryController.cs",
+                "region": {
+                  "startLine": 47,
+                  "startColumn": 15,
+                  "endLine": 47,
+                  "endColumn": 24
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "RouteParameterInsertIndex": "-1",
+              "RouteParameterIsOptional": "False",
+              "RouteParameterName": "ig",
+              "RouteParameterPolicy": ":guid"
+            }
+          }
+        },
+        {
+          "ruleId": "S5122",
+          "level": "warning",
+          "message": "Make sure this permissive CORS policy is safe here.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Program.cs",
+                "region": {
+                  "startLine": 128,
+                  "startColumn": 21,
+                  "endLine": 128,
+                  "endColumn": 44
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        }
+      ],
+      "rules": {
+        "ASP0018": {
+          "id": "ASP0018",
+          "shortDescription": "Unused route parameter",
+          "defaultLevel": "note",
+          "helpUri": "https://aka.ms/aspnet/analyzers",
+          "properties": {
+            "category": "Usage",
+            "isEnabledByDefault": true
+          }
+        },
+        "CS1998": {
+          "id": "CS1998",
+          "shortDescription": "Async method lacks 'await' operators and will run synchronously",
+          "defaultLevel": "warning",
+          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS1998)",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Compiler",
+              "Telemetry"
+            ]
+          }
+        },
+        "CS8600": {
+          "id": "CS8600",
+          "shortDescription": "Converting null literal or possible null value to non-nullable type.",
+          "defaultLevel": "warning",
+          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS8600)",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Compiler",
+              "Telemetry"
+            ]
+          }
+        },
+        "CS8604": {
+          "id": "CS8604",
+          "shortDescription": "Possible null reference argument.",
+          "defaultLevel": "warning",
+          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS8604)",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Compiler",
+              "Telemetry"
+            ]
+          }
+        },
+        "S1118": {
+          "id": "S1118",
+          "shortDescription": "Utility classes should not have public constructors",
+          "fullDescription": "Whenever there are portions of code that are duplicated and do not depend on the state of their container class, they can be centralized inside a \"utility class\". A utility class is a class that only has static members, hence it should not be instantiated.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1118",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S112": {
+          "id": "S112",
+          "shortDescription": "General or reserved exceptions should never be thrown",
+          "fullDescription": "This rule raises an issue when a general or reserved exception is thrown.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-112",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S2068": {
+          "id": "S2068",
+          "shortDescription": "Hard-coded credentials are security-sensitive",
+          "fullDescription": "Because it is easy to extract strings from an application source code or binary, credentials should not be hard-coded. This is particularly true for applications that are distributed or that are open-source.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-2068",
+          "properties": {
+            "category": "Blocker Security Hotspot",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S2933": {
+          "id": "S2933",
+          "shortDescription": "Fields that are only assigned in the constructor should be \"readonly\"",
+          "fullDescription": "readonly fields can only be assigned in a class constructor. If a class has a field that’s not marked readonly but is only set in the constructor, it could cause confusion about the field’s intended use. To avoid confusion, such fields should be marked readonly to make their intended use explicit, and to prevent future maintainers from inadvertently changing their use.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-2933",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S5122": {
+          "id": "S5122",
+          "shortDescription": "Having a permissive Cross-Origin Resource Sharing policy is security-sensitive",
+          "fullDescription": "Having a permissive Cross-Origin Resource Sharing policy is security-sensitive. It has led in the past to the following vulnerabilities:",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-5122",
+          "properties": {
+            "category": "Minor Security Hotspot",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S6418": {
+          "id": "S6418",
+          "shortDescription": "Hard-coded secrets are security-sensitive",
+          "fullDescription": "Because it is easy to extract strings from an application source code or binary, secrets should not be hard-coded. This is particularly true for applications that are distributed or that are open-source.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-6418",
+          "properties": {
+            "category": "Blocker Security Hotspot",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S6961": {
+          "id": "S6961",
+          "shortDescription": "API Controllers should derive from ControllerBase instead of Controller",
+          "fullDescription": "In ASP.NET Core, controllers usually inherit either from ControllerBase or Controller. If a controller does not use any View-specific functionality, it is recommended to inherit from ControllerBase.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-6961",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S6968": {
+          "id": "S6968",
+          "shortDescription": "Actions that return a value should be annotated with ProducesResponseTypeAttribute containing the return type",
+          "fullDescription": "In an ASP.NET Core Web API, controller actions can optionally return a result value. If a controller action returns a value in the happy path, for example ControllerBase.Ok(Object), annotating the action with one of the [ProducesResponseType] overloads that describe the type is recommended.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-6968",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "SonarWay"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

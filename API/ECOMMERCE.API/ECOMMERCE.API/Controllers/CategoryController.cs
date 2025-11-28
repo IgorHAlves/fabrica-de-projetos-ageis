@@ -8,7 +8,7 @@ namespace ECOMMERCE.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class CategoryController : Controller
+public class CategoryController : ControllerBase
 {
     private readonly ICategoryService _categoryService;
 
