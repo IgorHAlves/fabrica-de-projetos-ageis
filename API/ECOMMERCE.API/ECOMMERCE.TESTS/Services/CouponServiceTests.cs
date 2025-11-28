@@ -7,6 +7,7 @@ using ECOMMERCE.CORE.Entity;
 using ECOMMERCE.CORE.Helper;
 using System;
 using System.Collections.Generic;
+using ECOMMERCE.CORE.Enums;
 
 namespace ECOMMERCE.TESTS.Services
 {
@@ -29,7 +30,7 @@ namespace ECOMMERCE.TESTS.Services
             {
                 Code = "TESTE10",
                 Value = 10,
-                CategoryEnum = ECOMMERCE.CORE.Enums.CouponCategoryEnum.percentual
+                CategoryEnum = CORE.Enums.CouponCategoryEnum.percentual
             };
 
             _repoMock
@@ -52,7 +53,7 @@ namespace ECOMMERCE.TESTS.Services
             {
                 Items = new List<Coupon>
                 {
-                    new Coupon { Code = "ABC", Value = 10 }
+                    new Coupon { Code = "ABC", Value = 10, CategoryEnum = CouponCategoryEnum.percentual }
                 },
                 ActualPage = 1,
                 TotalItens = 1,
