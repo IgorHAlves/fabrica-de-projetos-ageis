@@ -364,77 +364,61 @@ export const useCartStore = defineStore('cart', () => {
                 return false
             }
 
-            // Confirmação antes de finalizar
-            const totalMessage = discountValue.value > 0
-                ? `R$ ${totalPriceWithDiscount.value.toFixed(2)} (desconto de R$ ${discountValue.value.toFixed(2)} aplicado)`
-                : `R$ ${totalPrice.value.toFixed(2)}`
+            // Mostra loading durante o processamento
+            showLoading('Processando pedido...')
 
-            const result = await showConfirm(
-                'Finalizar Compra',
-                `Confirma a compra de ${totalItems.value} item(ns) por ${totalMessage}?`,
-                'Sim, finalizar',
-                'Cancelar'
-            )
-
-            if (result.isConfirmed) {
-                // Mostra loading durante o processamento
-                showLoading('Processando pedido...')
-
-                try {
-                    // Prepara os dados do pedido no formato esperado pela API
-                    const finalTotal = totalPriceWithDiscount.value
-                    const orderData = {
-                        OrderItems: items.value.map(item => ({
-                            ProductId: item.id,
-                            Quantity: item.quantity
-                        })),
-                        Date: new Date().toISOString()
-                    }
-
-                    // Faz o POST para criar o pedido
-                    const createdOrder = await createOrder(orderData)
-
-                    // Fecha o loading
-                    closeLoading()
-
-                    // Mostra mensagem de sucesso
-                    const totalMessage = discountValue.value > 0
-                        ? `Total: R$ ${finalTotal.toFixed(2)} (Desconto: R$ ${discountValue.value.toFixed(2)})`
-                        : `Total: R$ ${finalTotal.toFixed(2)}`
-
-                    showSuccess(
-                        'Compra Finalizada!',
-                        `Seu pedido foi criado com sucesso. ${totalMessage}`
-                    )
-
-                    // Limpa o carrinho após a compra
-                    clearCart()
-                    return true
-                } catch (apiError) {
-                    // Fecha o loading em caso de erro
-                    closeLoading()
-
-                    // Trata erros específicos da API
-                    let errorMessage = 'Não foi possível criar o pedido. Tente novamente.'
-
-                    if (apiError.response?.status === 401) {
-                        errorMessage = 'É necessário estar autenticado para finalizar a compra. Por favor, faça login primeiro.'
-                    } else if (apiError.response?.status === 403) {
-                        errorMessage = 'Você não tem permissão para realizar esta ação.'
-                    } else if (apiError.response?.status >= 500) {
-                        errorMessage = 'Erro no servidor. Tente novamente mais tarde.'
-                    } else if (apiError.response?.data?.message) {
-                        errorMessage = apiError.response.data.message
-                    } else if (apiError.message) {
-                        errorMessage = apiError.message
-                    }
-
-                    showError('Erro ao processar pedido', errorMessage)
-                    return false
+            try {
+                // Prepara os dados do pedido no formato esperado pela API
+                const finalTotal = totalPriceWithDiscount.value
+                const orderData = {
+                    OrderItems: items.value.map(item => ({
+                        ProductId: item.id,
+                        Quantity: item.quantity
+                    })),
+                    Date: new Date().toISOString()
                 }
-            }
 
-            return false
+                // Faz o POST para criar o pedido
+                const createdOrder = await createOrder(orderData)
+
+                // Fecha o loading
+                closeLoading()
+
+                // Mostra mensagem de sucesso
+                const totalMessage = discountValue.value > 0
+                    ? `Total: R$ ${finalTotal.toFixed(2)} (Desconto: R$ ${discountValue.value.toFixed(2)})`
+                    : `Total: R$ ${finalTotal.toFixed(2)}`
+
+                showSuccess(
+                    'Compra Finalizada!',
+                    `Seu pedido foi criado com sucesso. ${totalMessage}`
+                )
+
+                // Limpa o carrinho após a compra
+                clearCart()
+                return true
+            } catch (apiError) {
+                // Fecha o loading em caso de erro
+                closeLoading()
+
+                // Trata erros específicos da API
+                let errorMessage = 'Não foi possível criar o pedido. Tente novamente.'
+
+                if (apiError.response?.status === 401) {
+                    errorMessage = 'É necessário estar autenticado para finalizar a compra. Por favor, faça login primeiro.'
+                } else if (apiError.response?.status === 403) {
+                    errorMessage = 'Você não tem permissão para realizar esta ação.'
+                } else if (apiError.response?.status >= 500) {
+                    errorMessage = 'Erro no servidor. Tente novamente mais tarde.'
+                } else if (apiError.response?.data?.message) {
+                    errorMessage = apiError.response.data.message
+                } else if (apiError.message) {
+                    errorMessage = apiError.message
+                }
+
+                showError('Erro ao processar pedido', errorMessage)
+                return false
+            }
         } catch (error) {
             showError('Erro', 'Não foi possível finalizar a compra.')
             return false

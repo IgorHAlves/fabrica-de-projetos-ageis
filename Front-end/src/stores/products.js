@@ -38,7 +38,8 @@ export const useProductsStore = defineStore('products', () => {
             // Constrói a query string
             const params = {
                 pageNumber: pageNumber.value,
-                pageSize: pageSize.value
+                pageSize: pageSize.value,
+                t: new Date().getTime()
             }
 
             if (searchName.value) {

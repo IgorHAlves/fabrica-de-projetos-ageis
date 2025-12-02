@@ -1,4 +1,5 @@
 import { computed, ref } from 'vue'
+import { useCartStore } from '../stores/cart'
 
 /**
  * Estado global de autenticação (Keycloak)
@@ -74,6 +75,10 @@ export function useAuth() {
      */
     async function logout() {
         if (keycloakInstance.value) {
+            // Limpa o carrinho ao fazer logout
+            const cartStore = useCartStore()
+            cartStore.clearCart()
+
             await keycloakInstance.value.logout()
             isAuthenticated.value = false
             currentUser.value = null

@@ -189,7 +189,7 @@ router.beforeEach((to, from, next) => {
             // Usuário não autenticado - redireciona para login do Keycloak
             const keycloak = window._keycloak
             if (keycloak) {
-                keycloak.login()
+                keycloak.login({ redirectUri: window.location.origin })
             } else {
                 console.error('Keycloak não inicializado')
                 next('/home')

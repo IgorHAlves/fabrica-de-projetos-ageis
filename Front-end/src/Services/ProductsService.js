@@ -10,7 +10,7 @@ import api from './Axios';
 export async function getProducts(pageNumber = 1, pageSize = 12, searchTerm = '') {
     try {
         // Parâmetros da requisição
-        const params = { pageNumber, pageSize }
+        const params = { pageNumber, pageSize, t: new Date().getTime() }
 
         // Adiciona termo de busca se fornecido
         if (searchTerm && searchTerm.trim()) {
@@ -82,7 +82,7 @@ export async function getProductById(productId) {
 
         }
 
-        const response = await api.get(`Product/${productId}`)
+        const response = await api.get(`Product/${productId}?t=${new Date().getTime()}`)
 
 
 
@@ -131,7 +131,7 @@ export async function getProductById(productId) {
 export async function getProductVariations(parentProductId) {
     try {
         // Busca todos os produtos e filtra os que têm idPai igual ao parentProductId
-        const allProducts = await getProducts(1, 1000, '')
+        const allProducts = await getProducts(1, 1000, '') // getProducts já tem o timestamp agora
         if (!allProducts || !allProducts.items) {
             return []
         }

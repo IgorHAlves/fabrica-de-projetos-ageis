@@ -68,7 +68,7 @@ const props = defineProps({
     }
 })
 
-const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits(['update:modelValue', 'parent-selected'])
 
 const isVariation = ref(false)
 const selectedParentId = ref('')
@@ -118,6 +118,13 @@ function handleParentChange() {
 
     }
     emit('update:modelValue', value)
+    
+    // Emitir o objeto completo do pai para que o formulário possa usar (ex: pegar a categoria)
+    if (value && selectedParent.value) {
+        emit('parent-selected', selectedParent.value)
+    } else {
+        emit('parent-selected', null)
+    }
 }
 
 async function loadAvailableParents() {

@@ -128,7 +128,8 @@ async function loadFeaturedProducts() {
   isLoading.value = true
   
   try {
-    const data = await getProducts(1, 8, '')
+    // Busca mais produtos (12) para garantir que tenhamos 4 após os filtros
+    const data = await getProducts(1, 12, '')
     let items = data.items || []
     
     // Remove variações (produtos com idPai) - só mostra produtos principais
@@ -143,7 +144,8 @@ async function loadFeaturedProducts() {
       return stock !== undefined && stock !== null && stock > 0
     })
     
-    featuredProducts.value = items
+    // Pega apenas os 4 primeiros após a filtragem
+    featuredProducts.value = items.slice(0, 4)
   } catch (error) {
     featuredProducts.value = []
   } finally {

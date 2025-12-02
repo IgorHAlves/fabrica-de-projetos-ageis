@@ -39,11 +39,14 @@
           </div>
         </div>
 
-        <!-- Seleção de Método de Pagamento -->
-        <div class="mb-6">
+        <!-- Formulário Principal -->
+        <form @submit.prevent="handlePayment">
+          <!-- Seleção de Método de Pagamento -->
+          <div class="mb-6">
           <h3 class="font-semibold text-gray-900 mb-3">Método de Pagamento</h3>
           <div class="grid grid-cols-2 gap-4">
             <button
+              type="button"
               @click="paymentMethod = 'card'"
               :class="paymentMethod === 'card' 
                 ? 'border-2 border-purple-600 bg-purple-50' 
@@ -56,6 +59,7 @@
               </p>
             </button>
             <button
+              type="button"
               @click="paymentMethod = 'pix'"
               :class="paymentMethod === 'pix' 
                 ? 'border-2 border-purple-600 bg-purple-50' 
@@ -70,17 +74,20 @@
           </div>
         </div>
 
-        <!-- Formulário de Cartão de Crédito -->
-        <div v-if="paymentMethod === 'card'" class="space-y-4">
+          <!-- Formulário de Cartão de Crédito -->
+          <div v-if="paymentMethod === 'card'" class="space-y-4">
           <h3 class="font-semibold text-gray-900 mb-3">Dados do Cartão</h3>
           
           <!-- Nome no Cartão -->
           <div>
-            <label class="block text-sm font-semibold text-gray-700 mb-2">Nome no Cartão</label>
+            <label for="cc-name" class="block text-sm font-semibold text-gray-700 mb-2">Nome no Cartão</label>
             <input
               v-model="cardData.name"
               type="text"
+              id="cc-name"
+              name="cc-name"
               placeholder="Nome completo"
+              autocomplete="cc-name"
               class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
               :class="errors.name ? 'border-red-300' : ''"
             />
@@ -89,13 +96,16 @@
 
           <!-- Número do Cartão -->
           <div>
-            <label class="block text-sm font-semibold text-gray-700 mb-2">Número do Cartão</label>
+            <label for="cc-number" class="block text-sm font-semibold text-gray-700 mb-2">Número do Cartão</label>
             <input
               v-model="cardData.number"
               type="text"
+              id="cc-number"
+              name="cc-number"
               placeholder="0000 0000 0000 0000"
               maxlength="19"
               @input="formatCardNumber"
+              autocomplete="cc-number"
               class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
               :class="errors.number ? 'border-red-300' : ''"
             />
@@ -105,13 +115,16 @@
           <div class="grid grid-cols-2 gap-4">
             <!-- Validade -->
             <div>
-              <label class="block text-sm font-semibold text-gray-700 mb-2">Validade</label>
+              <label for="cc-exp" class="block text-sm font-semibold text-gray-700 mb-2">Validade</label>
               <input
                 v-model="cardData.expiry"
                 type="text"
+                id="cc-exp"
+                name="cc-exp"
                 placeholder="MM/AA"
                 maxlength="5"
                 @input="formatExpiry"
+                autocomplete="cc-exp"
                 class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
                 :class="errors.expiry ? 'border-red-300' : ''"
               />
@@ -120,20 +133,23 @@
 
             <!-- CVV -->
             <div>
-              <label class="block text-sm font-semibold text-gray-700 mb-2">CVV</label>
+              <label for="cc-csc" class="block text-sm font-semibold text-gray-700 mb-2">CVV</label>
               <input
                 v-model="cardData.cvv"
                 type="text"
+                id="cc-csc"
+                name="cc-csc"
                 placeholder="123"
                 maxlength="4"
                 @input="formatCVV"
+                autocomplete="cc-csc"
                 class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
                 :class="errors.cvv ? 'border-red-300' : ''"
               />
               <p v-if="errors.cvv" class="mt-1 text-sm text-red-600">{{ errors.cvv }}</p>
             </div>
           </div>
-        </div>
+          </div>
 
         <!-- Informações PIX -->
         <div v-if="paymentMethod === 'pix'" class="bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200 rounded-lg p-6 text-center">
@@ -159,12 +175,13 @@
         <!-- Botões -->
         <div class="flex gap-3 mt-6 pt-6 border-t">
           <button
+            type="button"
             @click="handleClose"
             class="flex-1 px-4 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors font-semibold">
             Cancelar
           </button>
           <button
-            @click="handlePayment"
+            type="submit"
             :disabled="isProcessing"
             class="flex-1 px-4 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors font-semibold disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2">
             <i v-if="isProcessing" class="fa-solid fa-spinner fa-spin"></i>
@@ -172,6 +189,7 @@
             {{ isProcessing ? 'Processando...' : 'Confirmar Pagamento' }}
           </button>
         </div>
+        </form>
       </div>
     </div>
   </div>
@@ -362,7 +380,7 @@ async function handlePayment() {
     await new Promise(resolve => setTimeout(resolve, 2000))
 
     // Simula validação fake do pagamento
-    const paymentSuccess = Math.random() > 0.1 // 90% de chance de sucesso (fake)
+    const paymentSuccess = true // Sempre sucesso para a apresentação
 
     if (!paymentSuccess) {
       closeLoading()

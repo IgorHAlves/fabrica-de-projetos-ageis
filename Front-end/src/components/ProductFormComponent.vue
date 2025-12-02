@@ -49,7 +49,7 @@
         </div>
 
         <!-- Seleção de Produto Pai (Variação) -->
-        <ProductParentSelectComponent v-model="form.idPai" />
+        <ProductParentSelectComponent v-model="form.idPai" @parent-selected="onParentSelected" />
 
         <!-- Categoria -->
         <ProductCategorySelectComponent v-model="form.category" :error="errors.category" :disabled="!!form.idPai"
@@ -91,10 +91,14 @@ const props = defineProps({
   productId: {
     type: String,
     default: null
+  },
+  variationSourceId: {
+    type: String,
+    default: null
   }
 })
 
-const { form, errors, touched, isLoading, validate, markAsTouched, submitForm, isEditMode } = useProductForm(toRef(props, 'productId'))
+const { form, errors, touched, isLoading, validate, markAsTouched, submitForm, isEditMode } = useProductForm(toRef(props, 'productId'), toRef(props, 'variationSourceId'))
 
 const uploadProgress = ref(0)
 
@@ -104,5 +108,18 @@ function onUploadProgress(progress) {
 
 async function onSubmit() {
   await submitForm()
+}
+
+function onParentSelected(parent) {
+  if (parent) {
+    // Tenta obter o ID da categoria de várias formas possíveis
+    const categoryId = parent.category?.id || parent.idCategory || parent.category
+    
+    if (categoryId) {
+      form.category = categoryId
+      // Valida o campo para remover o erro visual se houver
+      markAsTouched('category')
+    }
+  }
 }
 </script>

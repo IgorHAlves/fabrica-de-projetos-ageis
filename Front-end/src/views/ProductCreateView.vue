@@ -16,7 +16,7 @@
 
       <!-- Form -->
       <div class="bg-white rounded-xl shadow-lg p-8 border border-gray-200">
-        <ProductFormComponent :product-id="productId" />
+        <ProductFormComponent :product-id="productId" :variation-source-id="variationSourceId" />
       </div>
     </main>
   </div>
@@ -31,7 +31,10 @@ import ProductFormComponent from '../components/ProductFormComponent.vue';
 const route = useRoute();
 const productId = computed(() => {
     const id = route.query.id || null;
-
     return id;
+});
+
+const variationSourceId = computed(() => {
+    return route.query.variation_source || null;
 });
 </script>

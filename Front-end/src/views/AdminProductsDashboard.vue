@@ -50,7 +50,14 @@
             </thead>
             <tbody class="divide-y divide-gray-100">
               <tr v-for="product in products" :key="product.id" class="hover:bg-gray-50 transition">
-                <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">{{ product.name }}</td>
+                <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">
+                  <div class="flex items-center gap-2">
+                    <span v-if="product.idPai" class="bg-purple-100 text-purple-800 text-xs font-semibold px-2.5 py-0.5 rounded border border-purple-200">
+                      <i class="fa-solid fa-code-branch mr-1"></i>Variação
+                    </span>
+                    {{ product.name }}
+                  </div>
+                </td>
                 <td class="px-6 py-4 whitespace-nowrap text-gray-600">{{ product.variations?.length || 0 }}</td>
                 <td class="px-6 py-4 whitespace-nowrap">
                   <span :class="{'text-red-600 font-bold': product.stockQuantity < 10, 'text-green-600': product.stockQuantity >= 10}">
@@ -59,6 +66,9 @@
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap text-gray-900 font-medium">{{ formatCurrency(product.price) }}</td>
                 <td class="px-6 py-4 whitespace-nowrap text-center space-x-4">
+                  <button v-if="!product.idPai" @click="createVariation(product.id)" class="text-purple-600 hover:text-purple-800 transition" title="Criar Variação">
+                    <i class="fa-solid fa-code-branch"></i>
+                  </button>
                   <button @click="editProduct(product.id)" class="text-blue-600 hover:text-blue-800 transition" title="Editar">
                     <i class="fa-solid fa-pen"></i>
                   </button>
@@ -144,8 +154,22 @@ function goToCreate() {
   router.push({ path: '/admin/products/create' })
 }
 
+function createVariation(id) {
+  const product = products.value.find(p => p.id === id)
+  router.push({ 
+    path: '/admin/products/create', 
+    query: { variation_source: id },
+    state: { productData: product ? JSON.parse(JSON.stringify(product)) : null }
+  })
+}
+
 function editProduct(id) {
-  router.push({ path: '/admin/products/create', query: { id } })
+  const product = products.value.find(p => p.id === id)
+  router.push({ 
+    path: '/admin/products/create', 
+    query: { id },
+    state: { productData: product ? JSON.parse(JSON.stringify(product)) : null }
+  })
 }
 
 async function deleteProduct(id) {

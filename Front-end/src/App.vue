@@ -19,9 +19,25 @@ const isAdminRoute = computed(() => {
   <BreadcrumbComponent v-if="!isAdminRoute"></BreadcrumbComponent>
 
   <div class="min-h-screen flex flex-col justify-between bg-gray-100">
-    <RouterView></RouterView>
+    <RouterView v-slot="{ Component }">
+      <Transition name="fade" mode="out-in">
+        <component :is="Component" />
+      </Transition>
+    </RouterView>
   </div>
 
   <!-- Footer apenas para rotas não-admin -->
   <Footer v-if="!isAdminRoute" />
 </template>
+
+<style>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>
