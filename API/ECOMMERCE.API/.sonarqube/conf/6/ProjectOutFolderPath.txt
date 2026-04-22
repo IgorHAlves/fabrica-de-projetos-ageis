@@ -1,0 +1,1 @@
+/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/.sonarqube/out/6

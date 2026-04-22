@@ -1,0 +1,1 @@
+€Rj/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/ECOMMERCE.TESTS.csproj¢net8.0òCSharp12

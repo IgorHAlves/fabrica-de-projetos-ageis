@@ -1,0 +1,304 @@
+{
+  "scannerProperties": [
+    {
+      "key": "sonar.scanner.app",
+      "value": "ScannerMSBuild"
+    },
+    {
+      "key": "sonar.scanner.appVersion",
+      "value": "11.0"
+    },
+    {
+      "key": "sonar.scanner.bootstrapStartTime",
+      "value": "1764273020000"
+    },
+    {
+      "key": "sonar.projectKey",
+      "value": "ECOMMERCE.API"
+    },
+    {
+      "key": "sonar.working.directory",
+      "value": "/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/.sonarqube/out/.sonar"
+    },
+    {
+      "key": "sonar.projectBaseDir",
+      "value": "/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API"
+    },
+    {
+      "key": "sonar.pullrequest.cache.basepath",
+      "value": "/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS"
+    },
+    {
+      "key": "sonar.sources",
+      "value": ""
+    },
+    {
+      "key": "sonar.tests",
+      "value": ""
+    },
+    {
+      "key": "sonar.modules",
+      "value": "4F285303-98F0-4E23-8519-27DE80212534,DD1AB9A6-82D1-46B1-A5FE-395B7713CEC7,CA66405F-6195-47CF-B934-7CE090ABDF00,4CC7F412-D668-49BF-9A65-042AA6669262,26625C90-63F1-4DD2-9557-9D1B1E41FD00,34EC109A-C010-40D1-9A2B-3CD12D99A1A8"
+    },
+    {
+      "key": "4F285303-98F0-4E23-8519-27DE80212534.sonar.projectKey",
+      "value": "ECOMMERCE.API:4F285303-98F0-4E23-8519-27DE80212534"
+    },
+    {
+      "key": "4F285303-98F0-4E23-8519-27DE80212534.sonar.projectName",
+      "value": "ViaCep"
+    },
+    {
+      "key": "4F285303-98F0-4E23-8519-27DE80212534.sonar.projectBaseDir",
+      "value": "/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ViaCep"
+    },
+    {
+      "key": "4F285303-98F0-4E23-8519-27DE80212534.sonar.working.directory",
+      "value": "/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/.sonarqube/out/.sonar/mod0"
+    },
+    {
+      "key": "4F285303-98F0-4E23-8519-27DE80212534.sonar.sourceEncoding",
+      "value": "utf-8"
+    },
+    {
+      "key": "4F285303-98F0-4E23-8519-27DE80212534.sonar.tests",
+      "value": ""
+    },
+    {
+      "key": "4F285303-98F0-4E23-8519-27DE80212534.sonar.sources",
+      "value": "/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ViaCep/DTO/ViaCepDTO.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ViaCep/Rest/ViaCepApi.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ViaCep/obj/project.packagespec.json,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ViaCep/obj/project.assets.json,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ViaCep/obj/ViaCep.csproj.nuget.dgspec.json,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ViaCep/bin/Debug/net8.0/ViaCep.deps.json,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ViaCep/obj/Debug/net8.0/ViaCep.sourcelink.json"
+    },
+    {
+      "key": "4F285303-98F0-4E23-8519-27DE80212534.sonar.cs.analyzer.projectOutPaths",
+      "value": "/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/.sonarqube/out/0"
+    },
+    {
+      "key": "4F285303-98F0-4E23-8519-27DE80212534.sonar.cs.roslyn.reportFilePaths",
+      "value": "/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/.sonarqube/out/0/Issues.json"
+    },
+    {
+      "key": "4F285303-98F0-4E23-8519-27DE80212534.sonar.cs.scanner.telemetry",
+      "value": "/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/.sonarqube/out/0/Telemetry.json"
+    },
+    {
+      "key": "DD1AB9A6-82D1-46B1-A5FE-395B7713CEC7.sonar.projectKey",
+      "value": "ECOMMERCE.API:DD1AB9A6-82D1-46B1-A5FE-395B7713CEC7"
+    },
+    {
+      "key": "DD1AB9A6-82D1-46B1-A5FE-395B7713CEC7.sonar.projectName",
+      "value": "Pix"
+    },
+    {
+      "key": "DD1AB9A6-82D1-46B1-A5FE-395B7713CEC7.sonar.projectBaseDir",
+      "value": "/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/Pix"
+    },
+    {
+      "key": "DD1AB9A6-82D1-46B1-A5FE-395B7713CEC7.sonar.working.directory",
+      "value": "/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/.sonarqube/out/.sonar/mod1"
+    },
+    {
+      "key": "DD1AB9A6-82D1-46B1-A5FE-395B7713CEC7.sonar.sourceEncoding",
+      "value": "utf-8"
+    },
+    {
+      "key": "DD1AB9A6-82D1-46B1-A5FE-395B7713CEC7.sonar.tests",
+      "value": ""
+    },
+    {
+      "key": "DD1AB9A6-82D1-46B1-A5FE-395B7713CEC7.sonar.sources",
+      "value": "/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/Pix/obj/project.packagespec.json,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/Pix/obj/project.assets.json,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/Pix/obj/Pix.csproj.nuget.dgspec.json,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/Pix/bin/Debug/net8.0/Pix.deps.json,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/Pix/obj/Debug/net8.0/Pix.sourcelink.json,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/Pix/PixPayload.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/Pix/PixService.cs"
+    },
+    {
+      "key": "DD1AB9A6-82D1-46B1-A5FE-395B7713CEC7.sonar.cs.analyzer.projectOutPaths",
+      "value": "/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/.sonarqube/out/1"
+    },
+    {
+      "key": "DD1AB9A6-82D1-46B1-A5FE-395B7713CEC7.sonar.cs.roslyn.reportFilePaths",
+      "value": "/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/.sonarqube/out/1/Issues.json"
+    },
+    {
+      "key": "DD1AB9A6-82D1-46B1-A5FE-395B7713CEC7.sonar.cs.scanner.telemetry",
+      "value": "/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/.sonarqube/out/1/Telemetry.json"
+    },
+    {
+      "key": "CA66405F-6195-47CF-B934-7CE090ABDF00.sonar.projectKey",
+      "value": "ECOMMERCE.API:CA66405F-6195-47CF-B934-7CE090ABDF00"
+    },
+    {
+      "key": "CA66405F-6195-47CF-B934-7CE090ABDF00.sonar.projectName",
+      "value": "ECOMMERCE.CORE"
+    },
+    {
+      "key": "CA66405F-6195-47CF-B934-7CE090ABDF00.sonar.projectBaseDir",
+      "value": "/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE"
+    },
+    {
+      "key": "CA66405F-6195-47CF-B934-7CE090ABDF00.sonar.working.directory",
+      "value": "/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/.sonarqube/out/.sonar/mod2"
+    },
+    {
+      "key": "CA66405F-6195-47CF-B934-7CE090ABDF00.sonar.sourceEncoding",
+      "value": "utf-8"
+    },
+    {
+      "key": "CA66405F-6195-47CF-B934-7CE090ABDF00.sonar.tests",
+      "value": ""
+    },
+    {
+      "key": "CA66405F-6195-47CF-B934-7CE090ABDF00.sonar.sources",
+      "value": "/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/obj/project.packagespec.json,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/obj/project.assets.json,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/obj/ECOMMERCE.CORE.csproj.nuget.dgspec.json,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/bin/Debug/net8.0/ECOMMERCE.CORE.deps.json,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/obj/Debug/net8.0/ECOMMERCE.CORE.sourcelink.json,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/DTO/Address/AddressDTO.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/DTO/Authorization/PostTokenDTO.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/DTO/Category/CreateCategoryDTO.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/DTO/Category/GetCategoriesDTO.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/DTO/Category/UpdateCatrgoriesDTO.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/DTO/Coupon/CreateCouponDTO.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/DTO/Coupon/GetCouponDTO.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/DTO/Order/CreateOrderDTO.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/DTO/Order/GetOrderDTO.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/DTO/Order/OrderItemDTO.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/DTO/Order/OrderProductDTO.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/DTO/Product/CreateProductDTO.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/DTO/Product/GetProductDTO.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/DTO/Product/UpdateProductDTO.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/DTO/Shipping/CreateShippingDTO.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/DTO/User/CreateAddressDTO.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/DTO/User/GetAddressDTO.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/DTO/User/GetUserDTO.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/Entity/Address.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/Entity/BaseEntity.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/Entity/Category.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/Entity/Coupon.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/Entity/Order.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/Entity/OrderItem.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/Entity/Product.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/Entity/Shipping.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/Entity/User.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/Enums/CouponCategoryEnum.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/Helper/Paginator.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/Interfaces/IAddressRepository.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/Interfaces/IAuthorizationService.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/Interfaces/ICategoryRepository.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/Interfaces/ICategoryService.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/Interfaces/ICouponRepository.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/Interfaces/ICouponService.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/Interfaces/IOrderRepository.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/Interfaces/IOrderService.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/Interfaces/IProductRepository.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/Interfaces/IProductService.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/Interfaces/IShippingService.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/Interfaces/IUserRepository.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/Interfaces/IUserService.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/Services/AuthorizationService.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/Services/CategoryService.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/Services/CouponService.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/Services/OrderService.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/Services/ProductServices.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/Services/ShippingService.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.CORE/Services/UserService.cs"
+    },
+    {
+      "key": "CA66405F-6195-47CF-B934-7CE090ABDF00.sonar.cs.analyzer.projectOutPaths",
+      "value": "/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/.sonarqube/out/2"
+    },
+    {
+      "key": "CA66405F-6195-47CF-B934-7CE090ABDF00.sonar.cs.roslyn.reportFilePaths",
+      "value": "/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/.sonarqube/out/2/Issues.json"
+    },
+    {
+      "key": "CA66405F-6195-47CF-B934-7CE090ABDF00.sonar.cs.scanner.telemetry",
+      "value": "/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/.sonarqube/out/2/Telemetry.json"
+    },
+    {
+      "key": "4CC7F412-D668-49BF-9A65-042AA6669262.sonar.projectKey",
+      "value": "ECOMMERCE.API:4CC7F412-D668-49BF-9A65-042AA6669262"
+    },
+    {
+      "key": "4CC7F412-D668-49BF-9A65-042AA6669262.sonar.projectName",
+      "value": "ECOMMERCE.DATA"
+    },
+    {
+      "key": "4CC7F412-D668-49BF-9A65-042AA6669262.sonar.projectBaseDir",
+      "value": "/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.DATA"
+    },
+    {
+      "key": "4CC7F412-D668-49BF-9A65-042AA6669262.sonar.working.directory",
+      "value": "/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/.sonarqube/out/.sonar/mod3"
+    },
+    {
+      "key": "4CC7F412-D668-49BF-9A65-042AA6669262.sonar.sourceEncoding",
+      "value": "utf-8"
+    },
+    {
+      "key": "4CC7F412-D668-49BF-9A65-042AA6669262.sonar.tests",
+      "value": ""
+    },
+    {
+      "key": "4CC7F412-D668-49BF-9A65-042AA6669262.sonar.sources",
+      "value": "/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.DATA/obj/project.packagespec.json,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.DATA/obj/project.assets.json,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.DATA/obj/ECOMMERCE.DATA.csproj.nuget.dgspec.json,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.DATA/bin/Debug/net8.0/ECOMMERCE.DATA.deps.json,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.DATA/bin/Debug/net8.0/ECOMMERCE.DATA.runtimeconfig.json,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.DATA/obj/Debug/net8.0/ECOMMERCE.DATA.sourcelink.json,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.DATA/Data/EcommerceDbContext.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.DATA/Data/EcommerceDbContextFactory.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.DATA/Migrations/20251124221753_MigrationToAddressTwo.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.DATA/Migrations/20251124221753_MigrationToAddressTwo.Designer.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.DATA/Migrations/EcommerceDbContextModelSnapshot.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.DATA/Repositories/AddressRepository.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.DATA/Repositories/CategoryRepository.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.DATA/Repositories/CouponRepository.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.DATA/Repositories/OrderRepository.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.DATA/Repositories/ProductRepository.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.DATA/Repositories/UserRepository.cs"
+    },
+    {
+      "key": "4CC7F412-D668-49BF-9A65-042AA6669262.sonar.cs.analyzer.projectOutPaths",
+      "value": "/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/.sonarqube/out/3"
+    },
+    {
+      "key": "4CC7F412-D668-49BF-9A65-042AA6669262.sonar.cs.roslyn.reportFilePaths",
+      "value": "/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/.sonarqube/out/3/Issues.json"
+    },
+    {
+      "key": "4CC7F412-D668-49BF-9A65-042AA6669262.sonar.cs.scanner.telemetry",
+      "value": "/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/.sonarqube/out/3/Telemetry.json"
+    },
+    {
+      "key": "26625C90-63F1-4DD2-9557-9D1B1E41FD00.sonar.projectKey",
+      "value": "ECOMMERCE.API:26625C90-63F1-4DD2-9557-9D1B1E41FD00"
+    },
+    {
+      "key": "26625C90-63F1-4DD2-9557-9D1B1E41FD00.sonar.projectName",
+      "value": "ECOMMERCE.API"
+    },
+    {
+      "key": "26625C90-63F1-4DD2-9557-9D1B1E41FD00.sonar.projectBaseDir",
+      "value": "/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API"
+    },
+    {
+      "key": "26625C90-63F1-4DD2-9557-9D1B1E41FD00.sonar.working.directory",
+      "value": "/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/.sonarqube/out/.sonar/mod4"
+    },
+    {
+      "key": "26625C90-63F1-4DD2-9557-9D1B1E41FD00.sonar.sourceEncoding",
+      "value": "utf-8"
+    },
+    {
+      "key": "26625C90-63F1-4DD2-9557-9D1B1E41FD00.sonar.tests",
+      "value": ""
+    },
+    {
+      "key": "26625C90-63F1-4DD2-9557-9D1B1E41FD00.sonar.sources",
+      "value": "/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/appsettings.Development.json,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/appsettings.json,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Properties/launchSettings.json,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/obj/project.packagespec.json,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/obj/project.assets.json,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/obj/ECOMMERCE.API.csproj.nuget.dgspec.json,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/bin/Debug/net8.0/appsettings.Development.json,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/bin/Debug/net8.0/appsettings.json,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/bin/Debug/net8.0/ECOMMERCE.API.deps.json,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/bin/Debug/net8.0/ECOMMERCE.API.runtimeconfig.json,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/obj/Debug/net8.0/ECOMMERCE.API.sourcelink.json,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/obj/Debug/net8.0/staticwebassets.build.json,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/AuthorizationController.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/CategoryController.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/CouponController.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/OrderController.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/PaymentController.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/ProductController.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/ShippingController.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Controllers/UserController.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/Program.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/obj/Debug/net8.0/ECOMMERCE.API.GlobalUsings.g.cs,\"/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/obj/Debug/net8.0/.NETCoreApp,Version=v8.0.AssemblyAttributes.cs\",/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/obj/Debug/net8.0/ECOMMERCE.API.AssemblyInfo.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/obj/Debug/net8.0/ECOMMERCE.API.MvcApplicationPartsAssemblyInfo.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.API/ECOMMERCE.API.http"
+    },
+    {
+      "key": "26625C90-63F1-4DD2-9557-9D1B1E41FD00.sonar.cs.analyzer.projectOutPaths",
+      "value": "/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/.sonarqube/out/4"
+    },
+    {
+      "key": "26625C90-63F1-4DD2-9557-9D1B1E41FD00.sonar.cs.roslyn.reportFilePaths",
+      "value": "/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/.sonarqube/out/4/Issues.json"
+    },
+    {
+      "key": "26625C90-63F1-4DD2-9557-9D1B1E41FD00.sonar.cs.scanner.telemetry",
+      "value": "/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/.sonarqube/out/4/Telemetry.json"
+    },
+    {
+      "key": "34EC109A-C010-40D1-9A2B-3CD12D99A1A8.sonar.projectKey",
+      "value": "ECOMMERCE.API:34EC109A-C010-40D1-9A2B-3CD12D99A1A8"
+    },
+    {
+      "key": "34EC109A-C010-40D1-9A2B-3CD12D99A1A8.sonar.projectName",
+      "value": "ECOMMERCE.TESTS"
+    },
+    {
+      "key": "34EC109A-C010-40D1-9A2B-3CD12D99A1A8.sonar.projectBaseDir",
+      "value": "/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS"
+    },
+    {
+      "key": "34EC109A-C010-40D1-9A2B-3CD12D99A1A8.sonar.working.directory",
+      "value": "/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/.sonarqube/out/.sonar/mod5"
+    },
+    {
+      "key": "34EC109A-C010-40D1-9A2B-3CD12D99A1A8.sonar.sourceEncoding",
+      "value": "utf-8"
+    },
+    {
+      "key": "34EC109A-C010-40D1-9A2B-3CD12D99A1A8.sonar.sources",
+      "value": ""
+    },
+    {
+      "key": "34EC109A-C010-40D1-9A2B-3CD12D99A1A8.sonar.tests",
+      "value": "/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/obj/project.packagespec.json,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/obj/Ecommerce.Tests.csproj.nuget.dgspec.json,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/obj/project.assets.json,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/obj/Debug/net8.0/ECOMMERCE.TESTS.sourcelink.json,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/bin/Debug/net8.0/appsettings.Development.json,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/bin/Debug/net8.0/appsettings.json,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/bin/Debug/net8.0/ECOMMERCE.TESTS.deps.json,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/bin/Debug/net8.0/ECOMMERCE.TESTS.runtimeconfig.json,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/bin/Debug/net8.0/ECOMMERCE.API.deps.json,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/bin/Debug/net8.0/ECOMMERCE.API.runtimeconfig.json,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/Controller/CouponControllerTests.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/Repositories/CouponRespositoryTests.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/Services/CouponServiceTests.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/Services/OrderServiceTests.cs,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/TestResults/2ed4b123-e15c-4529-90bc-7d3073ed8315/coverage.cobertura.xml,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/TestResults/3ba40c8a-8685-4e10-9c30-950b4f5fda04/coverage.cobertura.xml,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/TestResults/5f661511-75f3-430d-8d8e-d7eb1c8487e6/coverage.cobertura.xml,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/TestResults/82cdf6b2-444f-4cb7-86f7-943a095e02af/coverage.cobertura.xml,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/TestResults/9e853744-a434-4614-b231-edafecab7579/coverage.cobertura.xml,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/TestResults/c4136ae8-7edf-4eb4-b1fe-8b1830129b9a/coverage.cobertura.xml,/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/TestResults/d38fd489-f80c-4d13-830d-d1cf51227901/coverage.cobertura.xml"
+    },
+    {
+      "key": "34EC109A-C010-40D1-9A2B-3CD12D99A1A8.sonar.cs.analyzer.projectOutPaths",
+      "value": "/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/.sonarqube/out/5"
+    },
+    {
+      "key": "34EC109A-C010-40D1-9A2B-3CD12D99A1A8.sonar.cs.roslyn.reportFilePaths",
+      "value": "/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/.sonarqube/out/5/Issues.json"
+    },
+    {
+      "key": "34EC109A-C010-40D1-9A2B-3CD12D99A1A8.sonar.cs.scanner.telemetry",
+      "value": "/home/ti-acim/Documents/fabrica-de-projetos-ageis/API/ECOMMERCE.API/ECOMMERCE.TESTS/.sonarqube/out/5/Telemetry.json"
+    },
+    {
+      "key": "sonar.login",
+      "value": "***"
+    },
+    {
+      "key": "sonar.host.url",
+      "value": "http://localhost:9000"
+    },
+    {
+      "key": "sonar.cs.opencover.reportsPaths",
+      "value": "TestCoverage/coverage.cobertura.xml"
+    },
+    {
+      "key": "sonar.exclusions",
+      "value": "TestCoverage/coverage.cobertura.xml"
+    },
+    {
+      "key": "sonar.visualstudio.enable",
+      "value": "false"
+    }
+  ]
+}

@@ -1,8 +1,25 @@
 
+# IDEs
 .vs/
+.vscode/
+.idea/
+
+# Backend (.NET)
 bin/
 obj/
 Debug/
 Release/
 *.log
+*.user
+appsettings.Development.json
+
+# Frontend (Node)
+node_modules/
+dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS
 *.DS_Store
+Thumbs.db
